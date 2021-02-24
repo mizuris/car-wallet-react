@@ -12,13 +12,13 @@ export const NavbarData = [
   },
   {
     title: "My fleet",
-    path: "/my-fleet",
+    path: "/fleet-my",
     icon: <FaIcons.FaCar />,
     className: "nav-text",
   },
   {
     title: "Configure fleet",
-    path: "/config-fleet",
+    path: "/fleet-config",
     icon: <IoIcons.IoMdHelpCircle />,
     className: "nav-text",
   },
