@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import "./Navbar.scss";
-import "../variables.scss";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
@@ -10,6 +8,8 @@ import Home from "../pages/Home";
 import MyFleet from "../pages/MyFleet";
 import FleetConfig from "../pages/FleetConfig";
 import Profile from "../pages/Profile";
+import "./Navbar.scss";
+import "../variables.scss";
 
 export default function Navbar() {
   const [sideMenu, setSideMenu] = useState(false);
@@ -22,6 +22,11 @@ export default function Navbar() {
           <Link to="#!" className="menu-bars">
             <FaIcons.FaBars onClick={showSideMenu} />
           </Link>
+          <div className="brand-name">
+            <span>
+              Car<b>Wallet</b>
+            </span>
+          </div>
         </div>
         <nav className={sideMenu ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSideMenu}>
