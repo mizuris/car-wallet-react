@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import { IconContext } from "react-icons/lib";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { IconContext } from "react-icons/lib";
 import { NavbarData } from "./NavbarData";
-import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import MyFleet from "../pages/MyFleet";
 import FleetConfig from "../pages/FleetConfig";
@@ -38,7 +38,7 @@ export default function Navbar() {
             {NavbarData.map((item, index) => {
               return (
                 <li key={index} className={item.className}>
-                  <Link to={item.path}>
+                  <Link to={item.path} spy={true} smoot={true}>
                     {item.icon}
                     <span className="menu-link">{item.title}</span>
                   </Link>
