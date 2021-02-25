@@ -8,6 +8,12 @@
   align-items: center;
 }
 
+.brand-name {
+  color: $primary-light;
+  padding: 0;
+  margin: 10px;
+}
+
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
@@ -69,6 +75,12 @@
   align-items: center;
 }
 
-span {
+.menu-link {
   margin-left: 16px;
+}
+
+@media screen and (max-width: 260px) {
+  .nav-menu {
+    display: none;
+  }
 }

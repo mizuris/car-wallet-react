@@ -22,8 +22,8 @@ export default function Navbar() {
           <Link to="#!" className="menu-bars">
             <FaIcons.FaBars onClick={showSideMenu} />
           </Link>
-          <div className="brand-name">
-            <span>
+          <div className="brand-name-container">
+            <span className="brand-name">
               Car<b>Wallet</b>
             </span>
           </div>
@@ -40,7 +40,7 @@ export default function Navbar() {
                 <li key={index} className={item.className}>
                   <Link to={item.path}>
                     {item.icon}
-                    <span>{item.title}</span>
+                    <span className="menu-link">{item.title}</span>
                   </Link>
                 </li>
               );
