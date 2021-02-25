@@ -8,10 +8,15 @@
   align-items: center;
 }
 
-.brand-name {
-  color: $primary-light;
+.brand-name-nav {
   padding: 0;
   margin: 10px;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: $primary-light;
+  }
 }
 
 .menu-bars {
@@ -82,5 +87,48 @@
 @media screen and (max-width: 260px) {
   .nav-menu {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .side-navbar {
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 80px;
+  }
+
+  .menu-bars {
+    display: none;
+  }
+
+  .nav-menu {
+    left: 0;
+    width: 80px;
+
+    .nav-text {
+      text-align: center;
+      padding: 0;
+      margin-bottom: 50px;
+
+      a {
+        svg {
+          margin: auto;
+        }
+      }
+
+      .menu-link {
+        display: none;
+      }
+    }
+  }
+
+  .brand-name-nav {
+    position: absolute;
+    top: 0;
+    left: 90px;
+    font-size: 26px;
   }
 }

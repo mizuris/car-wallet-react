@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import MyFleet from "../pages/MyFleet";
 import FleetConfig from "../pages/FleetConfig";
 import Profile from "../pages/Profile";
+import Tooltip from "@material-ui/core/Tooltip";
 import "./Navbar.scss";
 import "../variables.scss";
 
@@ -23,8 +24,10 @@ export default function Navbar() {
             <FaIcons.FaBars onClick={showSideMenu} />
           </Link>
           <div className="brand-name-container">
-            <span className="brand-name">
-              Car<b>Wallet</b>
+            <span className="brand-name-nav">
+              <Link to="/">
+                Car<b>Wallet</b>
+              </Link>
             </span>
           </div>
         </div>
@@ -38,10 +41,12 @@ export default function Navbar() {
             {NavbarData.map((item, index) => {
               return (
                 <li key={index} className={item.className}>
-                  <Link to={item.path} spy={true} smoot={true}>
-                    {item.icon}
-                    <span className="menu-link">{item.title}</span>
-                  </Link>
+                  <Tooltip placement="right" title={item.title}>
+                    <Link to={item.path}>
+                      {item.icon}
+                      <span className="menu-link">{item.title}</span>
+                    </Link>
+                  </Tooltip>
                 </li>
               );
             })}
