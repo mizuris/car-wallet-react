@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Button(props) {
+export default function Button({ value, onClick, cName }) {
   return (
-  <button onClick={props.handleClick}>
-      {props.label}
-  </button>
+    <button className={`btn ${cName}`} onClick={() => onClick()}>
+      {value}
+    </button>
   );
 }
