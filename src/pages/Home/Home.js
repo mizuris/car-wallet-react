@@ -1,7 +1,7 @@
 import React from "react";
-import "../variables.scss";
+import "../../variables.scss";
 import "./Home.scss";
-import Heading from "../components/Heading";
+import Heading from "../../components/Heading";
 
 export default function Home() {
 

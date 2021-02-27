@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function AddVehicleForm(props) {
   const [vehicleDetails, setVehicleDetails] = useState({
+    id: "",
     brand: "",
     model: "",
     driver: "",
@@ -17,7 +18,7 @@ function AddVehicleForm(props) {
       driver: vehicleDetails.driver,
     });
 
-    setVehicleDetails({ brand: "", model: "", driver: "" });
+    setVehicleDetails({ id: "", brand: "", model: "", driver: "" });
   };
 
   return (

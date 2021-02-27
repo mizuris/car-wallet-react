@@ -1,9 +1,7 @@
 import React from "react";
-import VehicleList from "../components/VehicleList";
+import VehicleList from "../../components/AddForm/VehicleList";
 
 export default function FleetConfig() {
-
-
   return (
     <div className="container d-flex align-items-center page-section">
       <VehicleList />

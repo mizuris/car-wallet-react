@@ -4,13 +4,13 @@ import { IconContext } from "react-icons/lib";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { NavbarData } from "./NavbarData";
-import Home from "../pages/Home";
-import MyFleet from "../pages/MyFleet";
-import FleetConfig from "../pages/FleetConfig";
-import Profile from "../pages/Profile";
+import Home from "../../pages/Home/Home";
+import MyFleet from "../../pages/MyFleet/MyFleet";
+import FleetConfig from "../../pages/FleetConfig/FleetConfig";
+import Profile from "../../pages/Profile/Profile";
 import Tooltip from "@material-ui/core/Tooltip";
 import "./Navbar.scss";
-import "../variables.scss";
+import "../../variables.scss";
 
 export default function Navbar() {
   const [sideMenu, setSideMenu] = useState(false);
