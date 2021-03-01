@@ -12,7 +12,7 @@ export default function Section(props) {
         src={props.imgSrc}
         alt={props.imgAlt}
       />
-      <div className={props.textWrapClassNane}>
+      <div className={props.textWrapClassName}>
         <h1 className={props.textHeaderClassName}>{props.headerText}</h1>
         <p className={props.textParClassName}>{props.parText}</p>
         <Button

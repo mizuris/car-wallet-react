@@ -8,6 +8,10 @@ import { useHistory } from "react-router";
 export default function Home() {
   const history = useHistory();
   const navigateToFleet = () => history.push("/fleet-my");
+  const parText =
+    "CarWallet is an app that helps you manage fleet. You can check up on your drivers from anywhere in the world";
+  const headerText = "Keep it close";
+
   return (
     <div className="page-section">
       <Section
@@ -16,14 +20,14 @@ export default function Home() {
         imgClassName="heading-img"
         imgSrc={heading_img}
         alt="Heading img"
-        textWrapClassName="heading-text-container"
+        textWrapClassName="heading-text-container text-center"
         textHeaderClassName="heading-text-header"
-        texhParClassName="heading-text"
-        btnValue="Try it biatch"
+        textParClassName="heading-text"
+        btnValue="Try now"
         btnClassName="btn-danger"
         btnOnClick={navigateToFleet}
-        headerText="Tejk kontrol"
-        parText="Dys ys som rendom tejks"
+        headerText={headerText}
+        parText={parText}
       />
     </div>
   );

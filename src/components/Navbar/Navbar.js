@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IconContext } from "react-icons/lib";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { NavbarData } from "./NavbarData";
-import Home from "../../pages/Home/Home";
-import MyFleet from "../../pages/MyFleet/MyFleet";
-import FleetConfig from "../../pages/FleetConfig/FleetConfig";
-import Profile from "../../pages/Profile/Profile";
 import Tooltip from "@material-ui/core/Tooltip";
 import "./Navbar.scss";
 import "../../variables.scss";
@@ -17,7 +13,8 @@ export default function Navbar() {
   const showSideMenu = () => setSideMenu(!sideMenu);
 
   return (
-    <Router>
+
+      <>
       <IconContext.Provider value={{ color: "#056EF0" }}>
         <div className="side-navbar">
           <Link to="#!" className="menu-bars">
@@ -53,12 +50,7 @@ export default function Navbar() {
           </ul>
         </nav>
       </IconContext.Provider>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/fleet-my" exact component={MyFleet} />
-        <Route path="/fleet-config" exact component={FleetConfig} />
-        <Route path="/profile" exact component={Profile} />
-      </Switch>
-    </Router>
+      </>
+
   );
 }
