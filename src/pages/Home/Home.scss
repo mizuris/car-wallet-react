@@ -1,0 +1,65 @@
+@import "../../variables.scss";
+
+.page-section .dark .blue {
+  height: 100vh;
+  width: 100%;
+}
+
+.dark {
+  background-color: $primary-dark;
+}
+
+.blue {
+  background-color: $primary-blue;
+}
+
+.heading-img-container {
+  margin: 100px 0 0 0;
+
+  .heading-img {
+    max-width: 80%;
+    height: auto;
+  }
+}
+
+
+.heading-text-container {
+  margin-top: 30px;
+
+  .heading-text-header {
+    color: $secondary-blue;
+    padding: 10px;
+  }
+
+  .heading-text {
+    margin: 0;
+    color: $primary-light;
+
+    .brand-name {
+      font-size: 18px;
+      margin: 5px;
+      transition: 300ms ease-in;
+
+      &:hover {
+        color: $primary-dark;
+        transition: 300ms ease-in;
+      }
+    }
+  }
+}
+
+.btn-start {
+  background-color: $primary-light;
+  font-weight: bold;
+  margin: 20px;
+}
+
+@media screen and (max-width: 610px) {
+  .heading-img-container {
+    margin: 50px 0 0 0;
+    text-align: center;
+  }
+  .container {
+    flex-direction: column;
+  }
+}
