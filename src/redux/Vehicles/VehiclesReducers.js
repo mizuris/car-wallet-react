@@ -1,10 +1,13 @@
 import * as actionTypes from "./VehiclesTypes";
 
 const INITIAL_STATE = {
-  id: "",
-  brand: "",
-  model: "",
-  driver: "",
+  vehicleList: [],
+  vehicle: {
+    id: "",
+    brand: "",
+    model: "",
+    driver: "",
+  },
   currentVehicle: null,
 };
 

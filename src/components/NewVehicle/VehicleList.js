@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import VehicleAddForm from "./VehicleAddForm";
+import AddVehicleForm from "../AddForm/AddVehicleForm";
 
 function VehicleList() {
   const [vehicleList, setVehicleList] = useState([]);
@@ -8,21 +8,22 @@ function VehicleList() {
     const newVehicle = [vehicle, ...vehicleList];
     setVehicleList(newVehicle);
     console.log(newVehicle);
-    console.log(vehicleList);
   };
   return (
     <>
-      {vehicleList.map((vehicle) => {
-        return (
-          <div className="container d-flex align-items-center page-section">
+      {vehicleList.length !== 0 ? (
+        vehicleList.map((vehicle) => {
+          return (
             <li key={vehicle.id}>
-              <p>{vehicle.brand}</p>
-              <p>{vehicle.model}</p>
-              <p>{vehicle.driver}</p>
+              <span>{vehicle.brand}</span>
+              <span>{vehicle.model}</span>
+              <span>{vehicle.driver}</span>
             </li>
-          </div>
-        );
-      })}
+          );
+        })
+      ) : (
+        <AddVehicleForm onSubmit={addVehicle} />
+      )}
     </>
   );
 }
