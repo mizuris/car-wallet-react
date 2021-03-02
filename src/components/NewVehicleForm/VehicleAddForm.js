@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Form } from "react-final-form";
 import VehicleInput from "./VehicleInput";
 import { Link } from "react-router-dom";
 
-function VehicleAddForm(props) {
+import { connect } from "react-redux";
+import { addVehicle } from "../../redux/Wallet/VehiclesActions";
+
+function VehicleAddForm({ addVehicle }) {
   const [vehicleInputResult, setVehicleInputResult] = useState({
     id: "",
     brand: "",
@@ -13,18 +15,23 @@ function VehicleAddForm(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    props.onSubmit({
+    setVehicleInputResult({
       id: Math.floor(Math.random() * 10000),
       brand: vehicleInputResult.brand,
       model: vehicleInputResult.model,
       driver: vehicleInputResult.driver,
     });
-    setVehicleInputResult({ id: "", brand: "", model: "", driver: "" });
+    addVehicle(vehicleInputResult);
+    // props.onSubmit({
+    //   id: Math.floor(Math.random() * 10000),
+    //   brand: vehicleInputResult.brand,
+    //   model: vehicleInputResult.model,
+    //   driver: vehicleInputResult.driver,
+    // });
   };
 
   return (
-    <Form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler}>
       <VehicleInput
         name="brand"
         onSubmit={submitHandler}
@@ -64,8 +71,20 @@ function VehicleAddForm(props) {
       <Link to="/my-fleet">
         <input type="submit" name="submit" />
       </Link>
-    </Form>
+    </form>
   );
 }
 
-export default VehicleAddForm;
+const mapStateToProps = (state) => {
+  return {
+    vehicle: state.wallet.vehicle,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addVehicle: (vehicle) => dispatch(addVehicle(vehicle)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VehicleAddForm);

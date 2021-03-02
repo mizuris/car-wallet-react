@@ -1,11 +1,9 @@
 import * as actionTypes from "./VehiclesTypes";
 
-export const addVehicle = (vehicleId) => {
+export const addVehicle = (vehicle) => {
   return {
     type: actionTypes.ADD_VEHICLE,
-    payload: {
-      id: vehicleId,
-    },
+    payload: vehicle,
   };
 };
 
@@ -18,13 +16,14 @@ export const removeVehicle = (vehicleId) => {
   };
 };
 
-export const updateVehicle = (vehicleBrand, vehicleModel, vehicleDriver) => {
+export const updateVehicle = (vehicle) => {
   return {
     type: actionTypes.UPDATE_VEHICLE,
     payload: {
-      brand: vehicleBrand,
-      model: vehicleModel,
-      driver: vehicleDriver,
+      id: vehicle.id,
+      brand: vehicle.brand,
+      model: vehicle.model,
+      driver: vehicle.driver,
     },
   };
 };

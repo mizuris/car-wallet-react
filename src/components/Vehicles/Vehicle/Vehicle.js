@@ -1,0 +1,42 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { connect } from "react-redux";
+import {
+  loadVehicle,
+  removeVehicle,
+} from "../../../redux/Wallet/VehiclesActions";
+
+function Vehicle({ vehicle, loadVehicle, removeVehicle }) {
+  return (
+    <div>
+      <div>
+        <p>
+          {vehicle.id}: {vehicle.brand},{vehicle.model}
+        </p>
+      </div>
+      <div>
+        <p>Brand: {vehicle.brand}</p>
+        <p>Model: {vehicle.model}</p>
+        <p>Driver: {vehicle.driver}</p>
+      </div>
+      <div>
+        <Link to={`/fleet-my/${vehicle.id}`}>
+          <button onClick={() => loadVehicle(vehicle)}>LOAD VEHICLE</button>
+        </Link>
+        <button onClick={() => removeVehicle(vehicle.id)}>
+          Remove vehicle
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadVehicle: (vehicle) => dispatch(loadVehicle(vehicle)),
+    removeVehicle: (id) => dispatch(removeVehicle(id)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Vehicle);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import VehicleAddForm from "../../components/NewVehicle/VehicleAddForm";
+import VehicleAddForm from "../../components/NewVehicleForm/VehicleAddForm";
 
-function AddVehicle() {
+function AddVehicle(state = { id: "", brand: "", model: "", driver: "" }) {
   const [vehicleList, setVehicleList] = useState([]);
 
   const addVehicle = (vehicle) => {
