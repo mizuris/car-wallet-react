@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import MyFleet from "./pages/MyFleet/MyFleet";
 import FleetConfig from "./pages/FleetConfig/FleetConfig";
 import Profile from "./pages/Profile/Profile";
+import AddVehicle from "./pages/AddVehicle/AddVehicle";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/fleet-my" component={MyFleet} />
           <Route exact path="/fleet-config" component={FleetConfig} />
+          <Route exact path="/vehicle-add" component={AddVehicle} />
           <Route exact path="/profile" component={Profile} />
         </Switch>
       </Router>

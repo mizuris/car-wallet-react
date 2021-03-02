@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form } from "react-final-form";
 import VehicleInput from "./VehicleInput";
 import { Link } from "react-router-dom";
 
@@ -19,12 +20,11 @@ function VehicleAddForm(props) {
       model: vehicleInputResult.model,
       driver: vehicleInputResult.driver,
     });
-
     setVehicleInputResult({ id: "", brand: "", model: "", driver: "" });
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler}>
       <VehicleInput
         name="brand"
         onSubmit={submitHandler}
@@ -64,7 +64,7 @@ function VehicleAddForm(props) {
       <Link to="/my-fleet">
         <input type="submit" name="submit" />
       </Link>
-    </form>
+    </Form>
   );
 }
 

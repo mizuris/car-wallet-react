@@ -1,29 +1,17 @@
-import React, { useState } from "react";
-import AddVehicleForm from "../AddForm/AddVehicleForm";
+import React from "react";
 
 function VehicleList() {
-  const [vehicleList, setVehicleList] = useState([]);
+  const vehicles = [];
 
-  const addVehicle = (vehicle) => {
-    const newVehicle = [vehicle, ...vehicleList];
-    setVehicleList(newVehicle);
-    console.log(newVehicle);
-  };
   return (
     <>
-      {vehicleList.length !== 0 ? (
-        vehicleList.map((vehicle) => {
-          return (
-            <li key={vehicle.id}>
-              <span>{vehicle.brand}</span>
-              <span>{vehicle.model}</span>
-              <span>{vehicle.driver}</span>
-            </li>
-          );
-        })
-      ) : (
-        <AddVehicleForm onSubmit={addVehicle} />
-      )}
+      {vehicles.map((vehicle, id) => (
+        <ul>
+          <li key={id}>
+            {vehicle.brand} / {vehicle.model} / {vehicle.driver}
+          </li>
+        </ul>
+      ))}
     </>
   );
 }
