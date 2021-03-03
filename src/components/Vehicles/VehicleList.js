@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 function VehicleList({ vehiclesData }) {
   return (
-    <div>
+    <div className="container">
       {vehiclesData.map((vehicle) => (
         <Vehicle key={vehicle.id} vehicle={vehicle} />
       ))}
@@ -15,7 +15,7 @@ function VehicleList({ vehiclesData }) {
 
 const mapStateToProps = (state) => {
   return {
-    vehiclesData: state.wallet.vehicles,
+    vehiclesData: state.vehicles,
   };
 };
 

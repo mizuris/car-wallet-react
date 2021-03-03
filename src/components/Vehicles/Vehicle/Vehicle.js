@@ -1,4 +1,5 @@
 import React from "react";
+import "./Vehicle.scss";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -9,16 +10,16 @@ import {
 
 function Vehicle({ vehicle, loadVehicle, removeVehicle }) {
   return (
-    <div>
-      <div>
-        <p>
-          {vehicle.id}: {vehicle.brand},{vehicle.model}
+    <div className="vehicle-container">
+      <div className="vehicle-heading">
+        <p className="vehicle-title">
+          {vehicle.id}: {vehicle.brand} {vehicle.model}
         </p>
       </div>
-      <div>
-        <p>Brand: {vehicle.brand}</p>
-        <p>Model: {vehicle.model}</p>
-        <p>Driver: {vehicle.driver}</p>
+      <div className="vehicle-details">
+        <p className="vehicle-details-text">Brand: {vehicle.brand}</p>
+        <p className="vehicle-details-text">Model: {vehicle.model}</p>
+        <p className="vehicle-details-text">Driver: {vehicle.driver}</p>
       </div>
       <div>
         <Link to={`/fleet-my/${vehicle.id}`}>

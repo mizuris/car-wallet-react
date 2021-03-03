@@ -2,7 +2,7 @@ import React from "react";
 import VehicleList from "../../components/Vehicles/VehicleList";
 import { connect } from "react-redux";
 
-function MyFleet() {
+function MyFleet(props) {
   return (
     <div className="container d-flex align-items-center page-section">
       <h3>No cars added yet.</h3>
@@ -13,7 +13,7 @@ function MyFleet() {
 
 const mapStateToProps = (state) => {
   return {
-    current: state.wallet.currentVehicle,
+    vehicle: state.vehicles,
   };
 };
 

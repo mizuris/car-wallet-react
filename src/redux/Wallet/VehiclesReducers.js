@@ -14,7 +14,7 @@ const INITIAL_STATE = {
       model: "Bravo",
       driver: "Pałka",
     },
-  ], //[vehicle, vehicle, vehicle]
+  ],
   currentVehicle: null,
 };
 
