@@ -1,1 +1,12 @@
 @import "../../variables.scss";
+
+.driver-details-card {
+  width: 800px;
+  height: 120px;
+  background-color: $primary-light;
+
+  .image {
+      background-color: $primary-dark;
+      height: 100%;
+  }
+}
