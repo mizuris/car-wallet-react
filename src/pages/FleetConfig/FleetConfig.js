@@ -1,7 +1,10 @@
 import React from "react";
+import DriverForm from "../../components/DriverForm/DriverForm";
 
 export default function FleetConfig() {
   return (
-    <div className="container d-flex align-items-center page-section"></div>
+    <div className="container-fluid page-section d-flex align-items-center">
+      <DriverForm />
+    </div>
   );
 }

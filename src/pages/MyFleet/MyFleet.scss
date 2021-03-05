@@ -1,12 +1,44 @@
 @import "../../variables.scss";
 
-.driver-details-card {
-  width: 800px;
-  height: 120px;
-  background-color: $primary-light;
+.driver-card-container {
+  background-color: $secondary-blue;
+  width: 50%;
+  position: relative;
+  text-align: center;
 
-  .image {
-      background-color: $primary-dark;
-      height: 100%;
+  .driver-working-status {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: green;
+    height: 100%;
+    width: 20px;
+  }
+
+  .driver-name-bar {
+    background-color: $primary-dark;
+    .driver-name {
+      color: $primary-light;
+      font-size: 42px;
+    }
+  }
+
+  .driver-vehicle-bar {
+    .driver-vehicle {
+      font-size: 32px;
+    }
+  }
+
+  .driver-vehicle-details-bar {
+    display: flex;
+
+    .driver-vehicle-details-range {
+      width: 40%;
+
+    }
+
+    .driver-vehicle-details-finance {
+      width: 40%;
+    }
   }
 }

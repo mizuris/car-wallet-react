@@ -1,11 +1,10 @@
 import React from "react";
 import Button from "./Button";
 import ImageHolder from "./ImageHolder";
-// import "./Section.scss";
 
 export default function Section(props) {
   return (
-    <div className={`container d-flex align-items-center page-section ${props.bgColor}`}>
+    <div className={`container d-flex align-items-center ${props.bgColor}`}>
       <ImageHolder
         wrapCName={props.imgWrapClassName}
         imgCName={props.imgClassName}

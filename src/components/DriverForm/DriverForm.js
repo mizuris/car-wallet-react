@@ -32,7 +32,7 @@ function DriverForm() {
 
   return (
     <Form className="container" onSubmit={handleSubmit}>
-      <Form.Group controlId="formBasicEmail">
+      <Form.Group controlId="driverForm">
         <Form.Label>First name</Form.Label>
         <Form.Control
           value={name}
@@ -42,7 +42,7 @@ function DriverForm() {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="driverForm">
         <Form.Label>Second name</Form.Label>
         <Form.Control
           value={surname}
@@ -52,7 +52,7 @@ function DriverForm() {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="driverForm">
         <Form.Label>Car brand</Form.Label>
         <Form.Control
           value={brand}
@@ -62,7 +62,7 @@ function DriverForm() {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="driverForm">
         <Form.Label>Car model</Form.Label>
         <Form.Control
           value={model}
@@ -72,7 +72,7 @@ function DriverForm() {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="driverForm">
         <Form.Label>Car max range</Form.Label>
         <Form.Control
           value={maxRange}
@@ -82,7 +82,7 @@ function DriverForm() {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="driverForm">
         <Form.Label>Car fuel consumption</Form.Label>
         <Form.Control
           value={fuelConsumption}

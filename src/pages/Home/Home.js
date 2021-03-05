@@ -13,7 +13,7 @@ export default function Home() {
   const headerText = "Keep it close";
 
   return (
-    <div className="page-section">
+    <div className="container-fluid page-section d-flex align-items-center">
       <Section
         bgColor="blue"
         imgWrapClassName="heading-img-container"
