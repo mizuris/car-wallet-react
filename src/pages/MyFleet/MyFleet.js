@@ -1,50 +1,47 @@
 import React, { useContext } from "react";
-import { DriverContext } from "../../contexts/DriverContext";
+import { VehicleContext } from "../../contexts/VehicleContext";
 import "./MyFleet.scss";
 import * as GiIcons from "react-icons/gi";
+import * as BiIcons from "react-icons/bi";
 
 function MyFleet() {
-  const { drivers } = useContext(DriverContext);
+  const { vehicles } = useContext(VehicleContext);
 
   return (
     <div className="container-fluid page-section">
-      {drivers.length ? (
-        drivers.map((driver) => {
+      {vehicles.length ? (
+        vehicles.map((vehicle) => {
           return (
             <div
-              key={driver.id}
+              key={vehicle.id}
               className="driver-card-container ml-auto mr-auto"
             >
               <div className="driver-working-status"></div>
-              <div className="driver-name-bar">
-                <p className="driver-name">
-                  {driver.name} <b>{driver.surname}</b>
-                </p>
-              </div>
               <div className="driver-vehicle-bar">
                 <p className="driver-vehicle">
-                  <b>{driver.vehicle.brand}</b>
-                  &nbsp;{driver.vehicle.model}
+                  <b>{vehicle.brand}</b>
+                  &nbsp;{vehicle.model}
                 </p>
+                <p><BiIcons.BiGasPump /> {vehicle.fuelType.toUpperCase()}</p>
               </div>
               <div className="driver-vehicle-details-bar">
                 <div className="driver-vehicle-details-range">
                   <div className="driver-vehicle-details-text">
                     <GiIcons.GiPathDistance />
                     <span className="driver-vehicle-tag">
-                      Max. dist. {driver.vehicle.maxRange}
+                      Max. dist. {vehicle.maxRange}
                     </span>
                   </div>
                   <div className="driver-vehicle-details-text">
                     <GiIcons.GiOak />
                     <span className="driver-vehicle-tag">
-                      Max. dist. {driver.vehicle.maxRange}
+                      Max. dist. {vehicle.maxRange}
                     </span>
                   </div>
                   <div className="driver-vehicle-details-text">
                     <GiIcons.GiLBrick />
                     <span className="driver-vehicle-tag">
-                      Max. dist. {driver.vehicle.maxRange}
+                      Max. dist. {vehicle.maxRange}
                     </span>
                   </div>
                 </div>

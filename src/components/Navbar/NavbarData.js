@@ -19,7 +19,7 @@ export const NavbarData = [
   {
     title: "Configure fleet",
     path: "/fleet-config",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <IoIcons.IoMdAddCircle />,
     className: "nav-text",
   },
   {

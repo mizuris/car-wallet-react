@@ -1,17 +1,23 @@
 import React from "react";
-import "./App.scss";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+
+//Styles
+import "./App.scss";
+
+//Pages
 import Home from "./pages/Home/Home";
 import MyFleet from "./pages/MyFleet/MyFleet";
 import FleetConfig from "./pages/FleetConfig/FleetConfig";
 import Profile from "./pages/Profile/Profile";
-import DriverContextProvider from "./contexts/DriverContext";
+
+//Context providers
+import VehicleContextProvider from "./contexts/VehicleContext";
 
 function App() {
   return (
     <div className="App">
-      <DriverContextProvider>
+      <VehicleContextProvider>
         <Router>
           <Navbar />
           <Switch>
@@ -21,7 +27,7 @@ function App() {
             <Route exact path="/profile" component={Profile} />
           </Switch>
         </Router>
-      </DriverContextProvider>
+      </VehicleContextProvider>
     </div>
   );
 }
