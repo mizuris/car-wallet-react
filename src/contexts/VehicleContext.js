@@ -4,22 +4,34 @@ export const VehicleContext = createContext();
 
 function VehicleContextProvider(props) {
   //Set vehicles array holding drivers objects
+  const [photo, setPhoto] = useState(null);
   const [vehicles, setVehicles] = useState([
     {
       id: 0,
       brand: "Honda",
       model: "Accord",
-      prodYead: 2012,
+      prodYear: 2012,
       bodyType: "Sedan",
       registrationNum: "XYZ 98791",
       tankCapacity: 60,
       fuelConsumption: 8,
-      fuelType: "Gasoline",
+      fuelType: "Petrol",
+      photo: photo,
     },
   ]);
 
   //Declare function allowing to add vehicles
-  const addVehicle = (brand, model, prodYear, bodyType, registrationNum, tankCapacity, fuelConsumption, fuelType) => {
+  const addVehicle = (
+    brand,
+    model,
+    prodYear,
+    bodyType,
+    registrationNum,
+    tankCapacity,
+    fuelConsumption,
+    fuelType,
+    photo
+  ) => {
     setVehicles([
       ...vehicles,
       {
@@ -32,6 +44,7 @@ function VehicleContextProvider(props) {
         tankCapacity,
         fuelConsumption,
         fuelType,
+        photo,
       },
     ]);
   };
@@ -41,8 +54,14 @@ function VehicleContextProvider(props) {
     setVehicles(vehicles.filter((vehicle) => vehicle.id !== id));
   };
 
+  const getPhoto = (url) => {
+    setPhoto(url);
+  };
+
   return (
-    <VehicleContext.Provider value={{ vehicles, addVehicle, removeVehicle }}>
+    <VehicleContext.Provider
+      value={{ vehicles, addVehicle, removeVehicle, getPhoto }}
+    >
       {props.children}
     </VehicleContext.Provider>
   );

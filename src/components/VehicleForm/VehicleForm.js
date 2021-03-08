@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Form, Button, Card, Col, Row } from "react-bootstrap";
 import { VehicleContext } from "../../contexts/VehicleContext";
 import car from "../../assets/images/car.svg";
+import PhotoUpload from "./PhotoUpload";
 
 function VehicleForm() {
   //Get function to add new vehicle
@@ -10,31 +11,42 @@ function VehicleForm() {
   //Declare states to set in form
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
-  const [prodYear, setProdYear] = useState(null);
+  const [prodYear, setProdYear] = useState("");
   const [bodyType, setBodyType] = useState("");
   const [registrationNum, setRegistrationNum] = useState("");
-  const [tankCapacity, setTankCapacity] = useState(null);
+  const [tankCapacity, setTankCapacity] = useState("");
   const [fuelConsumption, setFuelConsumption] = useState("");
-  const [maxRange, setMaxRange] = useState("");
   const [fuelType, setFuelType] = useState("");
+  const [photo, setPhoto] = useState(null);
 
+  //Submit handler
   const handleSubmit = (e) => {
     //Prevent reloading page
     e.preventDefault();
 
     //Send data to context
-    addVehicle(brand, model, fuelType, maxRange, fuelConsumption);
+    addVehicle(
+      brand,
+      model,
+      prodYear,
+      bodyType,
+      registrationNum,
+      tankCapacity,
+      fuelConsumption,
+      fuelType,
+      photo,
+    );
 
     //Clear inputs after submit
     setBrand("");
-    setProdYear(null);
+    setProdYear("");
     setBodyType("");
     setRegistrationNum("");
-    setTankCapacity(null);
+    setTankCapacity("");
     setModel("");
-    setFuelType();
-    setMaxRange("");
+    setFuelType("");
     setFuelConsumption("");
+    setPhoto(null);
   };
 
   return (
@@ -94,7 +106,6 @@ function VehicleForm() {
                     <Form.Control
                       value={bodyType}
                       as="select"
-                      defaultValue="Hatchback"
                       onChange={(e) => {
                         setBodyType(e.target.value);
                       }}
@@ -154,22 +165,18 @@ function VehicleForm() {
                     <Form.Control
                       value={fuelType}
                       as="select"
-                      defaultValue="Choose..."
                       onChange={(e) => {
                         setFuelType(e.target.value);
                       }}
                     >
-                      <option>Petrol</option>
-                      <option>Diesel</option>
-                      <option>LPG</option>
+                      <option defaultValue="Petrol">Petrol</option>
+                      <option value="Diesel">Diesel</option>
+                      <option value="LPG">LPG</option>
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
 
-                <Form.Group as={Col} controlId="formPhoto">
-                  <Form.Label for="photo">Add photo</Form.Label>
-                  <Form.Control type="file" name="photo" />
-                </Form.Group>
+                <PhotoUpload />
 
                 <Button
                   className="form-submit-btn"
