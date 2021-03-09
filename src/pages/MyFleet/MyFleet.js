@@ -88,7 +88,16 @@ function MyFleet() {
                         </span>
                       </div>
                     </Col>
-                    <Col sm={6}></Col>
+                    <Col sm={6}>
+                      <span>
+                        <a
+                          target="blank"
+                          href={`https://www.google.com/search?q=${vehicle.brand}+${vehicle.model}+${vehicle.prodYear}`}
+                        >
+                          <CgIcons.CgLink />
+                        </a>
+                      </span>
+                    </Col>
                   </Row>
                 </div>
               </div>
