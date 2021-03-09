@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
-import { VehicleContext } from "../../contexts/VehicleContext";
 import { storage } from "../../firebase/firebase";
 
-function PhotoUpload(props) {
+function PhotoUpload() {
   const [photo, setPhoto] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
-  const { getPhoto } = useContext(VehicleContext);
 
   const handleUpload = () => {
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
@@ -27,11 +25,12 @@ function PhotoUpload(props) {
           .ref("photos")
           .child(photo.name)
           .getDownloadURL()
-          .then((url) => setUrl(url));
+          .then((url) => {
+            setUrl(url);
+            setPhoto(url);
+          });
       }
     );
-
-    getPhoto(url);
   };
 
   return (

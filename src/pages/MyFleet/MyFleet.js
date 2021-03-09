@@ -1,83 +1,109 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { Button, Col, Row } from "react-bootstrap";
 import { VehicleContext } from "../../contexts/VehicleContext";
+import * as CgIcons from "react-icons/cg";
+import * as FaIcons from "react-icons/fa";
+import * as MdIcons from "react-icons/md";
+import * as RiIcons from "react-icons/ri";
 import "./MyFleet.scss";
-import * as GiIcons from "react-icons/gi";
-import * as BiIcons from "react-icons/bi";
 
 function MyFleet() {
   const { vehicles } = useContext(VehicleContext);
-  console.log(vehicles);
+  const history = useHistory();
+
   return (
-    <div className="container-fluid page-section">
+    <div className="container-fluid page-section text-center">
       {vehicles.length ? (
-        vehicles.map((vehicle) => {
-          return (
-            <div
-              key={vehicle.id}
-              className="driver-card-container ml-auto mr-auto"
-            >
-              <div className="driver-working-status"></div>
-              <div className="driver-vehicle-bar">
-                <p className="driver-vehicle">
-                  <b>{vehicle.brand}</b>
-                  &nbsp;{vehicle.model}
-                </p>
-                <p>
-                  <BiIcons.BiGasPump /> {vehicle.fuelType}
-                </p>
-              </div>
-              <div className="driver-vehicle-details-bar">
-                <div className="driver-vehicle-details-range">
-                  <div className="driver-vehicle-details-text">
-                    <GiIcons.GiPathDistance />
-                    <span className="driver-vehicle-tag">
-                      Tank cap. {vehicle.tankCapacity}
-                    </span>
-                  </div>
-                  <div className="driver-vehicle-details-text">
-                    <GiIcons.GiOak />
-                    <span className="driver-vehicle-tag">
-                      Fuel consumption {vehicle.fuelConsumption}
-                    </span>
-                  </div>
-                  <div className="driver-vehicle-details-text">
-                    <GiIcons.GiLBrick />
-                    <span className="driver-vehicle-tag">
-                      Average dist.{" "}
-                      {(vehicle.tankCapacity / vehicle.fuelConsumption) * 100}
-                    </span>
-                  </div>
+        <h1 style={{ color: "#FFFFFF" }}>Your garage</h1>
+      ) : null}
+      <div className="container">
+        {vehicles.length ? (
+          vehicles.map((vehicle) => {
+            return (
+              <div key={vehicle.id} className="vehicle-card">
+                <div className="edit">
+                  <RiIcons.RiEdit2Fill />
                 </div>
-                <div className="driver-vehicle-details-finance">
-                  <div className="driver-vehicle-details-text">
-                    <GiIcons.GiPackedPlanks />
-                    <span>Reg num {vehicle.registrationNum}</span>
-                  </div>
-                  <div className="driver-vehicle-details-text">
-                    <GiIcons.Gi3DHammer />
-                    <span>Body type {vehicle.bodyType}</span>
-                  </div>
-                  <div className="driver-vehicle-details-text">
-                    <GiIcons.GiBackForth />
-                    <span>Prod year {vehicle.prodYear}</span>
-                  </div>
+                <div className="remove">
+                  <MdIcons.MdRemoveCircle />
+                </div>
+                <div className="vehicle-card-img-container">
+                  <img
+                    src={vehicle.photo}
+                    alt={`${vehicle.brand} ${vehicle.model}`}
+                  />
+                </div>
+                <div className="vehicle-card-body">
+                  <Row>
+                    <Col>
+                      <h2>
+                        <strong>{vehicle.brand}</strong> {vehicle.model}
+                      </h2>
+                      <h5>{vehicle.registrationNum}</h5>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <span className="vehicle-card-type">
+                        Year of production: <strong>{vehicle.prodYear}</strong>
+                      </span>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col sm={6}>
+                      <span className="vehicle-card-type">
+                        <FaIcons.FaCar /> {vehicle.bodyType}
+                      </span>
+                    </Col>
+                    <Col sm={6}>
+                      <span className="vehicle-card-type">
+                        <FaIcons.FaGasPump /> {vehicle.fuelType}
+                      </span>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="details-col" sm={6}>
+                      <div>
+                        <CgIcons.CgAssign />
+                        <span className="ml-2">
+                          Tank capacity: {vehicle.tankCapacity} l
+                        </span>
+                      </div>
+                      <div>
+                        <RiIcons.RiGasStationLine />
+                        <span className="ml-2">
+                          Avg. fuel cons.:{vehicle.fuelConsumption} l/100 km
+                        </span>
+                      </div>
+                      <div>
+                        <RiIcons.RiPinDistanceFill />
+                        <span className="ml-2">
+                          Avg. dist. per tank:{" "}
+                          {(
+                            vehicle.tankCapacity / vehicle.fuelConsumption
+                          ).toFixed(0) * 100}{" "}
+                          km
+                        </span>
+                      </div>
+                    </Col>
+                    <Col sm={6}></Col>
+                  </Row>
                 </div>
               </div>
-              {vehicle.photo && (
-                <img
-                  style={{ maxWidth: "300px" }}
-                  src={vehicle.photo}
-                  alt="#"
-                />
-              )}
-            </div>
-          );
-        })
-      ) : (
-        <div className="empty-container">
-          <h1>No cars added yet.</h1>
-        </div>
-      )}
+            );
+          })
+        ) : (
+          <div className="empty">
+            <h2>No cars added</h2>
+            <p>Add now</p>
+            <Button variant="danger" onClick={() => history.push("/fleet-my")}>
+              Add vehicle
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

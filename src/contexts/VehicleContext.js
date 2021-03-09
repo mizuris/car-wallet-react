@@ -4,7 +4,7 @@ export const VehicleContext = createContext();
 
 function VehicleContextProvider(props) {
   //Set vehicles array holding drivers objects
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState("");
   const [vehicles, setVehicles] = useState([
     {
       id: 0,
@@ -16,7 +16,9 @@ function VehicleContextProvider(props) {
       tankCapacity: 60,
       fuelConsumption: 8,
       fuelType: "Petrol",
-      photo: photo,
+      photo:
+        photo ||
+        "https://firebasestorage.googleapis.com/v0/b/carwallet-react.appspot.com/o/photos%2Fhonda.jpg?alt=media&token=dcca1cde-ed10-4004-9ddf-0085e1a9b815",
     },
   ]);
 

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Form, Button, Card, Col, Row } from "react-bootstrap";
 import { VehicleContext } from "../../contexts/VehicleContext";
 import car from "../../assets/images/car.svg";
-import PhotoUpload from "./PhotoUpload";
+import { storage } from "../../firebase/firebase";
 
 function VehicleForm() {
   //Get function to add new vehicle
@@ -17,7 +17,35 @@ function VehicleForm() {
   const [tankCapacity, setTankCapacity] = useState("");
   const [fuelConsumption, setFuelConsumption] = useState("");
   const [fuelType, setFuelType] = useState("");
+  const [url, setUrl] = useState("");
   const [photo, setPhoto] = useState(null);
+  const [progress, setProgress] = useState(0);
+
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("photos")
+          .child(photo.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+            setPhoto(url);
+          });
+      }
+    );
+  };
 
   //Submit handler
   const handleSubmit = (e) => {
@@ -34,7 +62,7 @@ function VehicleForm() {
       tankCapacity,
       fuelConsumption,
       fuelType,
-      photo,
+      photo
     );
 
     //Clear inputs after submit
@@ -46,7 +74,9 @@ function VehicleForm() {
     setModel("");
     setFuelType("");
     setFuelConsumption("");
-    setPhoto(null);
+    setPhoto("");
+    setUrl(null);
+    setProgress(0);
   };
 
   return (
@@ -176,7 +206,19 @@ function VehicleForm() {
                   </Form.Group>
                 </Form.Row>
 
-                <PhotoUpload />
+                <Form.Group as={Col}>
+                  <Form.Label htmlFor="photo">Add photo</Form.Label>
+                  <input
+                    type="file"
+                    name="photo"
+                    onChange={(e) => setPhoto(e.target.files[0])}
+                  />
+                  <progress value={progress} max="100" />
+                  <Button onClick={handleUpload}>Upload photo</Button>
+                  {photo && progress === 100 && (
+                    <img style={{ maxWidth: "200px" }} src={url} alt="#" />
+                  )}
+                </Form.Group>
 
                 <Button
                   className="form-submit-btn"

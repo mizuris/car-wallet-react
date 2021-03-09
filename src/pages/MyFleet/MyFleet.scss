@@ -1,44 +1,70 @@
 @import "../../variables.scss";
 
-.driver-card-container {
-  background-color: $secondary-blue;
-  width: 50%;
+.vehicle-card {
+  width: 100%;
+  min-height: 200px;
+  max-height: 300px;
+  padding: 20px;
+  background-color: $primary-light;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
-  text-align: center;
 
-  .driver-working-status {
+  .edit,
+  .remove {
+    width: 10px;
+    height: 10px;
     position: absolute;
-    left: 0;
-    top: 0;
-    background-color: green;
+    top: 10px;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+  }
+
+  .edit:hover,
+  .remove:hover {
+    transform: scale(1.4);
+    transition: all 300ms ease-in-out;
+  }
+
+  .edit {
+    right: 50px;
+
+    &:hover {
+      color: $secondary-blue;
+    }
+  }
+
+  .remove {
+    right: 20px;
+
+    &:hover {
+      color: $remove;
+    }
+  }
+
+  .vehicle-card-img-container {
     height: 100%;
-    width: 20px;
-  }
+    width: 30%;
+    max-width: 320px;
+    object-fit: cover;
 
-  .driver-name-bar {
-    background-color: $primary-dark;
-    .driver-name {
-      color: $primary-light;
-      font-size: 42px;
+    img {
+      height: 100%;
+      width: 100%;
     }
   }
 
-  .driver-vehicle-bar {
-    .driver-vehicle {
-      font-size: 32px;
-    }
+  .vehicle-card-body {
+    text-align: center;
+    width: 60%;
+    height: 100%;
+    padding: 20px;
   }
+}
 
-  .driver-vehicle-details-bar {
-    display: flex;
-
-    .driver-vehicle-details-range {
-      width: 40%;
-
-    }
-
-    .driver-vehicle-details-finance {
-      width: 40%;
-    }
-  }
+.details-col {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 }
