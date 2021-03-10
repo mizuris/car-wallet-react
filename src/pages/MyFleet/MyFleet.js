@@ -9,7 +9,7 @@ import * as RiIcons from "react-icons/ri";
 import "./MyFleet.scss";
 
 function MyFleet() {
-  const { vehicles } = useContext(VehicleContext);
+  const { vehicles, removeVehicle } = useContext(VehicleContext);
   const history = useHistory();
 
   return (
@@ -25,7 +25,12 @@ function MyFleet() {
                 <div className="edit">
                   <RiIcons.RiEdit2Fill />
                 </div>
-                <div className="remove">
+                <div
+                  className="remove"
+                  onClick={(id) => {
+                    removeVehicle((id = vehicle.id));
+                  }}
+                >
                   <MdIcons.MdRemoveCircle />
                 </div>
                 <div className="vehicle-card-img-container">
@@ -107,7 +112,10 @@ function MyFleet() {
           <div className="empty">
             <h2>No cars added</h2>
             <p>Add now</p>
-            <Button variant="danger" onClick={() => history.push("/fleet-my")}>
+            <Button
+              variant="danger"
+              onClick={() => history.push("/fleet-config")}
+            >
               Add vehicle
             </Button>
           </div>
