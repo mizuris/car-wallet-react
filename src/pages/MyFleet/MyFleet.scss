@@ -1,5 +1,9 @@
 @import "../../variables.scss";
 
+.page-section {
+  padding: 100px
+}
+
 .vehicle-card {
   width: 100%;
   min-height: 200px;
@@ -8,7 +12,6 @@
   background-color: $primary-light;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   position: relative;
 
   .edit,
@@ -48,6 +51,7 @@
     width: 30%;
     max-width: 320px;
     object-fit: cover;
+    margin-right: 50px;
 
     img {
       height: 100%;
@@ -56,10 +60,23 @@
   }
 
   .vehicle-card-body {
-    text-align: center;
     width: 60%;
     height: 100%;
     padding: 20px;
+    display: flex;
+    justify-content: space-around;
+
+    .vehicle-card-body-left, .vehicle-card-body-right {
+      padding: 20px;
+    }
+    
+    .vehicle-card-body-left {
+      border-right: 1px solid $primary-dark;
+    }
+
+    .vehicle-card-body-right {
+
+    }
   }
 }
 

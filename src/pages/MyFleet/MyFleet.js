@@ -7,8 +7,10 @@ function MyFleet() {
   const { vehicles } = useContext(VehicleContext);
 
   return (
-    <VehicleList vehicles={vehicles} />
-    );
-  }
+    <div className="page-section container-fluid">
+      <VehicleList vehicles={vehicles} />
+    </div>
+  );
+}
 
 export default MyFleet;
