@@ -1,8 +1,19 @@
 import React, { useContext, useState } from "react";
-import { Form, Button, Card, Col, Row } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Card,
+  Col,
+  Row,
+  ProgressBar,
+  Image,
+} from "react-bootstrap";
 import { VehicleContext } from "../../contexts/VehicleContext";
-import car from "../../assets/images/car.svg";
 import { storage } from "../../firebase/firebase";
+import FormImage from "./FormImage";
+import FormTextInput from "./FormTextInput";
+import FormSelectInput from "./FormSelectInput";
+import FormFileInput from "react-bootstrap/esm/FormFileInput";
 
 function VehicleForm() {
   //Get function to add new vehicle
@@ -12,15 +23,18 @@ function VehicleForm() {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [prodYear, setProdYear] = useState("");
-  const [bodyType, setBodyType] = useState("");
+  const [bodyType, setBodyType] = useState("Sedan");
   const [registrationNum, setRegistrationNum] = useState("");
   const [tankCapacity, setTankCapacity] = useState("");
   const [fuelConsumption, setFuelConsumption] = useState("");
-  const [fuelType, setFuelType] = useState("");
+  const [fuelType, setFuelType] = useState("Petrol");
+
+  //Photo related states
   const [url, setUrl] = useState("");
   const [photo, setPhoto] = useState(null);
   const [progress, setProgress] = useState(0);
 
+  //Photo upload handler
   const handleUpload = () => {
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
     uploadTask.on(
@@ -45,10 +59,14 @@ function VehicleForm() {
           });
       }
     );
+    progress === 100 &&
+      setTimeout(() => {
+        setProgress(0);
+      }, 200);
   };
 
   //Submit handler
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     //Prevent reloading page
     e.preventDefault();
 
@@ -82,142 +100,121 @@ function VehicleForm() {
   return (
     <div className="form-container d-flex justify-content-between ml-auto mr-auto">
       <Row>
-        <Col md={6}>
-          <div className="form-image-container">
-            <h2>Add vehicle</h2>
-            <img className="form-image" src={car} alt="#" />
-          </div>
-        </Col>
+        <FormImage col={6} />
         <Col md={6}>
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit}>
                 <Form.Row>
-                  <Form.Group as={Col} controlId="formBrand">
-                    <Form.Label>Brand</Form.Label>
-                    <Form.Control
-                      value={brand}
-                      type="text"
-                      placeholder="Enter car brand"
-                      onChange={(e) => {
-                        setBrand(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group as={Col} controlId="formModel">
-                    <Form.Label>Model</Form.Label>
-                    <Form.Control
-                      value={model}
-                      type="text"
-                      placeholder="Enter car model"
-                      onChange={(e) => {
-                        setModel(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
-                  <Form.Group as={Col} controlId="formColor">
-                    <Form.Label>Year of production</Form.Label>
-                    <Form.Control
-                      value={prodYear}
-                      type="text"
-                      placeholder="Eg. 2010"
-                      onChange={(e) => {
-                        setProdYear(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>Body type</Form.Label>
-                    <Form.Control
-                      value={bodyType}
-                      as="select"
-                      onChange={(e) => {
-                        setBodyType(e.target.value);
-                      }}
-                    >
-                      <option>Hatchback</option>
-                      <option>Sedan</option>
-                      <option>Liftback</option>
-                      <option>Combi</option>
-                      <option>SUV</option>
-                      <option>Coupe</option>
-                      <option>Cabriolet</option>
-                      <option>Pickup</option>
-                      <option>van</option>
-                    </Form.Control>
-                  </Form.Group>
-                </Form.Row>
-
-                <Form.Group controlId="formGridAddress1">
-                  <Form.Label>Registraion numbers</Form.Label>
-                  <Form.Control
-                    value={registrationNum}
-                    type="text"
-                    placeholder="Enter number"
-                    onChange={(e) => {
-                      setRegistrationNum(e.target.value);
-                    }}
+                  <FormTextInput
+                    id="brand"
+                    label="Brand"
+                    value={brand}
+                    placeholder="Enter brand"
+                    onChange={(e) => setBrand(e.target.value)}
                   />
-                </Form.Group>
+                  <FormTextInput
+                    id="model"
+                    label="Model"
+                    value={model}
+                    placeholder="Enter model"
+                    onChange={(e) => setModel(e.target.value)}
+                  />
+                </Form.Row>
 
                 <Form.Row>
-                  <Form.Group as={Col} controlId="formTankCap">
-                    <Form.Label>Tank capacity</Form.Label>
-                    <Form.Control
-                      value={tankCapacity}
-                      type="text"
-                      placeholder="Eg. 80 liters"
-                      onChange={(e) => {
-                        setTankCapacity(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
+                  <FormTextInput
+                    id="year"
+                    label="Year of production"
+                    value={prodYear}
+                    placeholder="Enter year of production"
+                    onChange={(e) => setProdYear(e.target.value)}
+                  />
+                  <FormSelectInput
+                    id="bodyType"
+                    label="Select body type"
+                    value={bodyType}
+                    types={[
+                      "Sedan",
+                      "Liftback",
+                      "Hatchback",
+                      "Combi",
+                      "SUV",
+                      "Van",
+                      "Coupe",
+                      "Cabriolet",
+                      "Pickup",
+                    ]}
+                    onChange={(e) => setBodyType(e.target.value)}
+                  />
+                </Form.Row>
 
-                  <Form.Group as={Col} controlId="formFuelConsumption">
-                    <Form.Label>Fuel consumption</Form.Label>
-                    <Form.Control
-                      value={fuelConsumption}
-                      type="text"
-                      placeholder="Eg. 8 liters/100km"
-                      onChange={(e) => {
-                        setFuelConsumption(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
+                <FormTextInput
+                  id="registrationNumber"
+                  label="Registartion number"
+                  value={registrationNum}
+                  placeholder="Enter registration number"
+                  onChange={(e) => setRegistrationNum(e.target.value)}
+                />
 
-                  <Form.Group as={Col} controlId="formFuelType">
-                    <Form.Label>Fuel type</Form.Label>
-                    <Form.Control
-                      value={fuelType}
-                      as="select"
-                      onChange={(e) => {
-                        setFuelType(e.target.value);
-                      }}
-                    >
-                      <option defaultValue="Petrol">Petrol</option>
-                      <option value="Diesel">Diesel</option>
-                      <option value="LPG">LPG</option>
-                    </Form.Control>
-                  </Form.Group>
+                <Form.Row>
+                  <FormTextInput
+                    id="tankCap"
+                    label="Tank capacity"
+                    value={tankCapacity}
+                    placeholder="Enter tank capacity"
+                    onChange={(e) => setTankCapacity(e.target.value)}
+                  />
+
+                  <FormTextInput
+                    id="fuelConsumption"
+                    label="Fuel consumption"
+                    value={fuelConsumption}
+                    placeholder="Enter avg. fuel consumption"
+                    onChange={(e) => setFuelConsumption(e.target.value)}
+                  />
+
+                  <FormSelectInput
+                    id="fuelType"
+                    label="Select fuel type"
+                    value={fuelType}
+                    types={["Petrol", "Diesel", "LPG"]}
+                    onChange={(e) => setFuelType(e.target.value)}
+                  />
                 </Form.Row>
 
                 <Form.Group as={Col}>
-                  <Form.Label htmlFor="photo">Add photo</Form.Label>
-                  <input
-                    type="file"
+                  <FormFileInput
                     name="photo"
+                    label="Add photo"
+                    progress={progress}
+                    photo={photo}
+                    src={photo}
                     onChange={(e) => setPhoto(e.target.files[0])}
                   />
-                  <progress value={progress} max="100" />
-                  <Button onClick={handleUpload}>Upload photo</Button>
-                  {photo && progress === 100 && (
-                    <img style={{ maxWidth: "200px" }} src={url} alt="#" />
+
+                  {/* show progress bar when loading */}
+                  {progress !== 0 && progress !== 100 && (
+                    <ProgressBar
+                      animated
+                      now={progress}
+                      label={`${progress}%`}
+                    />
                   )}
+
+                  {/* show thumbnail when loaded */}
+                  {photo && progress === 100 && (
+                    <Image
+                      thumbnail
+                      style={{ maxWidth: "200px" }}
+                      src={url}
+                      alt="thumbnail"
+                    />
+                  )}
+
+                  <Button disabled={progress} onClick={handleUpload}>
+                    Upload photo
+                  </Button>
                 </Form.Group>
 
                 <Button
@@ -227,7 +224,6 @@ function VehicleForm() {
                 >
                   Submit
                 </Button>
-
               </Form>
             </Card.Body>
           </Card>

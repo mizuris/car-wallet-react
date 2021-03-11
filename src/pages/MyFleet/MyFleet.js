@@ -7,9 +7,11 @@ function MyFleet() {
   const { vehicles } = useContext(VehicleContext);
 
   return (
-    <div className="page-section container-fluid">
-      <VehicleList vehicles={vehicles} />
-    </div>
+    <>
+      <div className="page-section container-fluid index">
+        <VehicleList vehicles={vehicles} />
+      </div>
+    </>
   );
 }
 

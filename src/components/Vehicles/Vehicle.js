@@ -1,5 +1,4 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
 
 //icons imports
 import * as FaIcons from "react-icons/fa";

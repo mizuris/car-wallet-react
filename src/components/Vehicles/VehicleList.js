@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import Vehicle from "./Vehicle";
 
 function VehicleList(props) {
-  const [vehicles, setVehicles] = useState(props.vehicles);
+  const [vehicles] = useState(props.vehicles);
   const history = useHistory();
 
   return vehicles.length ? (

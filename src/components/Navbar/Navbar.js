@@ -13,8 +13,7 @@ export default function Navbar() {
   const showSideMenu = () => setSideMenu(!sideMenu);
 
   return (
-
-      <>
+    <>
       <IconContext.Provider value={{ color: "#056EF0" }}>
         <div className="side-navbar">
           <Link to="#!" className="menu-bars">
@@ -50,7 +49,6 @@ export default function Navbar() {
           </ul>
         </nav>
       </IconContext.Provider>
-      </>
-
+    </>
   );
 }
