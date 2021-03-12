@@ -1,8 +1,9 @@
 import React from "react";
+import VehiclePhoto from "./VehiclePhoto";
+import VehicleCardLeft from "./VehicleCardLeft";
+import VehicleCardRight from "./VehicleCardRight";
 
-//icons imports
-import * as FaIcons from "react-icons/fa";
-import * as GgIcons from "react-icons/cg";
+//Icon imports
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
 
@@ -15,38 +16,24 @@ function Vehicle(props) {
       <div className="remove">
         <MdIcons.MdRemoveCircle />
       </div>
-      <div className="vehicle-card-img-container">
-        <img src={props.photo} alt={`${props.brand} ${props.model}`} />
-      </div>
+      <VehiclePhoto photo={props.photo} alt={`${props.brand} ${props.model}`} />
       <div className="vehicle-card-body">
-        <div className="vehicle-card-body-left">
-          <h2>
-            <strong>{props.brand}</strong> {props.model}
-          </h2>
-          <h5>{props.registrationNum}</h5>
-          <div>Year of production: {props.prodYear}</div>
-          <div>
-            <FaIcons.FaCar /> {props.bodyType}
-          </div>
-          <div>
-            <FaIcons.FaGasPump /> {props.fuelType}
-          </div>
-        </div>
+        <VehicleCardLeft
+          brand={props.brand}
+          model={props.model}
+          prodYear={props.prodYear}
+          registrationNum={props.registrationNum}
+          bodyType={props.bodyType}
+          fuelType={props.fuelType}
+        />
 
-        <div className="vehicle-card-body-right">
-          <h2>
-            <strong>Details</strong>
-          </h2>
-          <div>
-            <GgIcons.CgAssign /> Tank cap.: {props.tankCapacity} l
-          </div>
-          <div>
-            <RiIcons.RiGasStationLine /> Avg. fuel cons.:{" "}
-            {props.fuelConsumption} l/100km
-          </div>
-          <RiIcons.RiPinDistanceFill /> Avg. dist. per tank:{" "}
-          {(props.tankCapacity / props.fuelConsumption).toFixed(0) * 100} km
-        </div>
+        <VehicleCardRight
+          brand={props.brand}
+          model={props.model}
+          prodYear={props.prodYear}
+          tankCapacity={props.tankCapacity}
+          fuelConsumption={props.fuelConsumption}
+        />
       </div>
     </div>
   );

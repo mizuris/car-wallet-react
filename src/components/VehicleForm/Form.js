@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import "./FormStyles.scss";
+import React, { useContext, useState, useRef } from "react";
 import {
   Form,
   Button,
@@ -8,8 +9,12 @@ import {
   ProgressBar,
   Image,
 } from "react-bootstrap";
+
+//Data storing imports
 import { VehicleContext } from "../../contexts/VehicleContext";
 import { storage } from "../../firebase/firebase";
+
+//Form components
 import FormImage from "./FormImage";
 import FormTextInput from "./FormTextInput";
 import FormSelectInput from "./FormSelectInput";
@@ -33,6 +38,7 @@ function VehicleForm() {
   const [url, setUrl] = useState("");
   const [photo, setPhoto] = useState(null);
   const [progress, setProgress] = useState(0);
+  const fileRef = useRef();
 
   //Photo upload handler
   const handleUpload = () => {
@@ -185,13 +191,19 @@ function VehicleForm() {
 
                 <Form.Group as={Col}>
                   <FormFileInput
+                    ref={fileRef}
                     name="photo"
+                    style={{ display: "none" }}
                     label="Add photo"
                     progress={progress}
                     photo={photo}
                     src={photo}
                     onChange={(e) => setPhoto(e.target.files[0])}
                   />
+                  <Button onClick={() => fileRef.current.click()} disabled={photo}>Pick photo</Button>
+                  <Button disabled={progress} onClick={handleUpload}>
+                    Upload photo
+                  </Button>
 
                   {/* show progress bar when loading */}
                   {progress !== 0 && progress !== 100 && (
@@ -212,9 +224,6 @@ function VehicleForm() {
                     />
                   )}
 
-                  <Button disabled={progress} onClick={handleUpload}>
-                    Upload photo
-                  </Button>
                 </Form.Group>
 
                 <Button

@@ -16,26 +16,3 @@ body {
   width: 100%;
 }
 
-/*FORM STYLES*/
-.form-container {
-  text-align: center;
-  .form-image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 50px;
-    h2 {
-      margin-bottom: 50px;
-      font-weight: 600;
-      color: $primary-light;
-    }
-
-    .form-image {
-      max-height: 200px;
-    }
-  }
-
-  .remove-img {
-    
-  }
-}

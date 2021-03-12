@@ -1,7 +1,6 @@
 import React from "react";
-import "../../variables.scss";
 import "./Home.scss";
-import Section from "../../components/Section";
+import Section from "../../components/Display/Section";
 import heading_img from "../../assets/images/heading_img.svg";
 import { useHistory } from "react-router";
 
