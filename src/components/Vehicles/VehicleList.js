@@ -10,7 +10,7 @@ function VehicleList(props) {
   return vehicles.length ? (
     vehicles.map((vehicle) => {
       return (
-        <div className="container" key={vehicle.id}>
+        <div key={vehicle.id}>
           <Vehicle
             brand={vehicle.brand}
             model={vehicle.model}

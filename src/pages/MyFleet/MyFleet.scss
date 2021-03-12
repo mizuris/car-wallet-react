@@ -4,10 +4,23 @@
   padding: 100px;
 }
 
+//fuel type colors
+.Petrol {
+  color: $petrol;
+}
+
+.LPG {
+  color: $lpg;
+}
+
+.Diesel {
+  color: $diesel;
+}
+
 .vehicle-card {
-  width: 100%;
+  width: 50%;
+  margin: 0 auto;
   min-height: 200px;
-  max-height: 300px;
   padding: 20px;
   background-color: $primary-light;
   display: flex;
@@ -47,10 +60,8 @@
   }
 
   .vehicle-card-img-container {
-    height: 100%;
-    width: 30%;
+    width: 40%;
     object-fit: cover;
-    margin-right: 50px;
 
     img {
       height: 100%;
@@ -59,23 +70,25 @@
   }
 
   .vehicle-card-body {
-    width: 60%;
-    height: 100%;
+    width: 80%;
     padding: 20px;
     display: flex;
     justify-content: space-around;
 
-    .vehicle-card-body-left,
-    .vehicle-card-body-right {
+    .body-left,
+    .body-right {
       padding: 20px;
     }
 
-    .vehicle-card-body-left {
+    .body-left {
       border-right: 1px solid $primary-dark;
+
+      .reg-num {
+        color: $primary-gray;
+      }
     }
 
-    .vehicle-card-body-right {
-
+    .body-right {
       .link {
         font-size: $m-size;
         a {
@@ -104,18 +117,48 @@
   flex-direction: column;
 }
 
-
-@media screen and (max-width: 768px) {
-  .vehicle-card {
+@media screen and (max-width: 1200px) {
+  .vehicle-card,
+  .vehicle-card-body {
     flex-direction: column;
   }
 
-  .vehicle-card-img-container {
-    width: 80%;
-    margin-right: 0;
-  }
-
   .vehicle-card {
-    height: auto;
+    .vehicle-card-img-container {
+      width: 70%;
+      margin-bottom: 20px;
+    }
+
+    .vehicle-card-body {
+      width: 70%;
+      justify-content: space-around;
+      padding: 0;
+
+      .body-left,
+      .body-right {
+        display: block;
+        align-items: center;
+        padding: 0;
+      }
+
+      .body-left {
+        border: none;
+        border-bottom: 1px solid $primary-dark;
+        padding-bottom: 20px;
+        margin-bottom: $m-size;
+
+        .types {
+          display: flex;
+          justify-content: space-between;
+          padding: $m-size;
+
+          .icon-holder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
+    }
   }
 }

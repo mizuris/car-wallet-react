@@ -53,11 +53,7 @@ function VehicleContextProvider(props) {
 
   //Declare function to remove certain vehicle form array
   const removeVehicle = (id) => {
-    // eslint-disable-next-line no-restricted-globals
-    const deleteConfirm = confirm("Are you sure?");
-    if (deleteConfirm) {
-      setVehicles(vehicles.filter((vehicle) => vehicle.id !== id));
-    }
+    setVehicles(vehicles.filter((vehicle) => vehicle.id !== id));
   };
 
   const getPhoto = (url) => {
