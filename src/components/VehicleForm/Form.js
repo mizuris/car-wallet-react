@@ -22,17 +22,28 @@ import FormFileInput from "react-bootstrap/esm/FormFileInput";
 
 function VehicleForm() {
   //Get function to add new vehicle
-  const { addVehicle } = useContext(VehicleContext);
+  const { addNewVehicle } = useContext(VehicleContext);
 
-  //Declare states to set in form
-  const [brand, setBrand] = useState("");
-  const [model, setModel] = useState("");
-  const [prodYear, setProdYear] = useState("");
-  const [bodyType, setBodyType] = useState("Sedan");
-  const [registrationNum, setRegistrationNum] = useState("");
-  const [tankCapacity, setTankCapacity] = useState("");
-  const [fuelConsumption, setFuelConsumption] = useState("");
-  const [fuelType, setFuelType] = useState("Petrol");
+  const INITIAL_STATE = {
+    id: Math.floor(Math.random() * 100),
+    brand: "",
+    model: "",
+    prodYear: "",
+    bodyType: "Sedan",
+    registrationNum: "",
+    tankCapacity: "",
+    fuelConsumption: "",
+    fuelType: "Petrol",
+    photo: null,
+  };
+
+  //Set initail state
+  const [newVehicle, setNewVehicle] = useState(INITIAL_STATE);
+
+  //Reusable function to save data from inputs
+  const updateValue = (e) => {
+    setNewVehicle({ ...newVehicle, [e.target.id]: e.target.value });
+  };
 
   //Photo related states
   const [url, setUrl] = useState("");
@@ -61,13 +72,13 @@ function VehicleForm() {
           .getDownloadURL()
           .then((url) => {
             setUrl(url);
-            setPhoto(url);
+            setNewVehicle({ ...newVehicle, photo: url });
           });
       }
     );
     progress === 100 &&
       setTimeout(() => {
-        setProgress(0);
+        setProgress(null);
       }, 200);
   };
 
@@ -77,35 +88,15 @@ function VehicleForm() {
     e.preventDefault();
 
     //Send data to context
-    addVehicle(
-      brand,
-      model,
-      prodYear,
-      bodyType,
-      registrationNum,
-      tankCapacity,
-      fuelConsumption,
-      fuelType,
-      photo
-    );
+    addNewVehicle(newVehicle);
 
-    //Clear inputs after submit
-    setBrand("");
-    setProdYear("");
-    setBodyType("");
-    setRegistrationNum("");
-    setTankCapacity("");
-    setModel("");
-    setFuelType("");
-    setFuelConsumption("");
-    setPhoto("");
-    setUrl(null);
-    setProgress(0);
+    //Reset input values
+    setNewVehicle(INITIAL_STATE);
   };
 
   return (
     <div className="form-container d-flex justify-content-between ml-auto mr-auto">
-      <Row>
+      <Row className="form-row">
         <FormImage col={6} />
         <Col md={6}>
           <Card>
@@ -115,31 +106,31 @@ function VehicleForm() {
                   <FormTextInput
                     id="brand"
                     label="Brand"
-                    value={brand}
+                    value={newVehicle.brand}
                     placeholder="Enter brand"
-                    onChange={(e) => setBrand(e.target.value)}
+                    onChange={(e) => updateValue(e)}
                   />
                   <FormTextInput
                     id="model"
                     label="Model"
-                    value={model}
+                    value={newVehicle.model}
                     placeholder="Enter model"
-                    onChange={(e) => setModel(e.target.value)}
+                    onChange={(e) => updateValue(e)}
                   />
                 </Form.Row>
 
                 <Form.Row>
                   <FormTextInput
-                    id="year"
+                    id="prodYear"
                     label="Year of production"
-                    value={prodYear}
+                    value={newVehicle.prodYear}
                     placeholder="Enter year of production"
-                    onChange={(e) => setProdYear(e.target.value)}
+                    onChange={(e) => updateValue(e)}
                   />
                   <FormSelectInput
                     id="bodyType"
                     label="Select body type"
-                    value={bodyType}
+                    value={newVehicle.bodyType}
                     types={[
                       "Sedan",
                       "Liftback",
@@ -151,41 +142,41 @@ function VehicleForm() {
                       "Cabriolet",
                       "Pickup",
                     ]}
-                    onChange={(e) => setBodyType(e.target.value)}
+                    onChange={(e) => updateValue(e)}
                   />
                 </Form.Row>
 
                 <FormTextInput
-                  id="registrationNumber"
+                  id="registrationNum"
                   label="Registartion number"
-                  value={registrationNum}
+                  value={newVehicle.registrationNum}
                   placeholder="Enter registration number"
-                  onChange={(e) => setRegistrationNum(e.target.value)}
+                  onChange={(e) => updateValue(e)}
                 />
 
                 <Form.Row>
                   <FormTextInput
-                    id="tankCap"
+                    id="tankCapacity"
                     label="Tank capacity"
-                    value={tankCapacity}
+                    value={newVehicle.tankCapacity}
                     placeholder="Enter tank capacity"
-                    onChange={(e) => setTankCapacity(e.target.value)}
+                    onChange={(e) => updateValue(e)}
                   />
 
                   <FormTextInput
                     id="fuelConsumption"
                     label="Fuel consumption"
-                    value={fuelConsumption}
+                    value={newVehicle.fuelConsumption}
                     placeholder="Enter avg. fuel consumption"
-                    onChange={(e) => setFuelConsumption(e.target.value)}
+                    onChange={(e) => updateValue(e)}
                   />
 
                   <FormSelectInput
                     id="fuelType"
                     label="Select fuel type"
-                    value={fuelType}
+                    value={newVehicle.fuelType}
                     types={["Petrol", "Diesel", "LPG"]}
-                    onChange={(e) => setFuelType(e.target.value)}
+                    onChange={(e) => updateValue(e)}
                   />
                 </Form.Row>
 
@@ -200,10 +191,19 @@ function VehicleForm() {
                     src={photo}
                     onChange={(e) => setPhoto(e.target.files[0])}
                   />
-                  <Button onClick={() => fileRef.current.click()} disabled={photo}>Pick photo</Button>
-                  <Button disabled={progress} onClick={handleUpload}>
-                    Upload photo
-                  </Button>
+                  <div className="form-buttons">
+                    <Button
+                      onClick={() => {
+                        fileRef.current.click();
+                      }}
+                      variant="outline-primary"
+                    >
+                      Pick photo
+                    </Button>
+                    <Button disabled={progress} onClick={handleUpload}>
+                      Upload photo
+                    </Button>
+                  </div>
 
                   {/* show progress bar when loading */}
                   {progress !== 0 && progress !== 100 && (
@@ -223,7 +223,6 @@ function VehicleForm() {
                       alt="thumbnail"
                     />
                   )}
-
                 </Form.Group>
 
                 <Button
