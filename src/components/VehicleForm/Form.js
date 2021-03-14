@@ -96,134 +96,152 @@ function VehicleForm() {
 
   return (
     <div className="form-container d-flex justify-content-between ml-auto mr-auto">
-      <Row className="form-row">
-        <FormImage col={6} />
-        <Col md={6}>
-          <Card>
+      <Row>
+        <Col md={12} lg={6}>
+          <FormImage />
+        </Col>
+        <Col md={12} lg={6}>
+          <Card className="bg-dark" name="top">
             <Card.Body>
               <Form onSubmit={handleSubmit}>
                 <Form.Row>
-                  <FormTextInput
-                    id="brand"
-                    label="Brand"
-                    value={newVehicle.brand}
-                    placeholder="Enter brand"
-                    onChange={(e) => updateValue(e)}
-                  />
-                  <FormTextInput
-                    id="model"
-                    label="Model"
-                    value={newVehicle.model}
-                    placeholder="Enter model"
-                    onChange={(e) => updateValue(e)}
-                  />
+                  <Col md={12}>
+                    <FormTextInput
+                      id="brand"
+                      label="Brand"
+                      value={newVehicle.brand}
+                      placeholder="Enter brand"
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
+                  <Col md={12}>
+                    <FormTextInput
+                      id="model"
+                      label="Model"
+                      value={newVehicle.model}
+                      placeholder="Enter model"
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
                 </Form.Row>
 
                 <Form.Row>
-                  <FormTextInput
-                    id="prodYear"
-                    label="Year of production"
-                    value={newVehicle.prodYear}
-                    placeholder="Enter year of production"
-                    onChange={(e) => updateValue(e)}
-                  />
-                  <FormSelectInput
-                    id="bodyType"
-                    label="Select body type"
-                    value={newVehicle.bodyType}
-                    types={[
-                      "Sedan",
-                      "Liftback",
-                      "Hatchback",
-                      "Combi",
-                      "SUV",
-                      "Van",
-                      "Coupe",
-                      "Cabriolet",
-                      "Pickup",
-                    ]}
-                    onChange={(e) => updateValue(e)}
-                  />
+                  <Col md={6}>
+                    <FormTextInput
+                      id="prodYear"
+                      label="Year of production"
+                      value={newVehicle.prodYear}
+                      placeholder="Enter year of production"
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <FormSelectInput
+                      id="bodyType"
+                      label="Select body type"
+                      value={newVehicle.bodyType}
+                      types={[
+                        "Sedan",
+                        "Liftback",
+                        "Hatchback",
+                        "Combi",
+                        "SUV",
+                        "Van",
+                        "Coupe",
+                        "Cabriolet",
+                        "Pickup",
+                      ]}
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
                 </Form.Row>
-
-                <FormTextInput
-                  id="registrationNum"
-                  label="Registartion number"
-                  value={newVehicle.registrationNum}
-                  placeholder="Enter registration number"
-                  onChange={(e) => updateValue(e)}
-                />
 
                 <Form.Row>
-                  <FormTextInput
-                    id="tankCapacity"
-                    label="Tank capacity"
-                    value={newVehicle.tankCapacity}
-                    placeholder="Enter tank capacity"
-                    onChange={(e) => updateValue(e)}
-                  />
+                  <Col md={12}>
+                    <FormTextInput
+                      id="registrationNum"
+                      label="Registartion number"
+                      value={newVehicle.registrationNum}
+                      placeholder="Enter registration number"
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
+                </Form.Row>
+                <Form.Row>
+                  <Col md={4}>
+                    <FormTextInput
+                      id="tankCapacity"
+                      label="Tank capacity"
+                      value={newVehicle.tankCapacity}
+                      placeholder="Enter tank capacity"
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
 
-                  <FormTextInput
-                    id="fuelConsumption"
-                    label="Fuel consumption"
-                    value={newVehicle.fuelConsumption}
-                    placeholder="Enter avg. fuel consumption"
-                    onChange={(e) => updateValue(e)}
-                  />
-
-                  <FormSelectInput
-                    id="fuelType"
-                    label="Select fuel type"
-                    value={newVehicle.fuelType}
-                    types={["Petrol", "Diesel", "LPG"]}
-                    onChange={(e) => updateValue(e)}
-                  />
+                  <Col md={4}>
+                    <FormTextInput
+                      id="fuelConsumption"
+                      label="Fuel consumption"
+                      value={newVehicle.fuelConsumption}
+                      placeholder="Enter avg. fuel consumption"
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
+                  <Col md={4}>
+                    <FormSelectInput
+                      id="fuelType"
+                      label="Select fuel type"
+                      value={newVehicle.fuelType}
+                      types={["Petrol", "Diesel", "LPG"]}
+                      onChange={(e) => updateValue(e)}
+                    />
+                  </Col>
                 </Form.Row>
 
-                <Form.Group as={Col}>
-                  <FormFileInput
-                    ref={fileRef}
-                    name="photo"
-                    style={{ display: "none" }}
-                    label="Add photo"
-                    progress={progress}
-                    photo={photo}
-                    src={photo}
-                    onChange={(e) => setPhoto(e.target.files[0])}
-                  />
-                  <div className="form-buttons">
-                    <Button
-                      onClick={() => {
-                        fileRef.current.click();
-                      }}
-                      variant="outline-primary"
-                    >
-                      Pick photo
-                    </Button>
-                    <Button disabled={progress} onClick={handleUpload}>
-                      Upload photo
-                    </Button>
-                  </div>
-
-                  {/* show progress bar when loading */}
-                  {progress !== 0 && progress !== 100 && (
-                    <ProgressBar
-                      animated
-                      now={progress}
-                      label={`${progress}%`}
+                <Form.Row>
+                  <Col md={12}>
+                    <FormFileInput
+                      ref={fileRef}
+                      name="photo"
+                      style={{ display: "none" }}
+                      label="Add photo"
+                      progress={progress}
+                      photo={photo}
+                      src={photo}
+                      onChange={(e) => setPhoto(e.target.files[0])}
                     />
-                  )}
+                    <div className="form-buttons">
+                      <Button
+                        onClick={() => fileRef.current.click()}
+                        variant="outline-primary"
+                      >
+                        <span className="button-text">Pick photo</span>
+                      </Button>
+                      <Button disabled={progress} onClick={handleUpload}>
+                        <span className="button-text">Upload photo</span>
+                      </Button>
+                    </div>
 
-                  {/* show thumbnail when loaded */}
-                  {photo && progress === 100 && (
-                    <Image
-                      thumbnail
-                      style={{ maxWidth: "200px" }}
-                      src={url}
-                      alt="thumbnail"
-                    />
-                  )}
-                </Form.Group>
+                    {/* show progress bar when loading */}
+                    {progress !== 0 && progress !== 100 && (
+                      <ProgressBar
+                        animated
+                        now={progress}
+                        label={`${progress}%`}
+                      />
+                    )}
+
+                    {/* show thumbnail when loaded */}
+                    {photo && progress === 100 && (
+                      <Image
+                        thumbnail
+                        style={{ maxWidth: "200px" }}
+                        src={url}
+                        alt="thumbnail"
+                      />
+                    )}
+                  </Col>
+                </Form.Row>
 
                 <Button
                   className="form-submit-btn"

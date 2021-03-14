@@ -2,11 +2,14 @@
 
 .form-container {
   text-align: center;
+  padding: 50px;
+
   .form-image-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 50px;
+
     h2 {
       margin-bottom: 50px;
       font-weight: 600;
@@ -15,6 +18,20 @@
 
     .form-image {
       max-height: 200px;
+      width: 100%;
+    }
+
+    .form-image-arrow {
+      display: none;
+    }
+  }
+
+  .form-input-container {
+    text-align: left;
+
+    .form-label {
+      color: $primary-gray;
+      font-size: $m-size;
     }
   }
 
@@ -23,5 +40,47 @@
     justify-content: space-between;
     width: 60%;
     margin: 10px auto;
+
+    .button-text {
+      font-size: $m-size;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .form-container {
+    padding: 10px;
+
+    .form-image-container {
+      height: 80vh;
+      margin-bottom: 20vh;
+      padding: 50px 10px 10px 10px;
+
+      .form-image {
+        width: 90%;
+        height: auto;
+      }
+
+      .form-image-arrow {
+        display: block;
+        color: $primary-light;
+
+        .arrow-icon {
+          height: $xl-size;
+          width: $xl-size;
+
+          &:hover {
+            color: $secondary-blue;
+          }
+        }
+      }
+    }
+  }
+
+  .form-buttons {
+    width: 90%; 
+    button {
+      padding: 5px;
+    }
   }
 }

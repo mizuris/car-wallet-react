@@ -3,7 +3,7 @@ import Form from "../../components/VehicleForm/Form";
 
 export default function FleetConfig() {
   return (
-    <div className="container-fluid page-section d-flex align-items-center">
+    <div className="container-fluid d-flex align-items-center">
       <Form />
     </div>
   );

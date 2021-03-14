@@ -3,15 +3,16 @@ import { Form } from "react-bootstrap";
 
 function FormTextInput(props) {
   return (
-    <>
-      <Form.Label>{props.label}</Form.Label>
+    <div className="form-input-container">
+      <Form.Label className="form-label">{props.label}</Form.Label>
       <Form.Control
+        className="form-input"
         value={props.value}
         type="text"
         placeholder={props.placeholder}
         onChange={props.onChange}
       />
-    </>
+    </div>
   );
 }
 

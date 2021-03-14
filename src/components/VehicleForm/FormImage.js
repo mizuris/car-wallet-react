@@ -1,15 +1,17 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Link } from "react-scroll";
 import car from "../../assets/images/car.svg";
+import * as FaIcons from "react-icons/fa";
 
-function FormImage(props) {
+function FormImage() {
   return (
-    <Col md={props.col}>
-      <div className="form-image-container">
-        <h2>Add vehicle</h2>
-        <img className="form-image" src={car} alt="#" />
-      </div>
-    </Col>
+    <div className="form-image-container">
+      <h2>Add vehicle</h2>
+      <img className="form-image" src={car} alt="#" />
+      <Link smooth={true} to="top" className="form-image-arrow">
+        <FaIcons.FaArrowAltCircleDown className="arrow-icon" />
+      </Link>
+    </div>
   );
 }
 

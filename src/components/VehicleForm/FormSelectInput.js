@@ -1,16 +1,16 @@
 import React from "react";
-import { Form, Col } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 function FormSelectInput(props) {
   return (
-    <Form.Group as={Col} controlId={props.id}>
-      <Form.Label>{props.label}</Form.Label>
+    <div className="form-input-container">
+      <Form.Label className="form-label">{props.label}</Form.Label>
       <Form.Control value={props.value} as="select" onChange={props.onChange}>
         {props.types.map((type) => {
           return <option key={type}>{type}</option>;
         })}
       </Form.Control>
-    </Form.Group>
+    </div>
   );
 }
 
