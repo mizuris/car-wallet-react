@@ -7,32 +7,38 @@ function VehicleCardRight(props) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="body-right">
-      <div className="details">
-        <h2>
+    <div className="card-right">
+      <div className="card-right-heading">
+        <h4>
           <strong>Details</strong>
-        </h2>
-        <p className="link">
-          <a
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            href={`http://www.google.com/search?q=${props.brand}+${props.model}+${props.prodYear}`}
-            target="blank"
-          >
-            For more click here{" "}
-            <GgIcons.CgLink className={isHovered ? "hovered" : "link-icon"} />
-          </a>
-        </p>
+        </h4>
+      </div>
+      <div className="card-right-text">
+        <GiIcons.GiJerrycan /> Tank cap.:{" "}
+        <strong>{props.tankCapacity} liters</strong>
+      </div>
+      <div className="card-right-text">
+        <RiIcons.RiGasStationLine /> Avg. fuel cons.:{" "}
+        <strong>{props.fuelConsumption} l/100km</strong>
+      </div>
+      <div className="card-right-text">
+        <RiIcons.RiPinDistanceFill /> Avg. dist. per tank:{" "}
+        <strong>
+          {(props.tankCapacity / props.fuelConsumption).toFixed(0) * 100} km
+        </strong>
       </div>
       <div>
-        <GiIcons.GiJerrycan /> Tank cap.: {props.tankCapacity} l
+        <a
+          className="link"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          href={`http://www.google.com/search?q=${props.brand}+${props.model}+${props.prodYear}`}
+          target="blank"
+        >
+          For more click here{" "}
+          <GgIcons.CgLink className={isHovered ? "hovered" : "link-icon"} />
+        </a>
       </div>
-      <div>
-        <RiIcons.RiGasStationLine /> Avg. fuel cons.: {props.fuelConsumption}{" "}
-        l/100km
-      </div>
-      <RiIcons.RiPinDistanceFill /> Avg. dist. per tank:{" "}
-      {(props.tankCapacity / props.fuelConsumption).toFixed(0) * 100} km
     </div>
   );
 }

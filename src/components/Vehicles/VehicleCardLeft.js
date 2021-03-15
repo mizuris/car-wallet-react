@@ -3,11 +3,13 @@ import * as FaIcons from "react-icons/fa";
 
 function VehicleCardLeft(props) {
   return (
-    <div className="body-left">
-      <h2>
-        <strong>{props.brand}</strong> {props.model}
-      </h2>
-      <h5 className="reg-num">{props.registrationNum}</h5>
+    <div className="card-left">
+      <div className="card-left-heading">
+        <h4>
+          <strong>{props.brand}</strong> {props.model}
+        </h4>
+        <h6 className="reg-num">{props.registrationNum}</h6>
+      </div>
       <div className="types">
         <div className="icon-holder">
           <FaIcons.FaRegCalendarAlt /> {props.prodYear}

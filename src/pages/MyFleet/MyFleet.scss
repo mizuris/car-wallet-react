@@ -1,7 +1,14 @@
 @import "../../variables.scss";
 
-.page-section {
-  padding: 100px;
+.empty {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+
+  h2 {
+    padding: 10px;
+    color: $primary-light;
+  }
 }
 
 //fuel type colors
@@ -18,21 +25,22 @@
 }
 
 .vehicle-card {
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
-  min-height: 200px;
-  padding: 20px;
+  max-height: 150px;
+  padding: 10px;
   background-color: $primary-light;
   display: flex;
   align-items: center;
   position: relative;
 
+  //interactive icons
   .edit,
   .remove {
     width: 10px;
     height: 10px;
     position: absolute;
-    top: 10px;
+    top: 5px;
     transition: all 300ms ease-in-out;
     cursor: pointer;
   }
@@ -59,104 +67,73 @@
     }
   }
 
+  //vehicle photo
   .vehicle-card-img-container {
-    width: 40%;
-    object-fit: cover;
-
+    max-width: 30%;
+    
     img {
-      height: 100%;
+      object-fit: cover;
       width: 100%;
+      max-height: 120px;
     }
   }
 
+  //card body
   .vehicle-card-body {
     width: 80%;
-    padding: 20px;
+    height: 90%;
+
     display: flex;
     justify-content: space-around;
 
-    .body-left,
-    .body-right {
-      padding: 20px;
+    .card-left,
+    .card-right {
+      padding: 10px;
+      width: 50%;
     }
 
-    .body-left {
+    //left side
+    .card-left {
       border-right: 1px solid $primary-dark;
+
+      .card-left-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
 
       .reg-num {
         color: $primary-gray;
       }
+
+      .types {
+        bottom: 0;
+        justify-content: space-around;
+        display: flex;
+        font-size: $m-size;
+      }
     }
 
-    .body-right {
+    //right side
+    .card-right {
+      .card-right-text {
+        font-size: $m-size;
+      }
+
       .link {
         font-size: $m-size;
-        a {
-          text-decoration: none;
-          color: $primary-gray;
+        text-decoration: none;
+        color: $primary-gray;
 
-          &:hover {
-            color: $primary-dark;
-          }
-
-          .link-icon {
-            display: none;
-          }
-          .hovered {
-            display: all;
-          }
+        &:hover {
+          color: $primary-dark;
         }
-      }
-    }
-  }
-}
 
-.details-col {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-@media screen and (max-width: 1200px) {
-  .vehicle-card,
-  .vehicle-card-body {
-    flex-direction: column;
-  }
-
-  .vehicle-card {
-    .vehicle-card-img-container {
-      width: 70%;
-      margin-bottom: 20px;
-    }
-
-    .vehicle-card-body {
-      width: 70%;
-      justify-content: space-around;
-      padding: 0;
-
-      .body-left,
-      .body-right {
-        display: block;
-        align-items: center;
-        padding: 0;
-      }
-
-      .body-left {
-        border: none;
-        border-bottom: 1px solid $primary-dark;
-        padding-bottom: 20px;
-        margin-bottom: $m-size;
-
-        .types {
-          display: flex;
-          justify-content: space-between;
-          padding: $m-size;
-
-          .icon-holder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
+        .link-icon {
+          display: none;
+        }
+        .hovered {
+          display: all;
         }
       }
     }

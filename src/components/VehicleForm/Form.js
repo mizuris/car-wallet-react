@@ -1,14 +1,6 @@
 import "./FormStyles.scss";
 import React, { useContext, useState, useRef } from "react";
-import {
-  Form,
-  Button,
-  Card,
-  Col,
-  Row,
-  ProgressBar,
-  Image,
-} from "react-bootstrap";
+import { Form, Button, Card, Col, Row } from "react-bootstrap";
 
 //Data storing imports
 import { VehicleContext } from "../../contexts/VehicleContext";
@@ -19,6 +11,8 @@ import FormImage from "./FormImage";
 import FormTextInput from "./FormTextInput";
 import FormSelectInput from "./FormSelectInput";
 import FormFileInput from "react-bootstrap/esm/FormFileInput";
+import FormProgressBar from "./FormProgressBar";
+import FormThumbnail from "./FormThumbnail";
 
 function VehicleForm() {
   //Get function to add new vehicle
@@ -111,7 +105,9 @@ function VehicleForm() {
                       label="Brand"
                       value={newVehicle.brand}
                       placeholder="Enter brand"
-                      onChange={(e) => {updateValue(e)}}
+                      onChange={(e) => {
+                        updateValue(e);
+                      }}
                     />
                   </Col>
                   <Col md={12}>
@@ -213,33 +209,24 @@ function VehicleForm() {
                     <div className="form-buttons">
                       <Button
                         onClick={() => fileRef.current.click()}
-                        variant="outline-primary"
+                        variant={progress ? "outline-primary" : "primary"}
                       >
                         <span className="button-text">Pick photo</span>
                       </Button>
-                      <Button disabled={progress} onClick={handleUpload}>
+                      <Button
+                        variant={progress ? "primary" : "outline-primary"}
+                        onClick={handleUpload}
+                      >
                         <span className="button-text">Upload photo</span>
                       </Button>
                     </div>
 
-                    {/* show progress bar when loading */}
-                    {progress !== 0 && progress !== 100 && (
-                      <ProgressBar
-                        animated
-                        now={progress}
-                        label={`${progress}%`}
-                      />
-                    )}
-
-                    {/* show thumbnail when loaded */}
-                    {photo && progress === 100 && (
-                      <Image
-                        thumbnail
-                        style={{ maxWidth: "200px" }}
-                        src={url}
-                        alt="thumbnail"
-                      />
-                    )}
+                    <FormProgressBar progress={progress} />
+                    <FormThumbnail
+                      photo={photo}
+                      progress={progress}
+                      url={url}
+                    />
                   </Col>
                 </Form.Row>
 

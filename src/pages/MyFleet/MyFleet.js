@@ -5,11 +5,10 @@ import "./MyFleet.scss";
 
 function MyFleet() {
   const { vehicles } = useContext(VehicleContext);
-  console.log(vehicles)
 
   return (
     <>
-      <div className="page-section container-fluid index">
+      <div className="page-section container-fluid">
         <VehicleList vehicles={vehicles} />
       </div>
     </>
