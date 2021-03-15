@@ -11,17 +11,7 @@ function VehicleList(props) {
     vehicles.map((vehicle) => {
       return (
         <div key={vehicle.id}>
-          <Vehicle
-            brand={vehicle.brand}
-            model={vehicle.model}
-            registrationNum={vehicle.registrationNum}
-            prodYear={vehicle.prodYear}
-            bodyType={vehicle.bodyType}
-            fuelType={vehicle.fuelType}
-            fuelConsumption={vehicle.fuelConsumption}
-            tankCapacity={vehicle.tankCapacity}
-            photo={vehicle.photo}
-          />
+          <Vehicle vehicle={vehicle} />
         </div>
       );
     })

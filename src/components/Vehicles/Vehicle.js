@@ -7,7 +7,7 @@ import VehicleCardRight from "./VehicleCardRight";
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
 
-function Vehicle(props) {
+function Vehicle({ vehicle }) {
   return (
     <div className="vehicle-card">
       <div className="edit">
@@ -16,23 +16,23 @@ function Vehicle(props) {
       <div className="remove">
         <MdIcons.MdRemoveCircle />
       </div>
-      <VehiclePhoto photo={props.photo} alt={`${props.brand} ${props.model}`} />
+      <VehiclePhoto photo={vehicle.photo} alt={`${vehicle.brand} ${vehicle.model}`} />
       <div className="vehicle-card-body">
         <VehicleCardLeft
-          brand={props.brand}
-          model={props.model}
-          prodYear={props.prodYear}
-          registrationNum={props.registrationNum}
-          bodyType={props.bodyType}
-          fuelType={props.fuelType}
+          brand={vehicle.brand}
+          model={vehicle.model}
+          prodYear={vehicle.prodYear}
+          registrationNum={vehicle.registrationNum}
+          bodyType={vehicle.bodyType}
+          fuelType={vehicle.fuelType}
         />
 
         <VehicleCardRight
-          brand={props.brand}
-          model={props.model}
-          prodYear={props.prodYear}
-          tankCapacity={props.tankCapacity}
-          fuelConsumption={props.fuelConsumption}
+          brand={vehicle.brand}
+          model={vehicle.model}
+          prodYear={vehicle.prodYear}
+          tankCapacity={vehicle.tankCapacity}
+          fuelConsumption={vehicle.fuelConsumption}
         />
       </div>
     </div>
