@@ -7,8 +7,9 @@ function FormTextInput(props) {
       <Form.Label className="form-label">{props.label}</Form.Label>
       <Form.Control
         className="form-input"
-        value={props.value}
         type="text"
+        id={props.id}
+        value={props.value}
         placeholder={props.placeholder}
         onChange={props.onChange}
       />

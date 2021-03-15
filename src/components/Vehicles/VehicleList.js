@@ -10,9 +10,7 @@ function VehicleList(props) {
   return vehicles.length ? (
     vehicles.map((vehicle) => {
       return (
-        <div key={vehicle.id}>
-          <Vehicle vehicle={vehicle} />
-        </div>
+          <Vehicle key={vehicle.id} vehicle={vehicle} />
       );
     })
   ) : (

@@ -111,7 +111,7 @@ function VehicleForm() {
                       label="Brand"
                       value={newVehicle.brand}
                       placeholder="Enter brand"
-                      onChange={(e) => updateValue(e)}
+                      onChange={(e) => {updateValue(e)}}
                     />
                   </Col>
                   <Col md={12}>
