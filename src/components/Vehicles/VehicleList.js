@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Vehicle from "./Vehicle";
 
-function VehicleList(props) {
-  const [vehicles] = useState(props.vehicles);
+function VehicleList({ vehicles }) {
+  // const [vehicles] = useState(props.vehicles);
   const history = useHistory();
 
   return vehicles.length ? (
     vehicles.map((vehicle) => {
-      return (
-          <Vehicle key={vehicle.id} vehicle={vehicle} />
-      );
+      return <Vehicle key={vehicle.id} vehicle={vehicle} />;
     })
   ) : (
     <div className="empty">

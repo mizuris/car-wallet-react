@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import VehiclePhoto from "./VehiclePhoto";
 import VehicleCardLeft from "./VehicleCardLeft";
 import VehicleCardRight from "./VehicleCardRight";
+import { VehicleContext } from "../../contexts/VehicleContext";
 
 //Icon imports
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
 
 function Vehicle({ vehicle }) {
+  const { removeVehicle } = useContext(VehicleContext);
   return (
     <div className="vehicle-card">
       <div className="edit">
         <RiIcons.RiEdit2Fill />
       </div>
-      <div className="remove">
+      <div className="remove" onClick={() => removeVehicle(vehicle.id)}>
         <MdIcons.MdRemoveCircle />
       </div>
       <VehiclePhoto photo={vehicle.photo} alt={`${vehicle.brand} ${vehicle.model}`} />

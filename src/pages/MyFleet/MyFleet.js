@@ -5,6 +5,7 @@ import "./MyFleet.scss";
 
 function MyFleet() {
   const { vehicles } = useContext(VehicleContext);
+  console.log(vehicles)
 
   return (
     <>
