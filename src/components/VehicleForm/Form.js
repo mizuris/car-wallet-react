@@ -31,8 +31,16 @@ function VehicleForm() {
     photo: null,
   };
 
+  
   //Set initail state
   const [newVehicle, setNewVehicle] = useState(INITIAL_STATE);
+  
+  for (let [key, value] of Object.entries(newVehicle)) {
+    console.log(key, value)
+  }
+  
+  //Regular expression to validate if input is a number
+  const validateNumber = /^[0-9\b]+$/;
 
   //Reusable function to save data from inputs
   const updateValue = (e) => {
@@ -128,7 +136,16 @@ function VehicleForm() {
                       label="Year of production"
                       value={newVehicle.prodYear}
                       placeholder="Enter year of production"
-                      onChange={(e) => updateValue(e)}
+                      onChange={(e) => {
+                        if (
+                          e.target.value === "" ||
+                          validateNumber.test(e.target.value)
+                        ) {
+                          updateValue(e);
+                        } else {
+                          alert("Input must be a number!");
+                        }
+                      }}
                     />
                   </Col>
                   <Col md={6}>
@@ -170,7 +187,16 @@ function VehicleForm() {
                       label="Tank capacity"
                       value={newVehicle.tankCapacity}
                       placeholder="Enter tank capacity"
-                      onChange={(e) => updateValue(e)}
+                      onChange={(e) => {
+                        if (
+                          e.target.value === "" ||
+                          validateNumber.test(e.target.value)
+                        ) {
+                          updateValue(e);
+                        } else {
+                          alert("Input must be a number!");
+                        }
+                      }}
                     />
                   </Col>
 
@@ -180,7 +206,16 @@ function VehicleForm() {
                       label="Fuel consumption"
                       value={newVehicle.fuelConsumption}
                       placeholder="Enter avg. fuel consumption"
-                      onChange={(e) => updateValue(e)}
+                      onChange={(e) => {
+                        if (
+                          e.target.value === "" ||
+                          validateNumber.test(e.target.value)
+                        ) {
+                          updateValue(e);
+                        } else {
+                          alert("Input must be a number!");
+                        }
+                      }}
                     />
                   </Col>
                   <Col md={4}>
@@ -229,11 +264,11 @@ function VehicleForm() {
                     />
                   </Col>
                 </Form.Row>
-
                 <Button
                   className="form-submit-btn"
                   variant="primary"
                   type="submit"
+                  disabled={url ? false : true}
                 >
                   Submit
                 </Button>

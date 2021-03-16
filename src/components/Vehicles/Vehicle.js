@@ -15,20 +15,18 @@ function Vehicle({ vehicle }) {
 
   return (
     <div className="vehicle-card">
-      <div className="edit">
-        <RiIcons.RiEdit2Fill className="interaction-icon" />
-      </div>
-      <div className="remove" onClick={() => removeVehicle(vehicle.id)}>
-        <MdIcons.MdRemoveCircle className="interaction-icon" />
-      </div>
-      <div
-        className={`slide-details`}
+      <RiIcons.RiEdit2Fill className="edit interaction-icon" />
+      <MdIcons.MdRemoveCircle
+        onClick={() => removeVehicle(vehicle.id)}
+        className="remove interaction-icon"
+      />
+      <IoIcons.IoMdArrowDroprightCircle
         onClick={() =>
           setDisplay({ left: !display.left, right: !display.right })
         }
-      >
-        <IoIcons.IoMdArrowDroprightCircle className="interaction-icon" />
-      </div>
+        className="slide-details interaction-icon"
+      />
+
       <VehiclePhoto
         photo={vehicle.photo}
         alt={`${vehicle.brand} ${vehicle.model}`}

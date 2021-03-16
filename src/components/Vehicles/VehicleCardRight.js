@@ -5,11 +5,9 @@ import * as GiIcons from "react-icons/gi";
 
 function VehicleCardRight(props) {
   const [isHovered, setIsHovered] = useState(false);
-  const display = props.display;
-  console.log(display);
 
   return (
-    <div className={props.className} style={{ display: display }}>
+    <div className={props.className} style={{ display: props.display }}>
       <div className="card-right-heading">
         <h6>
           <strong>Fuel economy</strong>

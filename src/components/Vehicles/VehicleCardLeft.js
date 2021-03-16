@@ -2,10 +2,8 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 
 function VehicleCardLeft(props) {
-  const display = props.display;
-  
   return (
-    <div className={props.className} style={{ display: display }}>
+    <div className={props.className} style={{ display: props.display }}>
       <div className="card-left-heading">
         <h6>
           <strong>{props.brand}</strong> {props.model}
