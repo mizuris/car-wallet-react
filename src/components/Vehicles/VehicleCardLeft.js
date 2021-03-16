@@ -2,23 +2,27 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 
 function VehicleCardLeft(props) {
+  const display = props.display;
+  
   return (
-    <div className="card-left">
+    <div className={props.className} style={{ display: display }}>
       <div className="card-left-heading">
-        <h4>
+        <h6>
           <strong>{props.brand}</strong> {props.model}
-        </h4>
-        <h6 className="reg-num">{props.registrationNum}</h6>
+        </h6>
       </div>
+      <span className="reg-num">{props.registrationNum}</span>
+
       <div className="types">
-        <div className="icon-holder">
-          <FaIcons.FaRegCalendarAlt /> {props.prodYear}
+        <div className="types-holder">
+          <FaIcons.FaRegCalendarAlt className="types-icon" /> {props.prodYear}
         </div>
-        <div className="icon-holder">
-          <FaIcons.FaCar /> {props.bodyType}
+        <div className="types-holder">
+          <FaIcons.FaCar className="types-icon" /> {props.bodyType}
         </div>
-        <div className="icon-holder">
-          <FaIcons.FaGasPump className={props.fuelType} /> {props.fuelType}
+        <div className="types-holder">
+          <FaIcons.FaGasPump className={`types-icon ${props.fuelType}`} />{" "}
+          {props.fuelType}
         </div>
       </div>
     </div>

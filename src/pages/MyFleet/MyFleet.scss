@@ -1,5 +1,6 @@
 @import "../../variables.scss";
 
+//no cars added
 .empty {
   margin: 0 auto;
   width: 50%;
@@ -9,6 +10,15 @@
     padding: 10px;
     color: $primary-light;
   }
+}
+
+//dynamic classes
+.is-hidden {
+  display: none;
+}
+
+.rotate-around {
+  animation: rotate-half 1s;
 }
 
 //fuel type colors
@@ -24,35 +34,52 @@
   color: $diesel;
 }
 
+//if car is added
 .vehicle-card {
-  width: 80%;
-  margin: 0 auto;
-  max-height: 150px;
-  padding: 10px;
+  width: 90%;
+  height: 120px;
+  margin: $s-size auto;
+  padding: 6px;
   background-color: $primary-light;
   display: flex;
   align-items: center;
   position: relative;
+  text-align: center;
 
   //interactive icons
+  .interaction-icon {
+    width: $m-size;
+    height: $m-size;
+    z-index: 10;
+  }
+
   .edit,
   .remove {
-    width: 10px;
-    height: 10px;
     position: absolute;
-    top: 5px;
+    top: 3px;
     transition: all 300ms ease-in-out;
     cursor: pointer;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-details {
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+    color: $primary-blue;
   }
 
   .edit:hover,
-  .remove:hover {
+  .remove:hover,
+  .slide-details:hover {
     transform: scale(1.4);
     transition: all 300ms ease-in-out;
   }
 
   .edit {
-    right: 50px;
+    right: 30px;
 
     &:hover {
       color: $secondary-blue;
@@ -60,7 +87,7 @@
   }
 
   .remove {
-    right: 20px;
+    right: 10px;
 
     &:hover {
       color: $remove;
@@ -70,58 +97,84 @@
   //vehicle photo
   .vehicle-card-img-container {
     max-width: 30%;
-    
+    height: 90%;
+    margin-right: $s-size;
+
     img {
       object-fit: cover;
       width: 100%;
-      max-height: 120px;
+      height: 100%;
     }
   }
 
   //card body
   .vehicle-card-body {
-    width: 80%;
+    position: relative;
+    width: 90%;
     height: 90%;
-
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    flex-direction: column;
 
     .card-left,
     .card-right {
-      padding: 10px;
-      width: 50%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
     }
 
     //left side
     .card-left {
-      border-right: 1px solid $primary-dark;
+      .card-left-heading,
+      .reg-num {
+        margin-bottom: 5px;
+      }
 
       .card-left-heading {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        h6 {
+          margin: 0;
+        }
       }
 
       .reg-num {
         color: $primary-gray;
+        font-size: $m-size;
+        font-weight: 700;
       }
 
       .types {
-        bottom: 0;
-        justify-content: space-around;
         display: flex;
-        font-size: $m-size;
+        justify-content: space-evenly;
+        font-size: $s-size;
+
+        .types-holder {
+          align-items: center;
+        }
       }
     }
 
     //right side
     .card-right {
-      .card-right-text {
-        font-size: $m-size;
+      .card-right-text-holder {
+        display: flex;
+        justify-content: space-between;
+
+        .card-right-text {
+          font-size: $s-size;
+
+          .icon-text {
+            display: none;
+          }
+        }
       }
 
       .link {
-        font-size: $m-size;
+        font-size: $s-size;
         text-decoration: none;
         color: $primary-gray;
 
@@ -137,5 +190,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes rotate-half {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
   }
 }

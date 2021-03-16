@@ -8,7 +8,7 @@ function MyFleet() {
 
   return (
     <>
-      <div className="page-section container-fluid">
+      <div className="page-section container-fluid vehicles-list">
         <VehicleList vehicles={vehicles} />
       </div>
     </>
