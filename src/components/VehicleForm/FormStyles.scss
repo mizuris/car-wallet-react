@@ -33,6 +33,17 @@
       color: $primary-gray;
       font-size: $m-size;
     }
+
+    .form-input-inner {
+      position: relative;
+      .form-input-tick {
+        color: $petrol;
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+      }
+    }
   }
 
   .form-buttons {

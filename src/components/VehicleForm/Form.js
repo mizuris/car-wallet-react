@@ -1,5 +1,5 @@
 import "./FormStyles.scss";
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Form, Button, Card, Col, Row } from "react-bootstrap";
 
 //Data storing imports
@@ -31,21 +31,34 @@ function VehicleForm() {
     photo: null,
   };
 
-  
   //Set initail state
   const [newVehicle, setNewVehicle] = useState(INITIAL_STATE);
-  
-  for (let [key, value] of Object.entries(newVehicle)) {
-    console.log(key, value)
-  }
-  
-  //Regular expression to validate if input is a number
-  const validateNumber = /^[0-9\b]+$/;
 
   //Reusable function to save data from inputs
   const updateValue = (e) => {
     setNewVehicle({ ...newVehicle, [e.target.id]: e.target.value });
   };
+
+  //Regular expression to validate if input is a number
+  const validateNumber = /^[0-9.\b]+$/;
+  
+  //Check if user filled all inputs to enable submit
+  const [canSubmit, setCanSubmit] = useState(false);
+  useEffect(() => {
+    if (
+      newVehicle.brand &&
+      newVehicle.model &&
+      newVehicle.prodYear &&
+      newVehicle.registrationNum &&
+      newVehicle.tankCapacity &&
+      newVehicle.fuelConsumption &&
+      newVehicle.photo
+    ) {
+      setCanSubmit(true);
+    } else {
+      setCanSubmit(false);
+    }
+  }, [canSubmit, newVehicle]);
 
   //Photo related states
   const [url, setUrl] = useState("");
@@ -85,7 +98,7 @@ function VehicleForm() {
   };
 
   //Submit handler
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     //Prevent reloading page
     e.preventDefault();
 
@@ -113,6 +126,7 @@ function VehicleForm() {
                       label="Brand"
                       value={newVehicle.brand}
                       placeholder="Enter brand"
+                      isValid={true}
                       onChange={(e) => {
                         updateValue(e);
                       }}
@@ -136,6 +150,7 @@ function VehicleForm() {
                       label="Year of production"
                       value={newVehicle.prodYear}
                       placeholder="Enter year of production"
+                      maxLength="4"
                       onChange={(e) => {
                         if (
                           e.target.value === "" ||
@@ -176,6 +191,7 @@ function VehicleForm() {
                       label="Registartion number"
                       value={newVehicle.registrationNum}
                       placeholder="Enter registration number"
+                      maxLength="15"
                       onChange={(e) => updateValue(e)}
                     />
                   </Col>
@@ -187,6 +203,7 @@ function VehicleForm() {
                       label="Tank capacity"
                       value={newVehicle.tankCapacity}
                       placeholder="Enter tank capacity"
+                      maxLength="4"
                       onChange={(e) => {
                         if (
                           e.target.value === "" ||
@@ -206,6 +223,7 @@ function VehicleForm() {
                       label="Fuel consumption"
                       value={newVehicle.fuelConsumption}
                       placeholder="Enter avg. fuel consumption"
+                      maxLength="4"
                       onChange={(e) => {
                         if (
                           e.target.value === "" ||
@@ -268,7 +286,7 @@ function VehicleForm() {
                   className="form-submit-btn"
                   variant="primary"
                   type="submit"
-                  disabled={url ? false : true}
+                  disabled={!canSubmit}
                 >
                   Submit
                 </Button>
