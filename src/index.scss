@@ -32,3 +32,27 @@ body {
 .bg-gray {
   background-color: $primary-gray;
 }
+
+.is-hidden {
+  display: none;
+}
+
+.mobile-arrow-to-top {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+
+  .arrow-to-top-icon {
+    width: $l-size;
+    height: $l-size;
+    color: $primary-light;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .mobile-arrow-to-top {
+    display: block;
+  }
+}

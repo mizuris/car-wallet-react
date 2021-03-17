@@ -13,21 +13,23 @@ export default function Home() {
 
   return (
     <div className="container-fluid page-section d-flex align-items-center">
-      <Section
-        bgColor="blue"
-        imgWrapClassName="heading-img-container"
-        imgClassName="heading-img"
-        imgSrc={heading_img}
-        alt="Heading img"
-        textWrapClassName="heading-text-container text-center"
-        textHeaderClassName="heading-text-header"
-        textParClassName="heading-text"
-        btnValue="Try now"
-        btnClassName="btn-danger"
-        btnOnClick={navigateToFleet}
-        headerText={headerText}
-        parText={parText}
-      />
+      <div className="container">
+        <Section
+          bgColor="blue"
+          imgWrapClassName="heading-img-container"
+          imgClassName="heading-img"
+          imgSrc={heading_img}
+          alt="Heading img"
+          textWrapClassName="heading-text-container text-center"
+          textHeaderClassName="heading-text-header"
+          textParClassName="heading-text"
+          btnValue="Try now"
+          btnClassName="btn-danger"
+          btnOnClick={navigateToFleet}
+          headerText={headerText}
+          parText={parText}
+        />
+      </div>
     </div>
   );
 }

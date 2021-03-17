@@ -21,7 +21,6 @@ import FormRegNum from "./FormInputs/FormRegNum";
 import FormTankCap from "./FormInputs/FormTankCap";
 import FormFuelCons from "./FormInputs/FormFuelCons";
 import FormFuelType from "./FormInputs/FormFuelType";
-import FormPhotoUpload from "./FormComponents/FormFileInput";
 
 function VehicleForm() {
   //Get function to add new vehicle
@@ -57,7 +56,6 @@ function VehicleForm() {
     if (
       newVehicle.brand &&
       newVehicle.model &&
-      newVehicle.prodYear.length === 4 &&
       newVehicle.prodYear <= 2021 &&
       newVehicle.prodYear >= 1886 &&
       newVehicle.registrationNum &&
@@ -105,7 +103,7 @@ function VehicleForm() {
     progress === 100 &&
       setTimeout(() => {
         setProgress(null);
-      }, 200);
+      }, 1000);
   };
 
   //Submit handler
@@ -118,6 +116,7 @@ function VehicleForm() {
 
     //Reset input values
     setNewVehicle(INITIAL_STATE);
+    setUrl("");
   };
 
   return (
@@ -127,7 +126,7 @@ function VehicleForm() {
           <FormImage />
         </Col>
         <Col md={12} lg={6}>
-          <div className="form-fields" name="top">
+          <div className="form-fields" name="form">
             <Form onSubmit={handleSubmit}>
               <Form.Row>
                 <Col md={12}>
@@ -194,48 +193,29 @@ function VehicleForm() {
 
               <Form.Row>
                 <Col md={12}>
-                  <FormPhotoUpload
-      
-                    progress={progress}
-                    photo={photo}
-                    url={url}
-                    onChange={(e) => setPhoto(e.target.files[0])}
-                    onClick={() => fileRef.current.click()}
-                  />
-
-                  <div className="form-buttons">
-                    <Button
-                      onClick={() => fileRef.current.click()}
-                      variant={photo ? "outline-primary" : "primary"}
-                    >
-                      <span className="button-text">Pick photo</span>
-                    </Button>
-                    <Button
-                      variant={photo ? "primary" : "outline-primary"}
-                      onClick={handleUpload}
-                    >
-                      <span className="button-text">Upload photo</span>
-                    </Button>
-                  </div>
-                  {/* <FormFileInput
+                  <FormFileInput
                     ref={fileRef}
                     name="photo"
                     style={{ display: "none" }}
                     label="Add photo"
-                    // progress={progress}
-                    // photo={photo}
-                    // src={photo}
                     onChange={(e) => setPhoto(e.target.files[0])}
                   />
+
                   <div className="form-buttons">
                     <Button
-                      onClick={() => fileRef.current.click()}
-                      variant={photo ? "outline-primary" : "primary"}
+                      className="pick-button"
+                      style={{ display: photo ? "none" : "block" }}
+                      onClick={async () => {
+                        fileRef.current.click();
+                      }}
+                      variant="primary"
                     >
                       <span className="button-text">Pick photo</span>
                     </Button>
                     <Button
-                      variant={photo ? "primary" : "outline-primary"}
+                      className="upload-button"
+                      style={{ display: photo ? "block" : "none" }}
+                      variant="outline-primary"
                       onClick={handleUpload}
                     >
                       <span className="button-text">Upload photo</span>
@@ -243,7 +223,7 @@ function VehicleForm() {
                   </div>
 
                   <FormProgressBar progress={progress} />
-                  <FormThumbnail photo={photo} progress={progress} url={url} /> */}
+                  <FormThumbnail photo={photo} progress={progress} url={url} />
                 </Col>
               </Form.Row>
               <Button
@@ -251,7 +231,6 @@ function VehicleForm() {
                 variant="primary"
                 type="submit"
                 disabled={!canSubmit}
-                handleUpload={handleUpload}
               >
                 Submit
               </Button>

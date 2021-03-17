@@ -8,7 +8,7 @@ function FormImage() {
     <div className="form-image-container">
       <h2>Add vehicle</h2>
       <img className="form-image" src={car} alt="#" />
-      <Link smooth={true} to="top" className="form-image-arrow">
+      <Link smooth={true} to="form" className="form-image-arrow">
         <FaIcons.FaArrowAltCircleDown className="arrow-icon" />
       </Link>
     </div>

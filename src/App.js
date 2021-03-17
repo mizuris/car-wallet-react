@@ -13,13 +13,15 @@ import Profile from "./pages/Profile/Profile";
 
 //Context providers
 import VehicleContextProvider from "./contexts/VehicleContext";
+import SlideToTop from "./components/Display/SlideToTop";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" name="top">
       <VehicleContextProvider>
         <Router>
           <Navbar />
+          <SlideToTop />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/fleet-my" component={MyFleet} />

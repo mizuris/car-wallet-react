@@ -14,7 +14,7 @@
 }
 
 .heading-img-container {
-  margin: 100px 0 0 0;
+  margin: 50px;
 
   .heading-img {
     max-width: 80%;
@@ -42,9 +42,9 @@
   margin: 20px;
 }
 
-@media screen and (max-width: 610px) {
+@media screen and (max-width: 769px) {
   .heading-img-container {
-    margin: 50px 0 0 0;
+    margin: 20px;
     text-align: center;
   }
   .container {
