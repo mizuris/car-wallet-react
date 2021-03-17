@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
-import car from "../../assets/images/car.svg";
+import car from "../../../assets/images/car.svg";
 import * as FaIcons from "react-icons/fa";
 
 function FormImage() {

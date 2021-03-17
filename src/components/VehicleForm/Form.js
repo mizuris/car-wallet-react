@@ -1,18 +1,27 @@
 import "./FormStyles.scss";
 import React, { useContext, useState, useRef, useEffect } from "react";
-import { Form, Button, Card, Col, Row } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 
 //Data storing imports
 import { VehicleContext } from "../../contexts/VehicleContext";
 import { storage } from "../../firebase/firebase";
 
 //Form components
-import FormImage from "./FormImage";
-import FormTextInput from "./FormTextInput";
-import FormSelectInput from "./FormSelectInput";
+import FormImage from "./FormComponents/FormImage";
 import FormFileInput from "react-bootstrap/esm/FormFileInput";
-import FormProgressBar from "./FormProgressBar";
-import FormThumbnail from "./FormThumbnail";
+import FormProgressBar from "./FormComponents/FormProgressBar";
+
+//FormInputs
+import FormThumbnail from "./FormComponents/FormThumbnail";
+import FormBrand from "./FormInputs/FormBrand";
+import FormModel from "./FormInputs/FormModel";
+import FormProdYear from "./FormInputs/FormProdYear";
+import FormBodyType from "./FormInputs/FormBodyType";
+import FormRegNum from "./FormInputs/FormRegNum";
+import FormTankCap from "./FormInputs/FormTankCap";
+import FormFuelCons from "./FormInputs/FormFuelCons";
+import FormFuelType from "./FormInputs/FormFuelType";
+import FormPhotoUpload from "./FormComponents/FormFileInput";
 
 function VehicleForm() {
   //Get function to add new vehicle
@@ -118,198 +127,136 @@ function VehicleForm() {
           <FormImage />
         </Col>
         <Col md={12} lg={6}>
-          <Card className="bg-dark" name="top">
-            <Card.Body>
-              <Form onSubmit={handleSubmit}>
-                <Form.Row>
-                  <Col md={12}>
-                    <FormTextInput
-                      id="brand"
-                      label="Brand"
-                      value={newVehicle.brand}
-                      placeholder="Enter brand"
-                      isValid={newVehicle.brand.length >= 2}
-                      errorText="Enter correct brand"
-                      onChange={(e) => {
-                        updateValue(e);
-                      }}
-                    />
-                  </Col>
-                  <Col md={12}>
-                    <FormTextInput
-                      id="model"
-                      label="Model"
-                      value={newVehicle.model}
-                      placeholder="Enter model"
-                      isValid={newVehicle.model.length}
-                      errorText="Enter correct model"
-                      onChange={(e) => updateValue(e)}
-                    />
-                  </Col>
-                </Form.Row>
+          <div className="form-fields" name="top">
+            <Form onSubmit={handleSubmit}>
+              <Form.Row>
+                <Col md={12}>
+                  <FormBrand
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                  />
+                </Col>
+                <Col md={12}>
+                  <FormModel
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                  />
+                </Col>
+              </Form.Row>
 
-                <Form.Row>
-                  <Col md={6}>
-                    <FormTextInput
-                      id="prodYear"
-                      label="Year of production"
-                      value={newVehicle.prodYear}
-                      placeholder="Enter year of production"
-                      errorText="Incorrect date - enter value between 1868 and present year"
-                      maxLength="4"
-                      isValid={
-                        newVehicle.prodYear.length === 4 &&
-                        newVehicle.prodYear <= 2021 &&
-                        newVehicle.prodYear >= 1868
-                      }
-                      onChange={(e) => {
-                        if (
-                          e.target.value === "" ||
-                          validateNumber.test(e.target.value)
-                        ) {
-                          updateValue(e);
-                        } else {
-                          alert("Input must be a number!");
-                        }
-                      }}
-                    />
-                  </Col>
-                  <Col md={6}>
-                    <FormSelectInput
-                      id="bodyType"
-                      label="Select body type"
-                      value={newVehicle.bodyType}
-                      types={[
-                        "Sedan",
-                        "Liftback",
-                        "Hatchback",
-                        "Combi",
-                        "SUV",
-                        "Van",
-                        "Coupe",
-                        "Cabriolet",
-                        "Pickup",
-                      ]}
-                      onChange={(e) => updateValue(e)}
-                    />
-                  </Col>
-                </Form.Row>
+              <Form.Row>
+                <Col md={6}>
+                  <FormProdYear
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                    validateNumber={validateNumber}
+                  />
+                </Col>
+                <Col md={6}>
+                  <FormBodyType
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                  />
+                </Col>
+              </Form.Row>
 
-                <Form.Row>
-                  <Col md={12}>
-                    <FormTextInput
-                      id="registrationNum"
-                      label="Registartion number"
-                      value={newVehicle.registrationNum}
-                      placeholder="Enter registration number"
-                      isValid={newVehicle.registrationNum.length >= 2}
-                      errorText="Enter correct registatrion number"
-                      maxLength="15"
-                      onChange={(e) => updateValue(e)}
-                    />
-                  </Col>
-                </Form.Row>
-                <Form.Row>
-                  <Col md={4}>
-                    <FormTextInput
-                      id="tankCapacity"
-                      label="Tank capacity"
-                      value={newVehicle.tankCapacity}
-                      placeholder="Enter tank capacity"
-                      maxLength="4"
-                      isValid={newVehicle.tankCapacity.length}
-                      errorText="Enter correct tank capacity"
-                      onChange={(e) => {
-                        if (
-                          e.target.value === "" ||
-                          validateNumber.test(e.target.value)
-                        ) {
-                          updateValue(e);
-                        } else {
-                          alert("Input must be a number!");
-                        }
-                      }}
-                    />
-                  </Col>
+              <Form.Row>
+                <Col md={12}>
+                  <FormRegNum
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                  />
+                </Col>
+              </Form.Row>
+              <Form.Row>
+                <Col md={4}>
+                  <FormTankCap
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                    validateNumber={validateNumber}
+                  />
+                </Col>
 
-                  <Col md={4}>
-                    <FormTextInput
-                      id="fuelConsumption"
-                      label="Fuel consumption"
-                      value={newVehicle.fuelConsumption}
-                      placeholder="Enter avg. fuel consumption"
-                      maxLength="4"
-                      isValid={newVehicle.fuelConsumption.length}
-                      errorText="Enter correct value. For example 6.8"
-                      onChange={(e) => {
-                        if (
-                          e.target.value === "" ||
-                          validateNumber.test(e.target.value)
-                        ) {
-                          updateValue(e);
-                        } else {
-                          alert("Input must be a number!");
-                        }
-                      }}
-                    />
-                  </Col>
-                  <Col md={4}>
-                    <FormSelectInput
-                      id="fuelType"
-                      label="Select fuel type"
-                      value={newVehicle.fuelType}
-                      types={["Petrol", "Diesel", "LPG"]}
-                      onChange={(e) => updateValue(e)}
-                    />
-                  </Col>
-                </Form.Row>
+                <Col md={4}>
+                  <FormFuelCons
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                    validateNumber={validateNumber}
+                  />
+                </Col>
+                <Col md={4}>
+                  <FormFuelType
+                    newVehicle={newVehicle}
+                    updateValue={updateValue}
+                  />
+                </Col>
+              </Form.Row>
 
-                <Form.Row>
-                  <Col md={12}>
-                    <FormFileInput
-                      ref={fileRef}
-                      name="photo"
-                      style={{ display: "none" }}
-                      label="Add photo"
-                      progress={progress}
-                      photo={photo}
-                      src={photo}
-                      onChange={(e) => setPhoto(e.target.files[0])}
-                    />
-                    <div className="form-buttons">
-                      <Button
-                        onClick={() => fileRef.current.click()}
-                        variant={photo ? "outline-primary" : "primary"}
-                      >
-                        <span className="button-text">Pick photo</span>
-                      </Button>
-                      <Button
-                        variant={photo ? "primary" : "outline-primary"}
-                        onClick={handleUpload}
-                      >
-                        <span className="button-text">Upload photo</span>
-                      </Button>
-                    </div>
+              <Form.Row>
+                <Col md={12}>
+                  <FormPhotoUpload
+      
+                    progress={progress}
+                    photo={photo}
+                    url={url}
+                    onChange={(e) => setPhoto(e.target.files[0])}
+                    onClick={() => fileRef.current.click()}
+                  />
 
-                    <FormProgressBar progress={progress} />
-                    <FormThumbnail
-                      photo={photo}
-                      progress={progress}
-                      url={url}
-                    />
-                  </Col>
-                </Form.Row>
-                <Button
-                  className="form-submit-btn"
-                  variant="primary"
-                  type="submit"
-                  disabled={!canSubmit}
-                >
-                  Submit
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
+                  <div className="form-buttons">
+                    <Button
+                      onClick={() => fileRef.current.click()}
+                      variant={photo ? "outline-primary" : "primary"}
+                    >
+                      <span className="button-text">Pick photo</span>
+                    </Button>
+                    <Button
+                      variant={photo ? "primary" : "outline-primary"}
+                      onClick={handleUpload}
+                    >
+                      <span className="button-text">Upload photo</span>
+                    </Button>
+                  </div>
+                  {/* <FormFileInput
+                    ref={fileRef}
+                    name="photo"
+                    style={{ display: "none" }}
+                    label="Add photo"
+                    // progress={progress}
+                    // photo={photo}
+                    // src={photo}
+                    onChange={(e) => setPhoto(e.target.files[0])}
+                  />
+                  <div className="form-buttons">
+                    <Button
+                      onClick={() => fileRef.current.click()}
+                      variant={photo ? "outline-primary" : "primary"}
+                    >
+                      <span className="button-text">Pick photo</span>
+                    </Button>
+                    <Button
+                      variant={photo ? "primary" : "outline-primary"}
+                      onClick={handleUpload}
+                    >
+                      <span className="button-text">Upload photo</span>
+                    </Button>
+                  </div>
+
+                  <FormProgressBar progress={progress} />
+                  <FormThumbnail photo={photo} progress={progress} url={url} /> */}
+                </Col>
+              </Form.Row>
+              <Button
+                className="form-submit-btn"
+                variant="primary"
+                type="submit"
+                disabled={!canSubmit}
+                handleUpload={handleUpload}
+              >
+                Submit
+              </Button>
+            </Form>
+          </div>
         </Col>
       </Row>
     </div>

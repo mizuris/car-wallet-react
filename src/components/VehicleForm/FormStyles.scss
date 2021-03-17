@@ -4,6 +4,10 @@
   text-align: center;
   padding: 50px;
 
+  .file-input {
+    display: none;
+  }
+
   .is-valid {
     border: 2px solid $correct;
   }
@@ -12,6 +16,13 @@
     border: 2px solid $error;
   }
 
+  .form-fields {
+    width: 90%;
+    background-color: $primary-dark;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  
   .form-image-container {
     display: flex;
     flex-direction: column;
