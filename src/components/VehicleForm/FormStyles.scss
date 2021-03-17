@@ -4,6 +4,14 @@
   text-align: center;
   padding: 50px;
 
+  .is-valid {
+    border: 2px solid $correct;
+  }
+
+  .is-not-valid {
+    border: 2px solid $error;
+  }
+
   .form-image-container {
     display: flex;
     flex-direction: column;
@@ -35,13 +43,10 @@
     }
 
     .form-input-inner {
-      position: relative;
-      .form-input-tick {
-        color: $petrol;
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        transform: translateY(-50%);
+      .error-text {
+        color: $error;
+        font-weight: 700;
+        font-size: $m-size;
       }
     }
   }

@@ -41,14 +41,16 @@ function VehicleForm() {
 
   //Regular expression to validate if input is a number
   const validateNumber = /^[0-9.\b]+$/;
-  
+
   //Check if user filled all inputs to enable submit
   const [canSubmit, setCanSubmit] = useState(false);
   useEffect(() => {
     if (
       newVehicle.brand &&
       newVehicle.model &&
-      newVehicle.prodYear &&
+      newVehicle.prodYear.length === 4 &&
+      newVehicle.prodYear <= 2021 &&
+      newVehicle.prodYear >= 1886 &&
       newVehicle.registrationNum &&
       newVehicle.tankCapacity &&
       newVehicle.fuelConsumption &&
@@ -126,7 +128,8 @@ function VehicleForm() {
                       label="Brand"
                       value={newVehicle.brand}
                       placeholder="Enter brand"
-                      isValid={true}
+                      isValid={newVehicle.brand.length >= 2}
+                      errorText="Enter correct brand"
                       onChange={(e) => {
                         updateValue(e);
                       }}
@@ -138,6 +141,8 @@ function VehicleForm() {
                       label="Model"
                       value={newVehicle.model}
                       placeholder="Enter model"
+                      isValid={newVehicle.model.length}
+                      errorText="Enter correct model"
                       onChange={(e) => updateValue(e)}
                     />
                   </Col>
@@ -150,7 +155,13 @@ function VehicleForm() {
                       label="Year of production"
                       value={newVehicle.prodYear}
                       placeholder="Enter year of production"
+                      errorText="Incorrect date - enter value between 1868 and present year"
                       maxLength="4"
+                      isValid={
+                        newVehicle.prodYear.length === 4 &&
+                        newVehicle.prodYear <= 2021 &&
+                        newVehicle.prodYear >= 1868
+                      }
                       onChange={(e) => {
                         if (
                           e.target.value === "" ||
@@ -191,6 +202,8 @@ function VehicleForm() {
                       label="Registartion number"
                       value={newVehicle.registrationNum}
                       placeholder="Enter registration number"
+                      isValid={newVehicle.registrationNum.length >= 2}
+                      errorText="Enter correct registatrion number"
                       maxLength="15"
                       onChange={(e) => updateValue(e)}
                     />
@@ -204,6 +217,8 @@ function VehicleForm() {
                       value={newVehicle.tankCapacity}
                       placeholder="Enter tank capacity"
                       maxLength="4"
+                      isValid={newVehicle.tankCapacity.length}
+                      errorText="Enter correct tank capacity"
                       onChange={(e) => {
                         if (
                           e.target.value === "" ||
@@ -224,6 +239,8 @@ function VehicleForm() {
                       value={newVehicle.fuelConsumption}
                       placeholder="Enter avg. fuel consumption"
                       maxLength="4"
+                      isValid={newVehicle.fuelConsumption.length}
+                      errorText="Enter correct value. For example 6.8"
                       onChange={(e) => {
                         if (
                           e.target.value === "" ||
@@ -262,12 +279,12 @@ function VehicleForm() {
                     <div className="form-buttons">
                       <Button
                         onClick={() => fileRef.current.click()}
-                        variant={progress ? "outline-primary" : "primary"}
+                        variant={photo ? "outline-primary" : "primary"}
                       >
                         <span className="button-text">Pick photo</span>
                       </Button>
                       <Button
-                        variant={progress ? "primary" : "outline-primary"}
+                        variant={photo ? "primary" : "outline-primary"}
                         onClick={handleUpload}
                       >
                         <span className="button-text">Upload photo</span>
