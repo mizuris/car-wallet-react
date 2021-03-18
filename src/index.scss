@@ -49,7 +49,6 @@ body {
   border-bottom-left-radius: 20px;
   background-color: $primary-dark;
   //set display to none for wide screens
-  display: none;
 
   .arrow-to-top-icon {
     position: absolute;
@@ -63,8 +62,8 @@ body {
   }
 }
 
-@media screen and (max-width: 769px) {
-  .mobile-arrow-to-top {
-    display: block;
-  }
-}
+// @media screen and (max-width: 769px) {
+//   .mobile-arrow-to-top {
+//     display: block;
+//   }
+// }
