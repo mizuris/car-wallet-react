@@ -122,10 +122,10 @@ function VehicleForm() {
   return (
     <div className="form-container d-flex justify-content-between ml-auto mr-auto">
       <Row>
-        <Col md={12} lg={6}>
+        <Col lg={6} md={12}>
           <FormImage />
         </Col>
-        <Col md={12} lg={6}>
+        <Col lg={6} md={12}>
           <div className="form-fields" name="form">
             <Form onSubmit={handleSubmit}>
               <Form.Row>

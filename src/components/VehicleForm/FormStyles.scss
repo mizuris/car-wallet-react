@@ -48,7 +48,8 @@
 
   //all fields / inputs container
   .form-fields {
-    width: 100%;
+    width: 90%;
+    max-width: 600px;
     background-color: $primary-dark;
     padding: 20px;
     margin: 0 auto;
@@ -90,6 +91,15 @@
       .button-text {
         font-size: $m-size;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .form-container {
+
+    .form-image-container {
+      height: 100%;
     }
   }
 }

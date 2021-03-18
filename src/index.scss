@@ -37,15 +37,27 @@ body {
   display: none;
 }
 
+//mobile arrow display
 .mobile-arrow-to-top {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 40px;
+  right: 0;
   z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: $primary-dark;
+  //set display to none for wide screens
+  display: none;
 
   .arrow-to-top-icon {
-    width: $l-size;
-    height: $l-size;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $xl-size;
+    height: $xl-size;
     color: $primary-light;
     cursor: pointer;
   }
