@@ -2,14 +2,10 @@ import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
-//Styles
-import "./App.scss";
-
 //Pages
 import Home from "./pages/Home";
-import MyFleet from "./pages/MyFleet";
-import FleetConfig from "./pages/FleetConfig";
-import Profile from "./pages/Profile";
+import AddVehicle from "./pages/AddVehicle";
+import MyVehicles from "./pages/MyVehicles";
 
 //Context providers
 import VehicleContextProvider from "./contexts/VehicleContext";
@@ -24,9 +20,8 @@ function App() {
           <SlideToTop />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/fleet-my" component={MyFleet} />
-            <Route exact path="/fleet-config" component={FleetConfig} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/my-vehicles" component={MyVehicles} />
+            <Route exact path="/add-vehicle" component={AddVehicle} />
           </Switch>
         </Router>
       </VehicleContextProvider>

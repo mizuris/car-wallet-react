@@ -11,21 +11,15 @@ export const NavbarData = [
     className: "nav-text",
   },
   {
-    title: "My fleet",
-    path: "/fleet-my",
+    title: "My vehicles",
+    path: "/my-vehicles",
     icon: <FaIcons.FaCar />,
     className: "nav-text",
   },
   {
-    title: "Configure fleet",
-    path: "/fleet-config",
+    title: "Add vehcile",
+    path: "/add-vehicle",
     icon: <IoIcons.IoMdAddCircle />,
-    className: "nav-text",
-  },
-  {
-    title: "Profile",
-    path: "/profile",
-    icon: <IoIcons.IoMdPeople />,
     className: "nav-text",
   },
 ];

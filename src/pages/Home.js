@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 
 export default function Home() {
   const history = useHistory();
-  const navigateToFleet = () => history.push("/fleet-my");
+  const navigateToFleet = () => history.push("/my-vehicles");
   const parText =
     "CarWallet is an app that helps you manage fleet. You can check up on your drivers from anywhere in the world";
   const headerText = "Keep it close";

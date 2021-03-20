@@ -112,12 +112,12 @@ function VehicleForm() {
 
     //Send data to context
     await addNewVehicle(newVehicle);
-
+    
     //Reset input values
     setNewVehicle(INITIAL_STATE);
     setUrl("");
   };
-  
+
   return (
     <div className="form-container">
       <Row>

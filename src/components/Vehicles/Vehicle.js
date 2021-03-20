@@ -11,14 +11,13 @@ import * as RiIcons from "react-icons/ri";
 import * as IoIcons from "react-icons/io";
 
 function Vehicle({ vehicle }) {
-  const { removeVehicle, editVehicle } = useContext(VehicleContext);
+  const { removeVehicle } = useContext(VehicleContext);
   const [display, setDisplay] = useState({ left: true, right: false });
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <VehicleModal
-        edit={editVehicle}
         vehicle={vehicle}
         show={showModal}
         hide={() => setShowModal(false)}

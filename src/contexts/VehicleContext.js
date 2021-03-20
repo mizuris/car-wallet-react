@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const VehicleContext = createContext();
 
@@ -22,6 +22,12 @@ function VehicleContextProvider(props) {
     },
   ]);
 
+  useEffect(() => {
+    localStorage.setItem("vehicle", JSON.stringify(vehicles));
+    const localData = localStorage.getItem("vehicle");
+    return localData ? JSON.parse(localData) : [];
+  }, [vehicles]);
+
   //Declare function allowing to add vehicles
   const addNewVehicle = (vehicle) => {
     setVehicles([
@@ -41,6 +47,10 @@ function VehicleContextProvider(props) {
     ]);
   };
 
+  const editVehicle = (id, editData) => {
+
+  };
+
   //Declare function to remove certain vehicle form array
   const removeVehicle = (id) => {
     setVehicles(vehicles.filter((vehicle) => vehicle.id !== id));
@@ -48,7 +58,7 @@ function VehicleContextProvider(props) {
 
   return (
     <VehicleContext.Provider
-      value={{ vehicles, addNewVehicle, removeVehicle }}
+      value={{ vehicles, addNewVehicle, removeVehicle, editVehicle }}
     >
       {props.children}
     </VehicleContext.Provider>

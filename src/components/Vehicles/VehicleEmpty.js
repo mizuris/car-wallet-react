@@ -7,7 +7,7 @@ function VehicleEmpty() {
   return (
     <div className="empty">
       <h2>No vehicles added</h2>
-      <Button variant="danger" onClick={() => history.push("/fleet-config")}>
+      <Button variant="danger" onClick={() => history.push("/add-vehicle")}>
         Add vehicle
       </Button>
     </div>
