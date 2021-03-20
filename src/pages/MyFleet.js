@@ -1,0 +1,15 @@
+import React, { useContext } from "react";
+import { VehicleContext } from "../contexts/VehicleContext";
+import VehicleList from "../components/Vehicles/VehicleList";
+
+function MyFleet() {
+  const { vehicles } = useContext(VehicleContext);
+
+  return (
+    <div className="page-section container-fluid">
+      <VehicleList vehicles={vehicles} />
+    </div>
+  );
+}
+
+export default MyFleet;

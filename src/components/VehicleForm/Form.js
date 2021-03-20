@@ -1,4 +1,3 @@
-import "./FormStyles.scss";
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 
@@ -107,20 +106,20 @@ function VehicleForm() {
   };
 
   //Submit handler
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     //Prevent reloading page
     e.preventDefault();
 
     //Send data to context
-    addNewVehicle(newVehicle);
+    await addNewVehicle(newVehicle);
 
     //Reset input values
     setNewVehicle(INITIAL_STATE);
     setUrl("");
   };
-
+  
   return (
-    <div className="form-container d-flex justify-content-between ml-auto mr-auto">
+    <div className="form-container">
       <Row>
         <Col lg={6} md={12}>
           <FormImage />
@@ -205,9 +204,7 @@ function VehicleForm() {
                     <Button
                       className="pick-button"
                       style={{ display: photo ? "none" : "block" }}
-                      onClick={async () => {
-                        fileRef.current.click();
-                      }}
+                      onClick={() => fileRef.current.click()}
                       variant="primary"
                     >
                       <span className="button-text">Pick photo</span>

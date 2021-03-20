@@ -1,11 +1,10 @@
-@import "../../variables.scss";
+@import "../variables.scss";
+@import "../mixins.scss";
 
 .side-navbar {
+  @include flexbox(center, flex-start);
   background-color: $primary-dark;
   height: 60px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .brand-name-nav {
@@ -26,11 +25,10 @@
 }
 
 .nav-menu {
+  @include flexbox(flex-start, center);
   background-color: $primary-dark;
   width: 250px;
   height: 100vh;
-  display: flex;
-  justify-content: center;
   position: fixed;
   top: 0;
   left: -100%;
@@ -45,22 +43,19 @@
 }
 
 .nav-text {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  @include flexbox(flex-start, center);
   padding: 8px 0px 8px 16px;
   list-style: none;
   height: 60px;
 }
 
 .nav-text a {
+  @include flexbox(center, flex-start);
   text-decoration: none;
   color: #f5f5f5;
   font-size: 18px;
   width: 95%;
   height: 100%;
-  display: flex;
-  align-items: center;
   padding: 0 16px;
   border-radius: 4px;
 }
@@ -74,12 +69,10 @@
 }
 
 .navbar-toggle {
+  @include flexbox(center, flex-start);
   background-color: $primary-dark;
   width: 100%;
   height: 80px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .menu-link {
@@ -88,7 +81,7 @@
 
 @media screen and (min-width: 992px) {
   .side-navbar {
-    flex-direction: column;
+    @include flex-direction(column);
     position: fixed;
     left: 0;
     top: 0;

@@ -1,8 +1,9 @@
-@import "../../variables.scss";
+@import "../variables.scss";
+@import "../mixins.scss";
 
 //no cars added
 .empty {
-  margin: 0 auto;
+  @include center-absolute;
   width: 50%;
   text-align: center;
 
@@ -25,37 +26,41 @@
   color: $diesel;
 }
 
+.types-text {
+  display: none;
+}
+
+.types-icon {
+  margin-right: 5px;
+}
+
 //if car is added
 .vehicle-card {
+  @include flexbox(center, flex-start);
   width: 90%;
   height: 120px;
   margin: $s-size auto;
   padding: 6px;
   background-color: $primary-light;
-  display: flex;
-  align-items: center;
   position: relative;
   text-align: center;
 
   //interactive icons
   .interaction-icon {
-    width: $m-size;
-    height: $m-size;
-    z-index: 10;  
-    cursor: pointer;
+    @include icon($m-size, $primary-dark);
+    z-index: 10;
   }
 
   .edit,
   .remove {
     position: absolute;
-    top: 6px;
+    top: 10px;
     transition: all 300ms ease-in-out;
-    height: $m-size;
   }
 
   .slide-details {
     position: absolute;
-    bottom: 6px;
+    bottom: 10px;
     right: 10px;
     color: $primary-blue;
     animation: pulse 3s infinite;
@@ -69,7 +74,7 @@
   }
 
   .edit {
-    right: 30px;
+    right: 40px;
 
     &:hover {
       color: $secondary-blue;
@@ -99,13 +104,12 @@
 
   //card body
   .vehicle-card-body {
+    @include flexbox(flex-start, center);
+    @include flex-direction(column);
     position: relative;
     width: 90%;
     height: 90%;
-    display: flex;
-    align-items: center;
     padding: 10px;
-    flex-direction: column;
 
     .card-left,
     .card-right {
@@ -138,8 +142,7 @@
       }
 
       .types {
-        display: flex;
-        justify-content: space-evenly;
+        @include flexbox(flex-start, space-evenly);
         font-size: $s-size;
 
         .types-holder {
@@ -151,8 +154,7 @@
     //right side
     .card-right {
       .card-right-text-holder {
-        display: flex;
-        justify-content: space-between;
+        @include flexbox(flex-start, space-around);
 
         .card-right-text {
           font-size: $s-size;
@@ -176,7 +178,7 @@
           display: none;
         }
         .hovered {
-          display: all;
+          display: inline-block;
         }
       }
     }
@@ -192,5 +194,50 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .vehicle-card {
+    width: 50%;
+    height: 150px;
+
+    .vehicle-card-body {
+      .card-left {
+        .card-left-heading {
+          h6 {
+            font-size: $xl-size;
+          }
+        }
+
+        .reg-num {
+          margin-bottom: $s-size;
+        }
+
+        .types {
+          font-size: $m-size;
+        }
+      }
+
+      .card-right {
+        .card-right-heading {
+          h6 {
+            font-size: $xl-size;
+          }
+        }
+
+        .card-right-text-holder {
+          .card-right-text {
+            font-size: $m-size;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .types-text {
+    display: inline-block;
   }
 }

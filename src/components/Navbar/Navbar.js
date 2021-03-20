@@ -5,8 +5,6 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { NavbarData } from "./NavbarData";
 import Tooltip from "@material-ui/core/Tooltip";
-import "./Navbar.scss";
-import "../../variables.scss";
 
 export default function Navbar() {
   const [sideMenu, setSideMenu] = useState(false);

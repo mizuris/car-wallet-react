@@ -1,0 +1,29 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+//mobile arrow display
+.mobile-arrow-to-top {
+  position: fixed;
+  bottom: 40px;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: $primary-dark;
+  
+  .arrow-to-top-icon {
+    @include center-absolute;
+    @include icon($xl-size, $primary-light);
+  }
+}
+
+.is-on {
+  transition: 500ms ease-in-out all;
+  right: 0;
+}
+
+.is-out {
+  transition: 500ms ease-in-out all;
+  right: -100%;
+}

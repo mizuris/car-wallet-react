@@ -6,10 +6,10 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
 
 //Pages
-import Home from "./pages/Home/Home";
-import MyFleet from "./pages/MyFleet/MyFleet";
-import FleetConfig from "./pages/FleetConfig/FleetConfig";
-import Profile from "./pages/Profile/Profile";
+import Home from "./pages/Home";
+import MyFleet from "./pages/MyFleet";
+import FleetConfig from "./pages/FleetConfig";
+import Profile from "./pages/Profile";
 
 //Context providers
 import VehicleContextProvider from "./contexts/VehicleContext";

@@ -15,17 +15,17 @@ function VehicleCardRight(props) {
       </div>
       <div className="card-right-text-holder">
         <div className="card-right-text">
-          <GiIcons.GiJerrycan /> <span className="icon-text">Tank cap.:</span>{" "}
+          <GiIcons.GiJerrycan className="types-icon" /> <span className="types-text">Tank cap.:</span>{" "}
           <strong>{props.tankCapacity} liters</strong>
         </div>
         <div className="card-right-text">
-          <RiIcons.RiGasStationLine />{" "}
-          <span className="icon-text">Avg. fuel cons.:</span>{" "}
+          <RiIcons.RiGasStationLine className="types-icon" />{" "}
+          <span className="types-text">Avg. fuel cons.:</span>{" "}
           <strong>{props.fuelConsumption} l/100km</strong>
         </div>
         <div className="card-right-text">
-          <RiIcons.RiPinDistanceFill />{" "}
-          <span className="icon-text">Avg. dist. per tank:</span>{" "}
+          <RiIcons.RiPinDistanceFill className="types-icon" />{" "}
+          <span className="types-text">Avg. dist. per tank:</span>{" "}
           <strong>
             {(props.tankCapacity / props.fuelConsumption).toFixed(0) * 100} km
           </strong>

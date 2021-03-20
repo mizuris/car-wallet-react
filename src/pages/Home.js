@@ -1,7 +1,6 @@
 import React from "react";
-import "./Home.scss";
-import Section from "../../components/Display/Section";
-import heading_img from "../../assets/images/heading_img.svg";
+import Section from "../components/Display/Section";
+import heading_img from "../assets/images/heading_img.svg";
 import { useHistory } from "react-router";
 
 export default function Home() {
@@ -12,7 +11,7 @@ export default function Home() {
   const headerText = "Keep it close";
 
   return (
-    <div className="container-fluid page-section d-flex align-items-center">
+    <div className="container-fluid home-container page-section">
       <div className="container">
         <Section
           bgColor="blue"

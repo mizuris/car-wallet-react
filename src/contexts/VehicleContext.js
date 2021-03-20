@@ -4,7 +4,7 @@ export const VehicleContext = createContext();
 
 function VehicleContextProvider(props) {
   //Set vehicles array holding drivers objects
-  const [photo] = useState(null)
+  const [photo] = useState(null);
   const [vehicles, setVehicles] = useState([
     {
       id: Math.floor(Math.random() * 100),

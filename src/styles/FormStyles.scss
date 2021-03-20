@@ -1,10 +1,12 @@
-@import "../../variables.scss";
+@import "../variables.scss";
+@import "../mixins.scss";
 
 .form-container {
+  @include flexbox(flex-start, space-between);
   text-align: center;
   padding: $s-size;
-  display: flex;
   flex-direction: row;
+  @include margin-center;
 
   //validation styles
   .is-valid {
@@ -17,9 +19,8 @@
 
   //image section
   .form-image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    @include flexbox(center, space-around);
+    @include flex-direction(column);
     width: 100%;
     height: calc(100vh - 60px);
 
@@ -37,11 +38,9 @@
     //mobile arrow icon to scroll to form
     .form-image-arrow {
       display: block;
-      cursor: pointer;
 
       .arrow-icon {
-        color: $primary-light;
-        font-size: 28px;
+        @include icon($xl-size, $primary-light);
       }
     }
   }
@@ -100,6 +99,11 @@
 
     .form-image-container {
       height: 100%;
+      
+      .form-image-arrow {
+        display: none;
+      }
     }
+
   }
 }
