@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { VehicleContext } from "../../contexts/VehicleContext";
-import ModalInput from "./ModalInput";
 
-function VehicleModal({ vehicle, show, hide }) {
+function VehicleModal({ vehicle, updateVehicle, show, hide }) {
   const { editVehicle } = useContext(VehicleContext);
-  const editData = { brand: "noje", model: "brande" };
+
   return (
     <Modal
       show={show}
@@ -18,7 +17,20 @@ function VehicleModal({ vehicle, show, hide }) {
           className="d-flex align-items-center"
           id="contained-modal-title-vcenter"
         >
-          <ModalInput name="brand" />
+          <input
+            name="brand"
+            value={vehicle.brand}
+            onChange={(e) =>
+              updateVehicle({ ...vehicle, [e.target.name]: e.target.value })
+            }
+          />
+          <input
+            name="model"
+            value={vehicle.model}
+            onChange={(e) =>
+              updateVehicle({ ...vehicle, [e.target.name]: e.target.value })
+            }
+          />
         </Modal.Title>
       </Modal.Header>
       <Modal.Body></Modal.Body>
@@ -28,7 +40,8 @@ function VehicleModal({ vehicle, show, hide }) {
         </Button>
         <Button
           onClick={() => {
-            editVehicle(vehicle.id, editData);
+            editVehicle(vehicle);
+            hide();
           }}
         >
           Save changes

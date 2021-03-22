@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 export const VehicleContext = createContext();
 
@@ -22,12 +22,6 @@ function VehicleContextProvider(props) {
     },
   ]);
 
-  useEffect(() => {
-    localStorage.setItem("vehicle", JSON.stringify(vehicles));
-    const localData = localStorage.getItem("vehicle");
-    return localData ? JSON.parse(localData) : [];
-  }, [vehicles]);
-
   //Declare function allowing to add vehicles
   const addNewVehicle = (vehicle) => {
     setVehicles([
@@ -36,19 +30,19 @@ function VehicleContextProvider(props) {
         id: Math.floor(Math.random() * 100),
         brand: vehicle.brand,
         model: vehicle.model,
-        prodYear: vehicle.prodYear,
+        prodYear: parseInt(vehicle.prodYear),
         bodyType: vehicle.bodyType,
         registrationNum: vehicle.registrationNum,
-        tankCapacity: vehicle.tankCapacity,
-        fuelConsumption: vehicle.fuelConsumption,
+        tankCapacity: parseInt(vehicle.tankCapacity),
+        fuelConsumption: parseInt(vehicle.fuelConsumption),
         fuelType: vehicle.fuelType,
         photo: vehicle.photo,
       },
     ]);
   };
 
-  const editVehicle = (id, editData) => {
-
+  const editVehicle = (vehicle) => {
+    const index = vehicles.indexOf(vehicle);
   };
 
   //Declare function to remove certain vehicle form array

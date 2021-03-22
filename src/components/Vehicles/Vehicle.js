@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import VehiclePhoto from "./VehiclePhoto";
 import VehicleCardLeft from "./VehicleCardLeft";
 import VehicleCardRight from "./VehicleCardRight";
-import VehicleModal from "../Display/VehicleModal";
+import VehicleModal from "./VehicleModal";
 import { VehicleContext } from "../../contexts/VehicleContext";
 
 //Icon imports
@@ -14,11 +14,13 @@ function Vehicle({ vehicle }) {
   const { removeVehicle } = useContext(VehicleContext);
   const [display, setDisplay] = useState({ left: true, right: false });
   const [showModal, setShowModal] = useState(false);
+  const [currentVehicle, setCurrentVehicle] = useState(vehicle);
 
   return (
     <>
       <VehicleModal
-        vehicle={vehicle}
+        vehicle={currentVehicle}
+        updateVehicle={setCurrentVehicle}
         show={showModal}
         hide={() => setShowModal(false)}
       />
