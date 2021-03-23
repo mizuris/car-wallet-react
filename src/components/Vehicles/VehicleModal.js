@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { VehicleContext } from "../../contexts/VehicleContext";
 
-function VehicleModal({ vehicle, updateVehicle, show, hide }) {
+function VehicleModal({ vehicle, show, hide }) {
   const { editVehicle } = useContext(VehicleContext);
+  const [vehicleEditData, setVehicleEditData] = useState(vehicle);
 
   return (
     <Modal
@@ -19,28 +20,30 @@ function VehicleModal({ vehicle, updateVehicle, show, hide }) {
         >
           <input
             name="brand"
-            value={vehicle.brand}
+            value={vehicleEditData.brand}
             onChange={(e) =>
-              updateVehicle({ ...vehicle, [e.target.name]: e.target.value })
-            }
-          />
-          <input
-            name="model"
-            value={vehicle.model}
-            onChange={(e) =>
-              updateVehicle({ ...vehicle, [e.target.name]: e.target.value })
+              setVehicleEditData({
+                ...vehicleEditData,
+                [e.target.name]: e.target.value,
+              })
             }
           />
         </Modal.Title>
       </Modal.Header>
       <Modal.Body></Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={hide}>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setVehicleEditData();
+            hide();
+          }}
+        >
           Cancel
         </Button>
         <Button
           onClick={() => {
-            editVehicle(vehicle);
+            editVehicle(vehicleEditData);
             hide();
           }}
         >

@@ -41,8 +41,12 @@ function VehicleContextProvider(props) {
     ]);
   };
 
+  //Declare function to edit specific vehicle data
   const editVehicle = (vehicle) => {
-    const index = vehicles.indexOf(vehicle);
+    const index = vehicles.findIndex((query) => query.id === vehicle.id);
+    const newVehicles = [...vehicles];
+    newVehicles[index] = vehicle;
+    setVehicles(newVehicles);
   };
 
   //Declare function to remove certain vehicle form array
