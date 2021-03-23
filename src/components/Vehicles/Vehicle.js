@@ -14,13 +14,11 @@ function Vehicle({ vehicle }) {
   const { removeVehicle } = useContext(VehicleContext);
   const [display, setDisplay] = useState({ left: true, right: false });
   const [showModal, setShowModal] = useState(false);
-  const [currentVehicle, setCurrentVehicle] = useState(vehicle);
 
   return (
     <>
       <VehicleModal
-        vehicle={currentVehicle}
-        updateVehicle={setCurrentVehicle}
+        vehicle={vehicle}
         show={showModal}
         hide={() => setShowModal(false)}
       />

@@ -17,7 +17,7 @@ export const NavbarData = [
     className: "nav-text",
   },
   {
-    title: "Add vehcile",
+    title: "Add vehicle",
     path: "/add-vehicle",
     icon: <IoIcons.IoMdAddCircle />,
     className: "nav-text",

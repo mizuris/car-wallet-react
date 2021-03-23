@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import { Button } from "react-bootstrap";
 import ImageHolder from "./ImageHolder";
 
 export default function Section(props) {
@@ -14,11 +14,9 @@ export default function Section(props) {
       <div className={props.textWrapClassName}>
         <h1 className={props.textHeaderClassName}>{props.headerText}</h1>
         <p className={props.textParClassName}>{props.parText}</p>
-        <Button
-          value={props.btnValue}
-          cName={props.btnClassName}
-          onClick={props.btnOnClick}
-        />
+        <Button variant="danger" cName={props.btnClassName} onClick={props.btnOnClick}>
+          {props.btnValue}
+        </Button>
       </div>
     </div>
   );
