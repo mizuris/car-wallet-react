@@ -1,24 +1,26 @@
 import React from "react";
-import FormSelectInput from "../FormComponents/FormSelectInput";
+import SelectInput from "../FormComponents/SelectInput";
 
 function FormBodyType({ newVehicle, updateValue }) {
+  const bodyTypes = [
+    "Sedan",
+    "Liftback",
+    "Hatchback",
+    "Combi",
+    "SUV",
+    "Van",
+    "Coupe",
+    "Cabriolet",
+    "Pickup",
+  ];
+
   return (
     <>
-      <FormSelectInput
+      <SelectInput
         id="bodyType"
         label="Select body type"
         value={newVehicle.bodyType}
-        types={[
-          "Sedan",
-          "Liftback",
-          "Hatchback",
-          "Combi",
-          "SUV",
-          "Van",
-          "Coupe",
-          "Cabriolet",
-          "Pickup",
-        ]}
+        types={bodyTypes}
         onChange={(e) => updateValue(e)}
       />
     </>

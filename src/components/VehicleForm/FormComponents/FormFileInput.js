@@ -5,7 +5,12 @@ function FormPhotoUpload(props) {
   return (
     <>
       <Form.Label htmlFor={props.name}>{props.label}</Form.Label>
-      <input type="file" name={props.name} onChange={props.onChange} />
+      <input
+        type="file"
+        accept=".jpeg,.jpg,.png"
+        name={props.name}
+        onChange={props.onChange}
+      />
     </>
   );
 }

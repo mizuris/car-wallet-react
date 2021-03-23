@@ -1,10 +1,10 @@
 import React from "react";
-import FormTextInput from "../FormComponents/FormTextInput";
+import TextInput from "../FormComponents/TextInput";
 
 function FormTankCap({ newVehicle, updateValue, validateNumber }) {
   return (
     <>
-      <FormTextInput
+      <TextInput
         id="tankCapacity"
         label="Tank capacity"
         value={newVehicle.tankCapacity}

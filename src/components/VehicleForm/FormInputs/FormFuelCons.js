@@ -1,10 +1,10 @@
 import React from "react";
-import FormTextInput from "../FormComponents/FormTextInput";
+import TextInput from "../FormComponents/TextInput";
 
 function FormFuelCons({ newVehicle, updateValue, validateNumber }) {
   return (
     <>
-      <FormTextInput
+      <TextInput
         id="fuelConsumption"
         label="Fuel consumption"
         value={newVehicle.fuelConsumption}

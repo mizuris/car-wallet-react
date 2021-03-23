@@ -1,10 +1,10 @@
 import React from "react";
-import FormTextInput from "../FormComponents/FormTextInput";
+import TextInput from "../FormComponents/TextInput";
 
 function FormBrand({ newVehicle, updateValue }) {
   return (
     <>
-      <FormTextInput
+      <TextInput
         id="brand"
         label="Brand"
         value={newVehicle.brand}

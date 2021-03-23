@@ -39,7 +39,7 @@
   @include flexbox(center, flex-start);
   width: 90%;
   height: 120px;
-  margin: $s-size auto;
+  margin: $xl-size auto;
   padding: 6px;
   background-color: $primary-light;
   position: relative;
@@ -91,7 +91,7 @@
 
   //vehicle photo
   .vehicle-card-img-container {
-    max-width: 30%;
+    width: 30%;
     height: 90%;
     margin-right: $s-size;
 

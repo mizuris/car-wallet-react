@@ -1,10 +1,10 @@
 import React from "react";
-import FormTextInput from "../FormComponents/FormTextInput";
+import TextInput from "../FormComponents/TextInput";
 
 function FormProdYear({ newVehicle, updateValue, validateNumber }) {
   return (
     <>
-      <FormTextInput
+      <TextInput
         id="prodYear"
         label="Year of production"
         value={newVehicle.prodYear}

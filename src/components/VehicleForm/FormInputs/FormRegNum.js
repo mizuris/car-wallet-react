@@ -1,10 +1,10 @@
 import React from "react";
-import FormTextInput from "../FormComponents/FormTextInput";
+import TextInput from "../FormComponents/TextInput";
 
 function FormRegNum({ newVehicle, updateValue }) {
   return (
     <>
-      <FormTextInput
+      <TextInput
         id="registrationNum"
         label="Registartion number"
         value={newVehicle.registrationNum}

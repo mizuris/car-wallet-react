@@ -1,5 +1,22 @@
 @import "./variables.scss";
+@import "./mixins.scss";
 
 .modal-input {
-    border: none;
+  border: none;
+  background-color: lighten($primary-gray, 30%);
+  margin: $s-size;
+}
+
+.modal-input-label {
+  font-size: $m-size;
+  color: $primary-gray;
+}
+
+.modal-details {
+  @include flexbox(center, center);
+  @include flex-direction(column);
+}
+
+.modal-fuel {
+  background-color: red;
 }

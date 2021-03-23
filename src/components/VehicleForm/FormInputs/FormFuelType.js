@@ -1,10 +1,10 @@
 import React from "react";
-import FormSelectInput from "../FormComponents/FormSelectInput";
+import SelectInput from "../FormComponents/SelectInput";
 
 function FormFuelType({ newVehicle, updateValue }) {
   return (
     <>
-      <FormSelectInput
+      <SelectInput
         id="fuelType"
         label="Select fuel type"
         value={newVehicle.fuelType}

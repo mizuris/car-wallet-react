@@ -1,5 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Form, Button, Col, Row } from "react-bootstrap";
+import * as FaIcons from "react-icons/fa";
 
 //Data storing imports
 import { VehicleContext } from "../../contexts/VehicleContext";
@@ -21,9 +23,13 @@ import FormTankCap from "./FormInputs/FormTankCap";
 import FormFuelCons from "./FormInputs/FormFuelCons";
 import FormFuelType from "./FormInputs/FormFuelType";
 
+//Regular expression to validate if input is a number
+export const validateNumber = /^[0-9.\b]+$/;
+
 function VehicleForm() {
   //Get function to add new vehicle
   const { addNewVehicle } = useContext(VehicleContext);
+  const history = useHistory();
 
   const INITIAL_STATE = {
     id: Math.floor(Math.random() * 100),
@@ -46,8 +52,6 @@ function VehicleForm() {
     setNewVehicle({ ...newVehicle, [e.target.id]: e.target.value });
   };
 
-  //Regular expression to validate if input is a number
-  const validateNumber = /^[0-9.\b]+$/;
 
   //Check if user filled all inputs to enable submit
   const [canSubmit, setCanSubmit] = useState(false);
@@ -112,10 +116,11 @@ function VehicleForm() {
 
     //Send data to context
     await addNewVehicle(newVehicle);
-    
+
     //Reset input values
     setNewVehicle(INITIAL_STATE);
     setUrl("");
+    history.push("/my-vehicles");
   };
 
   return (
@@ -199,7 +204,6 @@ function VehicleForm() {
                     label="Add photo"
                     onChange={(e) => setPhoto(e.target.files[0])}
                   />
-
                   <div className="form-buttons">
                     <Button
                       className="pick-button"
@@ -218,6 +222,13 @@ function VehicleForm() {
                       <span className="button-text">Upload photo</span>
                     </Button>
                   </div>
+                  {photo && !url ? (
+                    <div className="upload-notification">
+                      <FaIcons.FaArrowAltCircleUp /> Now upload photo
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
                   <FormProgressBar progress={progress} />
                   <FormThumbnail photo={photo} progress={progress} url={url} />
