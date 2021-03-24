@@ -5,7 +5,7 @@ import VehicleEmpty from "../components/Vehicles/VehicleEmpty";
 
 function MyVehicles() {
   const { vehicles } = useContext(VehicleContext);
-  console.log(vehicles);
+
   return (
     <div className="container-fluid page-section">
       {vehicles.length ? (

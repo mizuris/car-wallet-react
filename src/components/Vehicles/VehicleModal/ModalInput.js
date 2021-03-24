@@ -1,6 +1,6 @@
 import React from "react";
 
-function VehicleModalInput(props) {
+function ModalInput(props) {
   return (
     <div className="modal-input-container">
       {props.label ? (
@@ -13,6 +13,7 @@ function VehicleModalInput(props) {
       <input
         type={props.type ? [props.type] : "text"}
         className="modal-input"
+        step={props.type === "number" ? props.step : "any"}
         maxLength={props.type ? "4" : "15"}
         value={props.value}
         name={props.name}
@@ -23,4 +24,4 @@ function VehicleModalInput(props) {
   );
 }
 
-export default VehicleModalInput;
+export default ModalInput;

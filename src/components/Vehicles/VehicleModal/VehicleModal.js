@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { VehicleContext } from "../../../contexts/VehicleContext";
 import { Modal, Button, Row, Col } from "react-bootstrap";
+import { bodyTypes } from "../../VehicleForm/FormComponents/FormBodyType";
 
 import ModalInput from "./ModalInput";
 
@@ -8,11 +9,15 @@ import ModalInput from "./ModalInput";
 import * as FaIcons from "react-icons/fa";
 // import * as RiIcons from "react-icons/ri";
 import { Container } from "@material-ui/core";
+import ModalSelect from "./ModalSelect";
 
 function VehicleModal({ vehicle, show, hide }) {
   const { editVehicle } = useContext(VehicleContext);
   const [vehicleEditData, setVehicleEditData] = useState(vehicle);
   const vehicleBeforeEdit = Object.assign(vehicle);
+
+  const bodyOptions = bodyTypes;
+  const fuelOptions = ["Petrol", "Diesel", "LPG"];
 
   const changeVehicleData = (e) => {
     setVehicleEditData({ ...vehicleEditData, [e.target.name]: e.target.value });
@@ -41,6 +46,7 @@ function VehicleModal({ vehicle, show, hide }) {
               Vehicle details
             </div>
           </Row>
+          <hr />
           <Row>
             <Col xs={6}>
               <ModalInput
@@ -69,10 +75,11 @@ function VehicleModal({ vehicle, show, hide }) {
               />
             </Col>
             <Col xs={4}>
-              <ModalInput
+              <ModalSelect
                 label="Body type"
                 value={vehicleEditData.bodyType}
                 name="bodyType"
+                options={bodyOptions}
                 onChange={(e) => changeVehicleData(e)}
               />
             </Col>
@@ -92,17 +99,20 @@ function VehicleModal({ vehicle, show, hide }) {
               Fuel details
             </div>
           </Row>
+          <hr />
           <Row>
             <Col xs={4}>
-              <ModalInput
+              <ModalSelect
                 label="Fuel type"
                 value={vehicleEditData.fuelType}
                 name="fuelType"
+                options={fuelOptions}
                 onChange={(e) => changeVehicleData(e)}
               />
             </Col>
             <Col xs={4}>
               <ModalInput
+                type="number"
                 label="Tank capacity"
                 value={vehicleEditData.tankCapacity}
                 name="tankCapacity"
@@ -111,6 +121,8 @@ function VehicleModal({ vehicle, show, hide }) {
             </Col>
             <Col xs={4}>
               <ModalInput
+                type="number"
+                step=".1"
                 label="Avg. fuel consumption"
                 value={vehicleEditData.fuelConsumption}
                 name="fuelConsumption"
