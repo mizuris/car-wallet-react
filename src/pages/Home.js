@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "../components/Display/Section";
+import Section from "../components/Reusable/Section";
 import heading_img from "../assets/images/heading_img.svg";
 import { useHistory } from "react-router";
 

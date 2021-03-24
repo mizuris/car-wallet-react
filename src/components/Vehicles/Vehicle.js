@@ -13,7 +13,7 @@ import * as IoIcons from "react-icons/io";
 function Vehicle({ vehicle }) {
   const { removeVehicle } = useContext(VehicleContext);
   const [display, setDisplay] = useState({ left: true, right: false });
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   return (
     <>

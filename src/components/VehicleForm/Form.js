@@ -8,20 +8,20 @@ import { VehicleContext } from "../../contexts/VehicleContext";
 import { storage } from "../../firebase/firebase";
 
 //Form components
-import FormImage from "./FormComponents/FormImage";
 import FormFileInput from "react-bootstrap/esm/FormFileInput";
+import FormImage from "./FormComponents/FormImage";
 import FormProgressBar from "./FormComponents/FormProgressBar";
 
 //FormInputs
 import FormThumbnail from "./FormComponents/FormThumbnail";
-import FormBrand from "./FormInputs/FormBrand";
-import FormModel from "./FormInputs/FormModel";
-import FormProdYear from "./FormInputs/FormProdYear";
-import FormBodyType from "./FormInputs/FormBodyType";
-import FormRegNum from "./FormInputs/FormRegNum";
-import FormTankCap from "./FormInputs/FormTankCap";
-import FormFuelCons from "./FormInputs/FormFuelCons";
-import FormFuelType from "./FormInputs/FormFuelType";
+import FormBrand from "./FormComponents/FormBrand";
+import FormModel from "./FormComponents/FormModel";
+import FormProdYear from "./FormComponents/FormProdYear";
+import FormBodyType from "./FormComponents/FormBodyType";
+import FormRegNum from "./FormComponents/FormRegNum";
+import FormTankCap from "./FormComponents/FormTankCap";
+import FormFuelCons from "./FormComponents/FormFuelCons";
+import FormFuelType from "./FormComponents/FormFuelType";
 
 //Regular expression to validate if input is a number
 export const validateNumber = /^[0-9.\b]+$/;

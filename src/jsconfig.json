@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components": ["components/*"],
+      "@Inputs/*": ["components/Inputs/*"],
+      "@Navar/*": ["components/Navbar/*"],
+      "@Reusable/*": ["components/Reusable/*"],
+      "@VehicleForm/*": ["components/VehicleForm/*"],
+      "@Vehicles/*": ["components/Vehicles/*"],
+      "@contexts/*": ["contexts/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"]
+    }
+  }
+}

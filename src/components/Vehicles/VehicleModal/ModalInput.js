@@ -2,7 +2,7 @@ import React from "react";
 
 function VehicleModalInput(props) {
   return (
-    <>
+    <div className="modal-input-container">
       {props.label ? (
         <label className="modal-input-label" htmlFor={props.name}>
           {props.label}
@@ -19,7 +19,7 @@ function VehicleModalInput(props) {
         id={props.name}
         onChange={props.onChange}
       />
-    </>
+    </div>
   );
 }
 

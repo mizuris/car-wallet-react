@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "../FormComponents/TextInput";
+import TextInput from "../../Inputs/TextInput";
 
 function FormRegNum({ newVehicle, updateValue }) {
   return (

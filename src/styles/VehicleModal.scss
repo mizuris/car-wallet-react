@@ -1,0 +1,35 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.modal-input-container {
+  position: relative;
+  margin: 3px 0;
+
+  .modal-input-label {
+    font-size: $s-size;
+    color: $primary-gray;
+    position: absolute;
+    top: -5px;
+    left: 5px;
+  }
+
+  .modal-input {
+    border: none;
+    outline: 0;
+    width: 100%;
+    border-radius: 5px;
+    padding: 2px 5px;
+    background-color: lighten($primary-gray, 30%);
+    margin: $s-size 0;
+  }
+}
+
+.modal-text {
+  @include flexbox(center, center);
+  margin: $s-size;
+
+  .modal-icon {
+    @include icon($l-size, $primary-gray);
+    margin-right: $s-size;
+  }
+}

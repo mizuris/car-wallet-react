@@ -1,15 +1,13 @@
 import React, { useContext, useState } from "react";
 import { VehicleContext } from "../../../contexts/VehicleContext";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Row, Col } from "react-bootstrap";
 
 import ModalInput from "./ModalInput";
-import SelectInput from "../../VehicleForm/FormComponents/SelectInput";
 
-import { bodyTypes } from "../../VehicleForm/FormInputs/FormBodyType";
-
-import * as GiIcons from "react-icons/gi";
+// import * as GiIcons from "react-icons/gi";
 import * as FaIcons from "react-icons/fa";
-import * as RiIcons from "react-icons/ri";
+// import * as RiIcons from "react-icons/ri";
+import { Container } from "@material-ui/core";
 
 function VehicleModal({ vehicle, show, hide }) {
   const { editVehicle } = useContext(VehicleContext);
@@ -36,69 +34,91 @@ function VehicleModal({ vehicle, show, hide }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className="modal-details">
-          <div className="modal-details-inner">
-            <ModalInput
-              label="Brand"
-              value={vehicleEditData.brand}
-              name="brand"
-              onChange={(e) => changeVehicleData(e)}
-            />
-            <ModalInput
-              label="Model"
-              value={vehicleEditData.model}
-              name="model"
-              onChange={(e) => changeVehicleData(e)}
-            />
-          </div>
-          <div className="modal-details-inner">
-            <ModalInput
-              label="Reg. num."
-              value={vehicleEditData.registrationNum}
-              name="registrationNum"
-              onChange={(e) => changeVehicleData(e)}
-            />
-          </div>
-          <div className="modal-details-inner">
-            <ModalInput
-              label={<FaIcons.FaRegCalendarAlt className="types-icon" />}
-              type="number"
-              value={vehicleEditData.prodYear}
-              name="prodYear"
-              onChange={(e) => changeVehicleData(e)}
-            />
-            <ModalInput
-              label={<FaIcons.FaCar className="types-icon" />}
-              type="select"
-              name="bodyType"
-              value={vehicleEditData.bodyType}
-              onChange={(e) => changeVehicleData(e)}
-            />
-          </div>
-        </div>
-        <div className="modal-details">
-          <div className="modal-details-inner">
-            <ModalInput
-              label={<GiIcons.GiJerrycan className="types-icon" />}
-              type="number"
-              name="tankCapacity"
-              value={vehicleEditData.tankCapacity}
-              onChange={(e) => changeVehicleData(e)}
-            />
-            <ModalInput
-              label={<RiIcons.RiGasStationLine className="types-icon" />}
-              name="fuelConsumption"
-              value={vehicleEditData.fuelConsumption}
-              onChange={(e) => changeVehicleData(e)}
-            />
-            <ModalInput
-              label={<FaIcons.FaGasPump className="types-icon" />}
-              name="fuelType"
-              value={vehicleEditData.fuelType}
-              onChange={(e) => changeVehicleData(e)}
-            />
-          </div>
-        </div>
+        <Container>
+          <Row>
+            <div className="modal-text">
+              <FaIcons.FaCar className="modal-icon" />
+              Vehicle details
+            </div>
+          </Row>
+          <Row>
+            <Col xs={6}>
+              <ModalInput
+                label="Brand"
+                value={vehicleEditData.brand}
+                name="brand"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+            <Col xs={6}>
+              <ModalInput
+                label="Model"
+                value={vehicleEditData.model}
+                name="model"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={4}>
+              <ModalInput
+                label="Registration number"
+                value={vehicleEditData.registrationNum}
+                name="registrationNum"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+            <Col xs={4}>
+              <ModalInput
+                label="Body type"
+                value={vehicleEditData.bodyType}
+                name="bodyType"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+            <Col xs={4}>
+              <ModalInput
+                type="number"
+                label="Production year"
+                value={vehicleEditData.prodYear}
+                name="prodYear"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <div className="modal-text">
+              <FaIcons.FaGasPump className="modal-icon" />
+              Fuel details
+            </div>
+          </Row>
+          <Row>
+            <Col xs={4}>
+              <ModalInput
+                label="Fuel type"
+                value={vehicleEditData.fuelType}
+                name="fuelType"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+            <Col xs={4}>
+              <ModalInput
+                label="Tank capacity"
+                value={vehicleEditData.tankCapacity}
+                name="tankCapacity"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+            <Col xs={4}>
+              <ModalInput
+                label="Avg. fuel consumption"
+                value={vehicleEditData.fuelConsumption}
+                name="fuelConsumption"
+                onChange={(e) => changeVehicleData(e)}
+              />
+            </Col>
+          </Row>
+        </Container>
       </Modal.Body>
       <Modal.Footer>
         <Button

@@ -1,5 +1,5 @@
 import React from "react";
-import SelectInput from "../FormComponents/SelectInput";
+import SelectInput from "../../Inputs/SelectInput";
 
 function FormFuelType({ newVehicle, updateValue }) {
   return (
