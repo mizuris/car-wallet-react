@@ -5,6 +5,7 @@ function FormRegNum({ newVehicle, updateValue }) {
   return (
     <>
       <TextInput
+        classFor="form"
         id="registrationNum"
         label="Registartion number"
         value={newVehicle.registrationNum}

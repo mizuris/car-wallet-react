@@ -1,28 +1,33 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 
 function ModalSelect(props) {
-  const options = props.options;
   return (
-    <div className="modal-input-container">
+    <div className={`${props.classFor}-input-container`}>
       {props.label ? (
-        <label className="modal-input-label" htmlFor={props.name}>
+        <Form.Label className={`${props.classFor}-input-label`}>
           {props.label}
-        </label>
+        </Form.Label>
       ) : (
         ""
       )}
-      <select onChange={props.onChange} className="modal-input">
-        <option className="modal-input-select-initial" value={props.value}>
-          {props.value}
-        </option>
-        {options.map((option) => {
+
+      <Form.Control
+        className={`${props.classFor}-input`}
+        name={props.name}
+        id={props.name}
+        value={props.value}
+        as="select"
+        onChange={props.onChange}
+      >
+        {props.options.map((option) => {
           return (
-            <option value={option} key={option}>
+            <option key={option} value={option}>
               {option}
             </option>
           );
         })}
-      </select>
+      </Form.Control>
     </div>
   );
 }

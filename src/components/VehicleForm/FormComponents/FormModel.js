@@ -5,6 +5,7 @@ function FormModel({ newVehicle, updateValue }) {
   return (
     <>
       <TextInput
+        classFor="form"
         id="model"
         label="Model"
         value={newVehicle.model}

@@ -3,9 +3,12 @@ import { Form } from "react-bootstrap";
 
 function SelectInput(props) {
   return (
-    <div className="form-input-container">
-      <Form.Label className="form-label">{props.label}</Form.Label>
+    <div className={`${props.classFor}-input-container`}>
+      <Form.Label className={`${props.classFor}-input-label`}>
+        {props.label}
+      </Form.Label>
       <Form.Control
+        className={`${props.classFor}-input`}
         id={props.id}
         value={props.value}
         as="select"

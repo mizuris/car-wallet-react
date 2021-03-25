@@ -5,6 +5,7 @@ function FormBrand({ newVehicle, updateValue }) {
   return (
     <>
       <TextInput
+        classFor="form"
         id="brand"
         label="Brand"
         value={newVehicle.brand}

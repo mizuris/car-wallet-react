@@ -52,7 +52,6 @@ function VehicleForm() {
     setNewVehicle({ ...newVehicle, [e.target.id]: e.target.value });
   };
 
-
   //Check if user filled all inputs to enable submit
   const [canSubmit, setCanSubmit] = useState(false);
   useEffect(() => {
@@ -63,6 +62,8 @@ function VehicleForm() {
       newVehicle.prodYear >= 1886 &&
       newVehicle.registrationNum &&
       newVehicle.tankCapacity &&
+      newVehicle.tankCapacity.length <= 3 &&
+      newVehicle.fuelConsumption <= newVehicle.tankCapacity &&
       newVehicle.fuelConsumption &&
       newVehicle.photo
     ) {

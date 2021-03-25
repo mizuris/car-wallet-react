@@ -14,11 +14,10 @@ export const bodyTypes = [
 ];
 
 function FormBodyType({ newVehicle, updateValue }) {
-
-
   return (
     <>
       <SelectInput
+        classFor="form"
         id="bodyType"
         label="Select body type"
         value={newVehicle.bodyType}

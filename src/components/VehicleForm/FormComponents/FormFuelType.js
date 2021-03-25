@@ -5,6 +5,7 @@ function FormFuelType({ newVehicle, updateValue }) {
   return (
     <>
       <SelectInput
+        classFor="form"
         id="fuelType"
         label="Select fuel type"
         value={newVehicle.fuelType}
