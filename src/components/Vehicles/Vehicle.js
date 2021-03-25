@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import VehiclePhoto from "./VehiclePhoto";
 import VehicleCardLeft from "./VehicleCardLeft";
 import VehicleCardRight from "./VehicleCardRight";
-import VehicleModal from "./VehicleModal/VehicleModal";
+import VehicleModal from "../Modals/VehicleModal/VehicleModal";
 import { VehicleContext } from "../../contexts/VehicleContext";
 
 //Icon imports

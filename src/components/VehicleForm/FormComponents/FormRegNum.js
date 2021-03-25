@@ -1,7 +1,7 @@
 import React from "react";
 import TextInput from "../../Inputs/TextInput";
 
-function FormRegNum({ newVehicle, updateValue }) {
+function FormRegNum({ newVehicle, updateValue, validateInput, handleError }) {
   return (
     <>
       <TextInput
@@ -12,8 +12,11 @@ function FormRegNum({ newVehicle, updateValue }) {
         placeholder="Enter registration number"
         isValid={newVehicle.registrationNum.length >= 2}
         errorText="Enter correct registatrion number"
-        maxLength="15"
-        onChange={(e) => updateValue(e)}
+        onChange={(e) =>
+          validateInput.test(e.target.value)
+            ? handleError(null)
+            : updateValue(e)
+        }
       />
     </>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import TextInput from "../../Inputs/TextInput";
 
-function FormTankCap({ newVehicle, updateValue, validateNumber }) {
+function FormTankCap({ newVehicle, updateValue }) {
   return (
     <>
       <TextInput
@@ -15,13 +15,7 @@ function FormTankCap({ newVehicle, updateValue, validateNumber }) {
           newVehicle.tankCapacity.length && newVehicle.tankCapacity.length <= 3
         }
         errorText="Enter correct tank capacity"
-        onChange={(e) => {
-          if (e.target.value === "" || validateNumber.test(e.target.value)) {
-            updateValue(e);
-          } else {
-            alert("Input must be a number!");
-          }
-        }}
+        onChange={(e) => updateValue(e)}
       />
     </>
   );

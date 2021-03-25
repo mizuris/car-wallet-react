@@ -1,6 +1,15 @@
 @import "./variables.scss";
 @import "./mixins.scss";
 
+.form-modal-warning {
+  color: $error;
+}
+
+.form-modal-exceptions {
+  font-size: $m-size;
+  color: $primary-gray;
+  font-weight: 700;
+}
 .form-container {
   @include flexbox(flex-start, space-between);
   text-align: center;

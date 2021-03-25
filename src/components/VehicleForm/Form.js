@@ -11,6 +11,7 @@ import { storage } from "../../firebase/firebase";
 import FormFileInput from "react-bootstrap/esm/FormFileInput";
 import FormImage from "./FormComponents/FormImage";
 import FormProgressBar from "./FormComponents/FormProgressBar";
+import ErrorModal from "../Modals/ErrorModal/ErrorModal";
 
 //FormInputs
 import FormThumbnail from "./FormComponents/FormThumbnail";
@@ -24,13 +25,14 @@ import FormFuelCons from "./FormComponents/FormFuelCons";
 import FormFuelType from "./FormComponents/FormFuelType";
 
 //Regular expression to validate if input is a number
-export const validateNumber = /^[0-9.\b]+$/;
+export const validateInput = /[!@#$%^&*()_+=[\]{};"\\|<>?~]/;
 
 function VehicleForm() {
   //Get function to add new vehicle
   const { addNewVehicle } = useContext(VehicleContext);
   const history = useHistory();
 
+  //Set initail state
   const INITIAL_STATE = {
     id: Math.floor(Math.random() * 100),
     brand: "",
@@ -43,13 +45,19 @@ function VehicleForm() {
     fuelType: "Petrol",
     photo: null,
   };
-
-  //Set initail state
   const [newVehicle, setNewVehicle] = useState(INITIAL_STATE);
 
   //Reusable function to save data from inputs
   const updateValue = (e) => {
     setNewVehicle({ ...newVehicle, [e.target.id]: e.target.value });
+  };
+
+  //Modal state if wrong input occurs
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const handleError = (input) => {
+    if (!input) {
+      setShowErrorModal(true);
+    }
   };
 
   //Check if user filled all inputs to enable submit
@@ -126,6 +134,10 @@ function VehicleForm() {
 
   return (
     <div className="form-container">
+      <ErrorModal
+        showErrorModal={showErrorModal}
+        hideErrorModal={() => setShowErrorModal(false)}
+      />
       <Row>
         <Col lg={6} md={12}>
           <FormImage />
@@ -138,12 +150,16 @@ function VehicleForm() {
                   <FormBrand
                     newVehicle={newVehicle}
                     updateValue={updateValue}
+                    validateInput={validateInput}
+                    handleError={handleError}
                   />
                 </Col>
                 <Col md={12}>
                   <FormModel
                     newVehicle={newVehicle}
                     updateValue={updateValue}
+                    validateInput={validateInput}
+                    handleError={handleError}
                   />
                 </Col>
               </Form.Row>
@@ -153,7 +169,6 @@ function VehicleForm() {
                   <FormProdYear
                     newVehicle={newVehicle}
                     updateValue={updateValue}
-                    validateNumber={validateNumber}
                   />
                 </Col>
                 <Col md={6}>
@@ -169,6 +184,8 @@ function VehicleForm() {
                   <FormRegNum
                     newVehicle={newVehicle}
                     updateValue={updateValue}
+                    validateInput={validateInput}
+                    handleError={handleError}
                   />
                 </Col>
               </Form.Row>
@@ -177,7 +194,6 @@ function VehicleForm() {
                   <FormTankCap
                     newVehicle={newVehicle}
                     updateValue={updateValue}
-                    validateNumber={validateNumber}
                   />
                 </Col>
 
@@ -185,7 +201,6 @@ function VehicleForm() {
                   <FormFuelCons
                     newVehicle={newVehicle}
                     updateValue={updateValue}
-                    validateNumber={validateNumber}
                   />
                 </Col>
                 <Col md={4}>

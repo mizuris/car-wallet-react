@@ -1,7 +1,7 @@
 import React from "react";
 import TextInput from "../../Inputs/TextInput";
 
-function FormBrand({ newVehicle, updateValue }) {
+function FormBrand({ newVehicle, updateValue, validateInput, handleError }) {
   return (
     <>
       <TextInput
@@ -12,9 +12,11 @@ function FormBrand({ newVehicle, updateValue }) {
         placeholder="Enter brand"
         isValid={newVehicle.brand.length >= 2}
         errorText="Enter correct brand"
-        onChange={(e) => {
-          updateValue(e);
-        }}
+        onChange={(e) =>
+          validateInput.test(e.target.value)
+            ? handleError(null)
+            : updateValue(e)
+        }
       />
     </>
   );

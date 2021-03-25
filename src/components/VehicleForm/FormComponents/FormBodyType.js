@@ -14,6 +14,7 @@ export const bodyTypes = [
 ];
 
 function FormBodyType({ newVehicle, updateValue }) {
+
   return (
     <>
       <SelectInput
