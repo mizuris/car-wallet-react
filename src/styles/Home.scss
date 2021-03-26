@@ -1,57 +1,13 @@
 @import "./variables.scss";
 @import "./mixins.scss";
 
-.container-fluid {
-  background-color: $primary-blue;
-}
-
-.dark {
-  background-color: $primary-dark;
-}
-
-.blue {
-  background-color: $primary-blue;
-}
-
 .home-container {
   @include flexbox(center, center);
+  background: $primary-blue;
 }
 
-.heading-img-container {
-  margin: 50px;
-
-  .heading-img {
-    max-width: 80%;
-    height: auto;
-  }
-}
-
-.heading-text-container {
-  margin-top: 30px;
-
-  .heading-text-header {
-    color: $secondary-blue;
-    padding: 10px;
-  }
-
-  .heading-text {
-    margin: 30px 0;
-    color: $primary-light;
-  }
-}
-
-.btn-start {
-  background-color: $primary-light;
-  font-weight: bold;
-  margin: 20px;
-}
-
-@media screen and (max-width: 769px) {
-  .heading-img-container {
-    margin: 20px;
-    text-align: center;
-  }
-  .container {
-    flex-direction: column;
+@media screen and (min-width: 992px) {
+  .home-container {
+    height: 100vh;
   }
 }

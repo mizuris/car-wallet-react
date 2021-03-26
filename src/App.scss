@@ -6,9 +6,5 @@
 @import "./styles/Navbar.scss";
 @import "./styles/SlideToTop.scss";
 @import "./styles/VehicleModal.scss";
-
-.page-section {
-  min-height: 100vh;
-  width: 100%;
-  padding: 50px;
-}
+@import "./styles/bg-img.scss";
+@import "./styles/Section.scss";

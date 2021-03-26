@@ -7,19 +7,19 @@ export const NavbarData = [
   {
     title: "Home",
     path: "/",
-    icon: <AiIcons.AiFillHome />,
+    icon: <AiIcons.AiFillHome className="navbar-icon" />,
     className: "nav-text",
   },
   {
     title: "My vehicles",
     path: "/my-vehicles",
-    icon: <FaIcons.FaCar />,
+    icon: <FaIcons.FaCar className="navbar-icon" />,
     className: "nav-text",
   },
   {
     title: "Add vehicle",
     path: "/add-vehicle",
-    icon: <IoIcons.IoMdAddCircle />,
+    icon: <IoIcons.IoMdAddCircle className="navbar-icon" />,
     className: "nav-text",
   },
 ];

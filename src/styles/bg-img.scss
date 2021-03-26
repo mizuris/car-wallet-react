@@ -1,0 +1,5 @@
+@import "./variables.scss";
+
+.bg-img-headlights {
+  @include backgroungImg("../assets/images/headlights.jpg", $alt, 0.15);
+}

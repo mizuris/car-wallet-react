@@ -5,30 +5,18 @@ import { useHistory } from "react-router";
 
 export default function Home() {
   const history = useHistory();
-  const navigateToFleet = () => history.push("/my-vehicles");
-  const parText =
-    "CarWallet is an app that helps you manage fleet. You can check up on your drivers from anywhere in the world";
-  const headerText = "Keep it close";
+  const navigateToVehicles = () => history.push("/my-vehicles");
 
   return (
-    <div className="container-fluid home-container page-section">
-      <div className="container">
-        <Section
-          bgColor="blue"
-          imgWrapClassName="heading-img-container"
-          imgClassName="heading-img"
-          imgSrc={heading_img}
-          alt="Heading img"
-          textWrapClassName="heading-text-container text-center"
-          textHeaderClassName="heading-text-header"
-          textParClassName="heading-text"
-          btnValue="Try now"
-          btnClassName="btn-danger"
-          btnOnClick={navigateToFleet}
-          headerText={headerText}
-          parText={parText}
-        />
-      </div>
+    <div className="container-fluid home-container">
+      <Section
+        src={heading_img}
+        alt="Top section"
+        headerText="Keep track of your cars"
+        paragraphText="CarWallet is an app that helps you manage fleet. You can check up on your drivers from anywhere in the world"
+        onClick={navigateToVehicles}
+        btnText="Go to your wallet"
+      />
     </div>
   );
 }

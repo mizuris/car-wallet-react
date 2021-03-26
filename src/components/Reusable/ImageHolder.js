@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function ImageHolder({ wrapCName, imgCName, src, alt }) {
+export default function ImageHolder(props) {
   return (
-    <div className={wrapCName}>
-      <img className={imgCName} alt={alt} src={src} />
+    <div className={props.imgContainerClassName}>
+      <img className={props.imgClassName} alt={props.alt} src={props.src} />
     </div>
   );
 }
