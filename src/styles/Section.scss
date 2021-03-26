@@ -19,8 +19,9 @@
 
 .section-text-container {
   margin-top: 30px;
-  text-align: center;
   color: $primary-light;
+  text-align: center;
+  max-width: 50%;
 
   h1 {
     font-size: $xl-size;
@@ -28,6 +29,7 @@
   }
 
   p {
+    text-align: left;
     font-size: $m-size;
     margin: 30px 0;
   }

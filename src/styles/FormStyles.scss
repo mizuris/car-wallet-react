@@ -1,6 +1,10 @@
 @import "./variables.scss";
 @import "./mixins.scss";
 
+.add-vehicle-container {
+  background: $primary-blue;
+}
+
 .form-modal-warning {
   color: $error;
 }
@@ -112,6 +116,10 @@
 }
 
 @media screen and (min-width: 992px) {
+  .add-vehicle-container {
+    height: 100vh;
+  }
+  
   .form-container {
     .form-image-container {
       height: 100%;

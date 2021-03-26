@@ -40,14 +40,28 @@
   width: 90%;
   height: 120px;
   margin: $xl-size auto;
+  color: $primary-light;
   padding: 6px;
-  background-color: $main;
+  border-radius: $l-size;
+  @include linearGradientTwoPoints(
+    rgba(0, 0, 0, 0.1),
+    rgba(3, 35, 65, 0.8),
+    90deg
+  );
   position: relative;
   text-align: center;
+  transition: all ease-in-out 300ms;
+
+  &:hover {
+    background: lighten(rgba(3, 35, 65, 0.8), 20%);
+    transition: all ease-in-out 300ms;
+    -webkit-box-shadow: 0px 10px 15px 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 10px 15px 1px rgba(255, 255, 255, 0.5);
+  }
 
   //interactive icons
   .interaction-icon {
-    @include icon($m-size, $primary-dark);
+    @include icon($m-size, $primary-light);
     z-index: 10;
   }
 
@@ -62,7 +76,7 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
-    color: $primary-blue;
+    color: $primary-light;
     animation: pulse 3s infinite;
   }
 
@@ -171,7 +185,7 @@
         color: $primary-gray;
 
         &:hover {
-          color: $primary-dark;
+          color: $primary-light;
         }
 
         .link-icon {

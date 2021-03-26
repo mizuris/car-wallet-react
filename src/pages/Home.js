@@ -13,7 +13,8 @@ export default function Home() {
         src={heading_img}
         alt="Top section"
         headerText="Keep track of your cars"
-        paragraphText="CarWallet is an app that helps you manage fleet. You can check up on your drivers from anywhere in the world"
+        paragraphText="CarWallet is an app that helps you manage fleet. 
+        You can check up on your drivers from anywhere in the world."
         onClick={navigateToVehicles}
         btnText="Go to your wallet"
       />

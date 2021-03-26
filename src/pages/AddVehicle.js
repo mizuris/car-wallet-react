@@ -3,7 +3,10 @@ import Form from "../components/VehicleForm/Form";
 
 export default function AddVehicle() {
   return (
-    <div className="container-fluid page-section d-flex align-items-center" name="start">
+    <div
+      className="container-fluid add-vehicle-container d-flex align-items-center"
+      name="start"
+    >
       <Form />
     </div>
   );
