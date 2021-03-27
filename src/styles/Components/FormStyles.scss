@@ -1,9 +1,7 @@
-@import "./variables.scss";
-@import "./mixins.scss";
-
-.add-vehicle-container {
-  background: $primary-blue;
-}
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../keyframes/slideFromLeft.scss";
+@import "../keyframes/slideFromRight.scss";
 
 .form-modal-warning {
   color: $error;
@@ -41,11 +39,15 @@
       margin-bottom: 50px;
       font-weight: 600;
       color: $primary-light;
+      animation: slideFromLeft 2s ease forwards;
     }
 
     .form-image {
       max-height: 200px;
       width: 100%;
+      opacity: 0;
+      animation: slideFromRight 2s ease forwards;
+      animation-delay: 300ms;
     }
 
     //mobile arrow icon to scroll to form
@@ -65,11 +67,13 @@
     background-color: $primary-dark;
     padding: 20px;
     margin: 0 auto;
+    opacity: 0;
+    animation: slideFromRight 3s ease 1s forwards;
 
     //container for label and input
     .form-input-container {
       text-align: left;
-
+      
       //placeholder
       .form-input {
         align-items: flex-start;

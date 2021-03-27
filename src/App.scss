@@ -1,10 +1,15 @@
+//Utils
 @import "~bootstrap/scss/bootstrap";
-@import "./styles/variables.scss";
-@import "./styles/FormStyles.scss";
-@import "./styles//Home.scss";
-@import "./styles/MyVehicles.scss";
-@import "./styles/Navbar.scss";
-@import "./styles/SlideToTop.scss";
-@import "./styles/VehicleModal.scss";
-@import "./styles/bg-img.scss";
-@import "./styles/Section.scss";
+@import "./styles/backgroundStyles.scss";
+
+//Pages
+@import "./styles/Pages/Home.scss";
+@import "./styles/Pages/MyVehicles.scss";
+@import "./styles//Pages/AddVehicle.scss";
+
+//Components
+@import "./styles/Components/Navbar.scss";
+@import "./styles/Components/SlideToTop.scss";
+@import "./styles/Components/Section.scss";
+@import "./styles/Components/VehicleModal.scss";
+@import "./styles/Components/FormStyles.scss";

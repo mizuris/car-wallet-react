@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Modal, Button, Row, Col, Container } from "react-bootstrap";
 import * as FaIcons from "react-icons/fa";
 
@@ -15,7 +15,6 @@ import ErrorModal from "../ErrorModal/ErrorModal";
 function VehicleModal({ vehicle, show, hide }) {
   const { editVehicle } = useContext(VehicleContext);
   const [vehicleEditData, setVehicleEditData] = useState(vehicle);
-  const [canBeChanged, setCanBeChanged] = useState(false);
 
   // error modal state
   const [showErrorModal, setShowErrorModal] = useState(false);
@@ -27,15 +26,6 @@ function VehicleModal({ vehicle, show, hide }) {
 
   // clone vehicle object to reset changes on cancel
   const vehicleBeforeEdit = Object.assign(vehicle);
-
-  // check if tank capacity is higher than consumption
-  useEffect(() => {
-    if (vehicleEditData.fuelConsumption > vehicleEditData.tankCapacity) {
-      setCanBeChanged(true);
-    } else {
-      setCanBeChanged(false);
-    }
-  }, [vehicleEditData]);
 
   // select inputs types
   const bodyOptions = bodyTypes;
@@ -189,7 +179,6 @@ function VehicleModal({ vehicle, show, hide }) {
             Cancel
           </Button>
           <Button
-            disabled={canBeChanged}
             onClick={() => {
               editVehicle(vehicleEditData);
               hide();

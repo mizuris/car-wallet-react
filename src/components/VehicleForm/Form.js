@@ -71,7 +71,6 @@ function VehicleForm() {
       newVehicle.registrationNum &&
       newVehicle.tankCapacity &&
       newVehicle.tankCapacity.length <= 3 &&
-      newVehicle.fuelConsumption <= newVehicle.tankCapacity &&
       newVehicle.fuelConsumption &&
       newVehicle.photo
     ) {

@@ -16,14 +16,9 @@ function FormFuelCons({ newVehicle, updateValue }) {
         placeholder="Enter avg. fuel consumption"
         isValid={
           newVehicle.fuelConsumption.length >= 1 &&
-          newVehicle.fuelConsumption.length <= 4 &&
-          newVehicle.fuelConsumption <= newVehicle.tankCapacity
+          newVehicle.fuelConsumption.length <= 4
         }
-        errorText={
-          newVehicle.fuelConsumption >= newVehicle.tankCapacity
-            ? "Consumption exceeds capacity"
-            : "Enter correct value. For example 6.8"
-        }
+        errorText={"Enter correct value. For example 6.8"}
         onChange={(e) => updateValue(e)}
       />
     </>

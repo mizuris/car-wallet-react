@@ -1,0 +1,26 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.bg-img-headlights {
+  @include backgroungImg("../assets/images/headlights.jpg", $third, 0.3);
+}
+
+.bg-main {
+  background: $main;
+}
+
+.bg-alt {
+  background: $secondary;
+}
+
+.bg-third {
+  background: $third;
+}
+
+.bg-black {
+  background-color: $primary-dark;
+}
+
+.bg-gray {
+  background-color: $primary-gray;
+}
