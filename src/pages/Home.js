@@ -2,13 +2,14 @@ import React from "react";
 import Section from "../components/Reusable/Section";
 import heading_img from "../assets/images/heading_img.svg";
 import { useHistory } from "react-router";
+import FillSvg from "../components/Svg/FillSvg";
 
 export default function Home() {
   const history = useHistory();
   const navigateToVehicles = () => history.push("/my-vehicles");
 
   return (
-    <div className="container-fluid home-container">
+    <div className="container-fluid bg-third">
       <Section
         src={heading_img}
         alt="Top section"
@@ -18,6 +19,7 @@ export default function Home() {
         onClick={navigateToVehicles}
         btnText="Go to your wallet"
       />
+      <FillSvg />
     </div>
   );
 }
