@@ -1,5 +1,6 @@
 @import "./variables.scss";
 @import "./mixins.scss";
+@import "./keyframes/fadeIn.scss";
 
 .bg-img-headlights {
   @include backgroungImg("../assets/images/headlights.jpg", $third, 0.3);

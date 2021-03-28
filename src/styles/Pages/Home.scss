@@ -1,5 +1,6 @@
 @import "../variables.scss";
 @import "../mixins.scss";
+@import "../keyframes/slideAnimations.scss";
 
 .home-container {
   @include flexbox(center, center);

@@ -229,12 +229,17 @@ function VehicleForm() {
                       <span className="button-text">Pick photo</span>
                     </Button>
                     <Button
-                      className="upload-button"
+                      className={`upload-button ${
+                        progress ? "" : "waiting-for-upload"
+                      }`}
+                      disabled={progress || url}
                       style={{ display: photo ? "block" : "none" }}
-                      variant="outline-primary"
+                      variant="warning"
                       onClick={handleUpload}
                     >
-                      <span className="button-text">Upload photo</span>
+                      <span className="button-text">
+                        <b>Upload photo</b>
+                      </span>
                     </Button>
                   </div>
                   {photo && !url ? (
@@ -245,8 +250,14 @@ function VehicleForm() {
                     ""
                   )}
 
-                  <FormProgressBar progress={progress} />
-                  <FormThumbnail photo={photo} progress={progress} url={url} />
+                  <div className="mb-3">
+                    <FormProgressBar progress={progress} />
+                    <FormThumbnail
+                      photo={photo}
+                      progress={progress}
+                      url={url}
+                    />
+                  </div>
                 </Col>
               </Form.Row>
               <Button

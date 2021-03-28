@@ -1,7 +1,7 @@
 @import "../variables.scss";
 @import "../mixins.scss";
-@import "../keyframes/slideFromLeft.scss";
-@import "../keyframes/slideFromRight.scss";
+@import "../keyframes/slideAnimations.scss";
+@import "../keyframes/buttonWobble.scss";
 
 .form-modal-warning {
   color: $error;
@@ -67,13 +67,14 @@
     background-color: $primary-dark;
     padding: 20px;
     margin: 0 auto;
+    margin-bottom: 50px;
     opacity: 0;
-    animation: slideFromRight 3s ease 1s forwards;
+    animation: slideFromRight 2s ease 0.7s forwards;
 
     //container for label and input
     .form-input-container {
       text-align: left;
-      
+
       //placeholder
       .form-input {
         align-items: flex-start;
@@ -111,6 +112,10 @@
   }
 }
 
+.waiting-for-upload {
+  animation: buttonWobble 800ms ease-in-out infinite;
+}
+
 .upload-notification {
   color: $correct;
   font-size: $m-size;
@@ -123,7 +128,7 @@
   .add-vehicle-container {
     height: 100vh;
   }
-  
+
   .form-container {
     .form-image-container {
       height: 100%;

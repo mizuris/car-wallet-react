@@ -1,6 +1,7 @@
 @import "../variables.scss";
 @import "../mixins.scss";
 @import "../keyframes/pulse.scss";
+@import "../keyframes/slideAnimations.scss";
 
 //no cars added
 .empty {
@@ -9,7 +10,8 @@
   text-align: center;
 
   h2 {
-    padding: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
     color: $primary-light;
   }
 }
@@ -40,12 +42,27 @@
   text-align: center;
   transition: all ease-in-out 300ms;
   overflow: hidden;
+  opacity: 0;
 
   &:hover {
     background: lighten(rgba(3, 35, 65, 0.8), 20%);
     transition: all ease-in-out 300ms;
-    -webkit-box-shadow: 0px 10px 15px 1px rgba(255, 255, 255, 0.5);
-    box-shadow: 0px 10px 15px 1px rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: 0px 10px 15px 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 10px 15px 1px rgba(255, 255, 255, 0.1);
+  }
+
+  &:nth-of-type(1) {
+    margin-top: 50px;
+  }
+
+  &:nth-of-type(odd) {
+    animation: slideFromLeft 1s ease forwards;
+    animation-delay: 300ms;
+  }
+
+  &:nth-of-type(even) {
+    animation: slideFromRight 1s ease forwards;
+    animation-delay: 300ms;
   }
 
   //interactive icons
@@ -64,7 +81,7 @@
   .slide-details {
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    right: 15px;
     color: $primary-light;
     animation: pulse 3s infinite;
   }
@@ -77,7 +94,7 @@
   }
 
   .edit {
-    right: 40px;
+    right: 45px;
 
     &:hover {
       color: $secondary-blue;
@@ -85,7 +102,7 @@
   }
 
   .remove {
-    right: 10px;
+    right: 15px;
 
     &:hover {
       color: $remove;
