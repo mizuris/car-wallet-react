@@ -1,0 +1,40 @@
+@import "../../styles/keyframes/slideAnimations.scss";
+@import "../../styles/keyframes/fadeIn.scss";
+@import "../../styles/variables.scss";
+
+.fillSvg {
+  width: 100%;
+  max-height: 300px;
+}
+
+#form {
+  opacity: 0;
+  animation: slideFromRight 1.5s ease 1.5s forwards;
+}
+
+#forminner {
+  opacity: 0;
+  animation: slideFromRight 1.5s ease 2s forwards;
+}
+
+#forminnertext {
+  opacity: 0;
+  animation: fadeIn 1s ease 2.5s forwards;
+}
+
+#tickform {
+  opacity: 0;
+  animation: slideFromTop 1s ease 3s forwards;
+}
+
+#tickprogress {
+  opacity: 0;
+  animation: slideFromTop 1s ease 1s forwards;
+}
+
+@media screen and (min-width: 992px) {
+  .fillSvg {
+    width: 100%;
+    max-height: 400px;
+  }
+}
