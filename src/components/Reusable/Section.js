@@ -19,7 +19,7 @@ export default function Section(props) {
           <p>{props.paragraphText}</p>
           {props.btnText ? (
             <Button
-              size="sm"
+              size={props.btnSize}
               variant={props.btnVariant}
               className="section-button"
               onClick={props.onClick}

@@ -13,22 +13,23 @@ export default function Home() {
     <>
       <Section
         background="third"
-        headerText="Start using wallet now!"
+        headerText="Start using CarWallet now!"
         paragraphText="Simply fill out the form and control your vehicles list, or
-        check you current wallet if you already have your cars added!"
+        check you current wallet if you already have your cars added! Enter your car details, add photo, keep track of your whole fleet."
         onClick={navigateToVehicles}
         btnText="Go to your wallet"
+        btnVariant="primary"
         imgOrder="1"
         textOrder="2"
+        btnSize="lg"
       >
         <FillSvg />
       </Section>
 
       <Section
         background="black"
-        headerText="Keep track of your cars"
-        paragraphText="Easily manage your vehicles. You can freely edit, remove 
-        and add cars to your list."
+        headerText="Use everywhere"
+        paragraphText="CarWallet is responsive, so you can use it on your smartphone, tablet or desktop. Take this app wherever and whenever you want."
         imgOrder="2"
         textOrder="1"
       >
