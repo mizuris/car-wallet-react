@@ -9,7 +9,7 @@ import MyVehicles from "./pages/MyVehicles";
 
 //Context providers
 import VehicleContextProvider from "./contexts/VehicleContext";
-import SlideToTop from "./components/Reusable/SlideToTop";
+import SlideToTop from "./components/SlideToTop";
 
 function App() {
   return (

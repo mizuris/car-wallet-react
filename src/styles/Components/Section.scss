@@ -1,22 +1,26 @@
 @import "../variables.scss";
 @import "../mixins.scss";
+@import "../keyframes/slideAnimations.scss";
 
 .section-container {
   @include flexbox(center, center);
   flex-direction: column;
   height: 100vh;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
+  padding: $l-size;
 }
 
 .section-img-container {
-  margin: 5px;
+  margin: 50px 5px 0;
   @include flexbox(center, center);
+  animation: slideFromLeft 1s ease-in forwards;
+  width: 100%;
+  height: auto;
 
   .section-img {
-    width: 80%;
-
     height: auto;
+    width: 80%;
   }
 }
 
@@ -24,6 +28,7 @@
   color: $primary-light;
   text-align: center;
   max-width: 80%;
+  animation: slideFromRight 1s ease-in forwards;
 
   h1 {
     font-size: $xl-size;
@@ -48,13 +53,14 @@
   }
 
   .section-img-container {
-    margin: 20px;
+    margin: 30px;
     max-width: 90%;
   }
 
   .section-text-container {
-    margin-top: 30px;
+    margin: 30px;
     color: $primary-light;
+    width: 70%;
 
     h1 {
       font-size: 3em;

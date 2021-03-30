@@ -12,103 +12,100 @@
   color: $primary-gray;
   font-weight: 700;
 }
+
 .form-container {
   @include flexbox(flex-start, space-between);
   text-align: center;
   padding: $s-size;
   flex-direction: row;
   @include margin-center;
+}
+//validation styles
+.is-valid {
+  border: 2px solid $correct;
+}
 
-  //validation styles
-  .is-valid {
-    border: 2px solid $correct;
+.is-not-valid {
+  border: 2px solid $error;
+}
+
+//image section
+.form-image-container {
+  @include flexbox(center, space-around);
+  @include flex-direction(column);
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+h2 {
+  margin-bottom: 50px;
+  font-weight: 600;
+  color: $primary-light;
+  animation: slideFromLeft 2s ease forwards;
+}
+
+.form-image {
+  max-height: 200px;
+  width: 100%;
+  opacity: 0;
+  animation: slideFromRight 2s ease forwards;
+  animation-delay: 300ms;
+}
+
+//mobile arrow icon to scroll to form
+.form-image-arrow {
+  display: block;
+}
+
+.arrow-icon {
+  @include icon($xl-size, $primary-light);
+}
+
+//all fields / inputs container
+.form-fields {
+  width: 90%;
+  max-width: 600px;
+  background-color: $primary-dark;
+  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: slideFromRight 2s ease 0.7s forwards;
+}
+//container for label and input
+.form-input-container {
+  text-align: left;
+}
+//placeholder
+.form-input {
+  align-items: flex-start;
+  &::placeholder {
+    font-size: $m-size;
   }
+}
 
-  .is-not-valid {
-    border: 2px solid $error;
+.form-label {
+  color: $primary-gray;
+  font-size: $m-size;
+}
+
+//input styles for correct / incorrect values
+.form-input-inner {
+  .error-text {
+    color: $error;
+    font-weight: 700;
+    font-size: $s-size;
   }
+}
 
-  //image section
-  .form-image-container {
-    @include flexbox(center, space-around);
-    @include flex-direction(column);
-    width: 100%;
-    height: calc(100vh - 60px);
+//photo upload buttons
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: 10px auto;
 
-    h2 {
-      margin-bottom: 50px;
-      font-weight: 600;
-      color: $primary-light;
-      animation: slideFromLeft 2s ease forwards;
-    }
-
-    .form-image {
-      max-height: 200px;
-      width: 100%;
-      opacity: 0;
-      animation: slideFromRight 2s ease forwards;
-      animation-delay: 300ms;
-    }
-
-    //mobile arrow icon to scroll to form
-    .form-image-arrow {
-      display: block;
-
-      .arrow-icon {
-        @include icon($xl-size, $primary-light);
-      }
-    }
-  }
-
-  //all fields / inputs container
-  .form-fields {
-    width: 90%;
-    max-width: 600px;
-    background-color: $primary-dark;
-    padding: 20px;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    opacity: 0;
-    animation: slideFromRight 2s ease 0.7s forwards;
-
-    //container for label and input
-    .form-input-container {
-      text-align: left;
-
-      //placeholder
-      .form-input {
-        align-items: flex-start;
-        &::placeholder {
-          font-size: $m-size;
-        }
-      }
-
-      .form-label {
-        color: $primary-gray;
-        font-size: $m-size;
-      }
-
-      //input styles for correct / incorrect values
-      .form-input-inner {
-        .error-text {
-          color: $error;
-          font-weight: 700;
-          font-size: $s-size;
-        }
-      }
-    }
-
-    //photo upload buttons
-    .form-buttons {
-      display: flex;
-      justify-content: center;
-      width: 60%;
-      margin: 10px auto;
-
-      .button-text {
-        font-size: $m-size;
-      }
-    }
+  .button-text {
+    font-size: $m-size;
   }
 }
 
@@ -129,13 +126,10 @@
     height: 100vh;
   }
 
-  .form-container {
-    .form-image-container {
-      height: 100%;
-
-      .form-image-arrow {
-        display: none;
-      }
-    }
+  .form-image-container {
+    height: 100%;
+  }
+  .form-image-arrow {
+    display: none;
   }
 }
