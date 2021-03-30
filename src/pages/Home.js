@@ -44,23 +44,6 @@ export default function Home() {
           <Image className="section-img" src={heading_img} alt="Example" />
         </SectionImage>
       </Section>
-
-      <Section background="third">
-        <SectionImage>
-          <FillSvg />
-        </SectionImage>
-        <SectionText
-          onClick={navigateToVehicles}
-          btnText="Go to your wallet"
-          btnVariant="primary"
-        >
-          <h1>Use everywhere</h1>
-          <p>
-            CarWallet is responsive, so you can use it on your smartphone,
-            tablet or desktop. Take this app wherever and whenever you want.
-          </p>
-        </SectionText>
-      </Section>
       
       <Footer />
     </>

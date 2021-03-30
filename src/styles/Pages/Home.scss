@@ -7,6 +7,10 @@
   background: $third;
 }
 
+.footer-text {
+  font-size: $m-size;
+}
+
 @media screen and (min-width: 992px) {
   .home-container {
     height: 100vh;

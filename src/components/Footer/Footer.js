@@ -4,8 +4,8 @@ import { Container, Button } from "react-bootstrap";
 
 function Footer() {
   return (
-    <footer class="bg-black text-center text-white">
-      <Container className="p-4">
+    <footer className="bg-black text-center text-white">
+      <Container className="p-3">
         <div className="mb-4">
           <Button
             href="https://www.facebook.com/"
@@ -32,16 +32,14 @@ function Footer() {
             <FaIcons.FaLinkedinIn />
           </Button>
         </div>
-        <div class="mb-4">
+        <div className="footer-text">
+          <p>App created with React and Bootstrap. Check social media and repository above!</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+            Author: <strong>Piotr Bątor.</strong>
           </p>
         </div>
       </Container>
-      <div class="text-center p-3">
+      <div className="footer-text text-center p-3">
         © 2021 Copyright <strong>CarWallet</strong>
       </div>
     </footer>
