@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { VehicleContext } from "../contexts/VehicleContext";
+
+//Components
 import Vehicle from "../components/Vehicles/Vehicle";
 import VehicleEmpty from "../components/Vehicles/VehicleEmpty";
 

@@ -1,10 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Image } from "react-bootstrap";
+
+//Components
 import Section from "../components/Section/Section";
 import SectionImage from "../components/Section/SectionImage";
 import SectionText from "../components/Section/SectionText";
 import Footer from "../components/Footer/Footer";
+
+//Images
 import heading_img from "../assets/images/heading_img.svg";
 import FillSvg from "../assets/animatedSvg/FillSvg/FillSvg";
 import MobileSvg from "../assets/animatedSvg/MobileSvg/MobileSvg";
