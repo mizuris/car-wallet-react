@@ -143,13 +143,14 @@
       display: flex;
       flex-direction: column;
       position: absolute;
-      top: 50%;
+      top: 20%;
       left: 0;
       transform: translateY(-50%);
     }
 
     //left side
     .card-left {
+      animation: slideFromLeft 1s ease-in forwards;
       .card-left-heading,
       .reg-num {
         margin-bottom: 5px;
@@ -162,9 +163,9 @@
       }
 
       .reg-num {
-        color: $primary-gray;
+        color: $primary-light;
         font-size: $m-size;
-        font-weight: 700;
+        font-weight: 400;
       }
 
       .types {
@@ -179,6 +180,7 @@
 
     //right side
     .card-right {
+      animation: slideFromRight 1s ease-in forwards;
       .card-right-text-holder {
         @include flexbox(flex-start, space-around);
 
@@ -194,7 +196,7 @@
       .link {
         font-size: $s-size;
         text-decoration: none;
-        color: $primary-gray;
+        color: $primary-light;
 
         &:hover {
           color: $primary-light;

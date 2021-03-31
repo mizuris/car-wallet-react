@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App" name="top">
       <VehicleContextProvider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Navbar />
           <SlideToTop />
           <Switch>

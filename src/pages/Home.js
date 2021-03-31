@@ -25,7 +25,7 @@ export default function Home() {
           <FillSvg />
         </SectionImage>
         <SectionText
-          onClick={navigateToVehicles}
+          onClick={navigateToForm}
           btnText="Add first vehicle"
           btnVariant="primary"
         >
@@ -59,7 +59,7 @@ export default function Home() {
           <MobileSvg />
         </SectionImage>
         <SectionText
-          onClick={navigateToForm}
+          onClick={navigateToVehicles}
           btnText="Go to your wallet"
           btnVariant="primary"
         >
