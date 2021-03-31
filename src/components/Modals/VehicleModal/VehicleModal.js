@@ -29,7 +29,7 @@ function VehicleModal({ vehicle, show, hide }) {
 
   // select inputs types
   const bodyOptions = bodyTypes;
-  const fuelOptions = ["Petrol", "Diesel", "LPG"];
+  const fuelOptions = ["Petrol", "Hybrid", "Diesel", "LPG"];
 
   const changeVehicleData = (e) => {
     setVehicleEditData({ ...vehicleEditData, [e.target.name]: e.target.value });

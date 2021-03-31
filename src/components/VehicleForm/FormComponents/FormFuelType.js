@@ -9,7 +9,7 @@ function FormFuelType({ newVehicle, updateValue }) {
         id="fuelType"
         label="Select fuel type"
         value={newVehicle.fuelType}
-        types={["Petrol", "Diesel", "LPG"]}
+        types={["Petrol", "Hybrid", "Diesel", "LPG"]}
         onChange={(e) => updateValue(e)}
       />
     </>

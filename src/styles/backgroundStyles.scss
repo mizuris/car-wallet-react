@@ -3,7 +3,7 @@
 @import "./keyframes/fadeIn.scss";
 
 .bg-img-headlights {
-  @include backgroungImg("../assets/images/headlights.jpg", $third, 0.3);
+  @include backgroungImg("../assets/images/headlights.jpg", $primary-gray, 0.3);
 }
 
 .bg-main {
@@ -15,7 +15,7 @@
 }
 
 .bg-third {
-  background: $third;
+  background: $primary-gray;
 }
 
 .bg-black {

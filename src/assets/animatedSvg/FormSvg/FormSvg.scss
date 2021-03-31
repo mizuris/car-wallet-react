@@ -1,0 +1,25 @@
+@import "../../../styles/variables.scss";
+
+#LightLeft_2,
+#LightRight_2 {
+  fill: $primary-light;
+  animation: lights-blink 5s ease 3s infinite forwards;
+}
+
+@keyframes lights-blink {
+  5% {
+    fill: #f9d71c;
+  }
+  6% {
+    fill: $primary-light;
+  }
+  10% {
+    fill: #f9d71c;
+  }
+  11% {
+    fill: $primary-light;
+  }
+  100% {
+    fill: $primary-light;
+  }
+}

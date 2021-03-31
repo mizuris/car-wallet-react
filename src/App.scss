@@ -5,7 +5,7 @@
 //Pages
 @import "./styles/Pages/Home.scss";
 @import "./styles/Pages/MyVehicles.scss";
-@import "./styles//Pages/AddVehicle.scss";
+@import "./styles/Pages/AddVehicle.scss";
 
 //Components
 @import "./styles/Components/Navbar.scss";
@@ -15,4 +15,6 @@
 @import "./styles/Components/FormStyles.scss";
 
 //Animated svg
-@import "./assets/animatedSvg/FillSvg.scss";
+@import "./assets/animatedSvg/FillSvg/FillSvg.scss";
+@import "./assets/animatedSvg/MobileSvg/MobileSvg.scss";
+@import "./assets/animatedSvg/FormSvg/FormSvg.scss";

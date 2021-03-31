@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Section(props) {
   return (
-    <div className={`container-fluid bg-${props.background}`}>
+    <div className={`bg-${props.background} section-fluid`}>
       <section className="section-container">
           {props.children}
       </section>

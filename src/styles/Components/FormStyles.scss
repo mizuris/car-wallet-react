@@ -3,6 +3,10 @@
 @import "../keyframes/slideAnimations.scss";
 @import "../keyframes/buttonWobble.scss";
 
+.row {
+  width: 100%;
+}
+
 .form-modal-warning {
   color: $error;
 }
@@ -15,11 +19,14 @@
 
 .form-container {
   @include flexbox(flex-start, space-between);
+  @include margin-center;
+  width: 100%;
   text-align: center;
   padding: $s-size;
   flex-direction: row;
-  @include margin-center;
+  overflow: auto;
 }
+
 //validation styles
 .is-valid {
   border: 2px solid $correct;
