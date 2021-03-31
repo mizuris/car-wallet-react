@@ -9,7 +9,7 @@ import SectionText from "../components/Section/SectionText";
 import Footer from "../components/Footer/Footer";
 
 //Images
-import heading_img from "../assets/images/heading_img.svg";
+import section_img from "../assets/images/section_img.svg";
 import FillSvg from "../assets/animatedSvg/FillSvg/FillSvg";
 import MobileSvg from "../assets/animatedSvg/MobileSvg/MobileSvg";
 
@@ -50,7 +50,7 @@ export default function Home() {
           </p>
         </SectionText>
         <SectionImage>
-          <Image className="section-img" src={heading_img} alt="Example" />
+          <Image className="section-img" src={section_img} alt="Keep control" />
         </SectionImage>
       </Section>
 

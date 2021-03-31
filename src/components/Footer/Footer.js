@@ -8,7 +8,7 @@ function Footer() {
       <Container className="p-3">
         <div className="mb-4">
           <Button
-            href="https://www.facebook.com/"
+            href="https://www.facebook.com/piotr.bator.33/"
             target="blank"
             className="m-1"
             variant="outline-light"
@@ -24,7 +24,7 @@ function Footer() {
             <FaIcons.FaGithub />
           </Button>
           <Button
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/piotr-b%C4%85tor-b4b95620a/"
             target="blank"
             className="m-1"
             variant="outline-light"
@@ -33,7 +33,10 @@ function Footer() {
           </Button>
         </div>
         <div className="footer-text">
-          <p>App created with React and Bootstrap. Check social media and repository above!</p>
+          <p>
+            App created with React and Bootstrap. Check social media and
+            repository above!
+          </p>
           <p>
             Author: <strong>Piotr Bątor.</strong>
           </p>
