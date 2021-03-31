@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, HashRouter as Router } from "react-router-dom";
 
 //Pages
 import Home from "./pages/Home";
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App" name="top">
       <VehicleContextProvider>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           <Navbar />
           <SlideToTop />
           <Switch>
