@@ -92,20 +92,7 @@ function VehicleModal({ vehicle, show, hide }) {
               </Col>
             </Row>
             <Row>
-              <Col xs={4}>
-                <TextInput
-                  classFor="modal"
-                  label="Registration number"
-                  value={vehicleEditData.registrationNum}
-                  name="registrationNum"
-                  onChange={(e) =>
-                    validateInput.test(e.target.value)
-                      ? handleError(null)
-                      : changeVehicleData(e)
-                  }
-                />
-              </Col>
-              <Col xs={4}>
+              <Col xs={12} lg={4}>
                 <ModalSelect
                   classFor="modal"
                   label="Body type"
@@ -115,7 +102,20 @@ function VehicleModal({ vehicle, show, hide }) {
                   onChange={(e) => changeVehicleData(e)}
                 />
               </Col>
-              <Col xs={4}>
+              <Col xs={6} lg={4}>
+                <TextInput
+                  classFor="modal"
+                  label="Reg. number"
+                  value={vehicleEditData.registrationNum}
+                  name="registrationNum"
+                  onChange={(e) =>
+                    validateInput.test(e.target.value)
+                      ? handleError(null)
+                      : changeVehicleData(e)
+                  }
+                />
+              </Col>
+              <Col xs={6} lg={4}>
                 <TextInput
                   classFor="modal"
                   type="number"
@@ -134,7 +134,7 @@ function VehicleModal({ vehicle, show, hide }) {
               </div>
             </Row>
             <Row>
-              <Col xs={4}>
+              <Col xs={12} lg={4}>
                 <ModalSelect
                   classFor="modal"
                   label="Fuel type"
@@ -144,7 +144,7 @@ function VehicleModal({ vehicle, show, hide }) {
                   onChange={(e) => changeVehicleData(e)}
                 />
               </Col>
-              <Col xs={4}>
+              <Col xs={6} lg={4}>
                 <TextInput
                   classFor="modal"
                   type="number"
@@ -154,12 +154,12 @@ function VehicleModal({ vehicle, show, hide }) {
                   onChange={(e) => changeVehicleData(e)}
                 />
               </Col>
-              <Col xs={4}>
+              <Col xs={6} lg={4}>
                 <TextInput
                   classFor="modal"
                   type="number"
                   step=".1"
-                  label="Avg. fuel consumption"
+                  label="Avg. fuel cons."
                   value={vehicleEditData.fuelConsumption}
                   name="fuelConsumption"
                   onChange={(e) => changeVehicleData(e)}
