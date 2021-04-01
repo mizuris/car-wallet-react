@@ -13,12 +13,12 @@ function VehicleContextProvider(props) {
       prodYear: 2012,
       bodyType: "Sedan",
       registrationNum: "XYZ 98791",
-      tankCapacity: 60,
-      fuelConsumption: 8,
+      tankCapacity: 65,
+      fuelConsumption: 11,
       fuelType: "Petrol",
       photo:
         photo ||
-        "https://firebasestorage.googleapis.com/v0/b/carwallet-react.appspot.com/o/photos%2Fhonda.jpg?alt=media&token=dcca1cde-ed10-4004-9ddf-0085e1a9b815",
+        "https://firebasestorage.googleapis.com/v0/b/carwallet-react.appspot.com/o/photos%2Fhonda-accord-type-s.jpeg?alt=media&token=fa7e52d0-8d59-4f45-b221-771f4a996424",
     },
   ]);
 
