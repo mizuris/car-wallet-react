@@ -5,6 +5,7 @@
 
 .row {
   width: 100%;
+  transform: translateX(15px);
 }
 
 .form-modal-warning {
@@ -18,13 +19,11 @@
 }
 
 .form-container {
-  @include flexbox(flex-start, space-between);
-  @include margin-center;
+  @include flexbox(center, space-between);
   width: 100%;
   text-align: center;
   padding: $s-size;
   flex-direction: row;
-  overflow: auto;
 }
 
 //validation styles
