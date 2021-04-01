@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/car-wallet-react/static/css/main.b275c547.chunk.css",
-    "main.js": "/car-wallet-react/static/js/main.85ba4710.chunk.js",
-    "main.js.map": "/car-wallet-react/static/js/main.85ba4710.chunk.js.map",
+    "main.css": "/car-wallet-react/static/css/main.170ec1c2.chunk.css",
+    "main.js": "/car-wallet-react/static/js/main.ea17559d.chunk.js",
+    "main.js.map": "/car-wallet-react/static/js/main.ea17559d.chunk.js.map",
     "runtime-main.js": "/car-wallet-react/static/js/runtime-main.3ff43fab.js",
     "runtime-main.js.map": "/car-wallet-react/static/js/runtime-main.3ff43fab.js.map",
     "static/css/2.150d169a.chunk.css": "/car-wallet-react/static/css/2.150d169a.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.88430ce4.chunk.js.map": "/car-wallet-react/static/js/2.88430ce4.chunk.js.map",
     "index.html": "/car-wallet-react/index.html",
     "static/css/2.150d169a.chunk.css.map": "/car-wallet-react/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.b275c547.chunk.css.map": "/car-wallet-react/static/css/main.b275c547.chunk.css.map",
+    "static/css/main.170ec1c2.chunk.css.map": "/car-wallet-react/static/css/main.170ec1c2.chunk.css.map",
     "static/js/2.88430ce4.chunk.js.LICENSE.txt": "/car-wallet-react/static/js/2.88430ce4.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/car-wallet-react/static/media/headlights.1c244b7c.jpg",
     "static/media/section_img.bdbabb5c.svg": "/car-wallet-react/static/media/section_img.bdbabb5c.svg"
@@ -19,7 +19,7 @@
     "static/js/runtime-main.3ff43fab.js",
     "static/css/2.150d169a.chunk.css",
     "static/js/2.88430ce4.chunk.js",
-    "static/css/main.b275c547.chunk.css",
-    "static/js/main.85ba4710.chunk.js"
+    "static/css/main.170ec1c2.chunk.css",
+    "static/js/main.ea17559d.chunk.js"
   ]
 }
