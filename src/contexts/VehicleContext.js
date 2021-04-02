@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const VehicleContext = createContext();
 
@@ -53,6 +53,17 @@ function VehicleContextProvider(props) {
   const removeVehicle = (id) => {
     setVehicles(vehicles.filter((vehicle) => vehicle.id !== id));
   };
+
+  useEffect(() => {
+    const localData = localStorage.getItem("vehicles-list");
+    if (localData) {
+      setVehicles(JSON.parse(localData));
+    }
+  }, [setVehicles])
+
+  useEffect(() => {
+    localStorage.setItem("vehicles-list", JSON.stringify(vehicles));
+  })
 
   return (
     <VehicleContext.Provider
