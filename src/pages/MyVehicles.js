@@ -9,7 +9,7 @@ function MyVehicles() {
   const { vehicles } = useContext(VehicleContext);
 
   return (
-    <>
+    <div className="my-vehicles-container">
       {vehicles.length ? (
         vehicles.map((vehicle) => {
           return <Vehicle key={vehicle.id} vehicle={vehicle} />;
@@ -18,7 +18,7 @@ function MyVehicles() {
         <VehicleEmpty />
       )}
       <div className="bg-img-headlights"></div>
-    </>
+    </div>
   );
 }
 
