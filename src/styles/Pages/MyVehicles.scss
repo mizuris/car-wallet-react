@@ -3,6 +3,11 @@
 @import "../keyframes/pulse.scss";
 @import "../keyframes/slideAnimations.scss";
 
+.my-vehicles-container {
+  height: 100vh;
+  overflow: auto;
+}
+
 //no cars added
 .empty {
   @include center-absolute;
